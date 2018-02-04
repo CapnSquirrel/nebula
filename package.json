@@ -18,5 +18,8 @@
   "homepage": "https://github.com/CapnSquirrel/nebula#readme",
   "devDependencies": {
     "eslint": "^4.17.0"
+  },
+  "dependencies": {
+    "ohm-js": "^0.14.0"
   }
 }
