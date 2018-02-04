@@ -1,0 +1,22 @@
+{
+  "name": "nebula",
+  "version": "1.0.0",
+  "description": "The Nebula programming language",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CapnSquirrel/nebula.git"
+  },
+  "author": "Eddie Azinge, Ben Davis, Brian Joerger, Emily Shoji, Alejandro Zapata",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CapnSquirrel/nebula/issues"
+  },
+  "homepage": "https://github.com/CapnSquirrel/nebula#readme",
+  "devDependencies": {
+    "eslint": "^4.17.0"
+  }
+}
