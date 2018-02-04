@@ -5,7 +5,7 @@ Nebula is a programming language intended for expression.  It utilization of mul
 # Features
 - _Dynamic_: Dynamically typed by default, but optional static typing can be enforced
 - _Asynchronous_: Designed for asynchronous programming; can wait for events while retaining state
-- _Functional and Flexible_: The eager loading of parameters allows for the power of a functional language and the flexibility of an imperative language
+- _Functional_: The eager loading of parameters allows for the power of a functional language but also the flexibility of an imperative language
 - _Object Oriented_: Editable properties can be attached to every construct in the language, and these objects can be mutable or immutable
-- _Efficient Functions_: Closures and anonymous functions are supported
-- _Scoping_: Spatial programmingn is a brand new way of determining the realms within which variables and objects exist
+- _Efficent_: Closures and anonymous functions are supported
+- _Spatially Scoped_: Spatial programmingn is a brand new way of determining the realms within which variables and objects exist
