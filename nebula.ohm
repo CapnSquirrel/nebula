@@ -1,0 +1,30 @@
+Nebula {
+    Program     =  Construct*
+    Construct   =  Header Argument? Location+ newline+ Things?
+    Header      =  "Origin" | "Result" | "Link" | "Accessor"
+                |  "Function" | "Conditional" | "Parameter"
+                |  "Control" | "Return" | "Yield" | "Error"
+    Argument    =  "default" | id | strlit
+    Things      =  indent Traits+ newline+                             -- things
+                | Construct
+    Traits      =  Header | "primitive" (numlit | boollit | strlit)    -- traits
+
+    Location    =  "(" Coordinate ")" | "<" Coordinate ">"
+    Coordinate  =  numlit "," numlit "," numlit
+
+    keyword     =  ( "default" | "print" | "and" | "or"
+                |  "not" | "true" | "false" ) ~idrest
+    id          =  ~keyword ("_" | letter) idrest*
+    idrest      =  "_" | alnum
+    numlit      =  digit+ ("." digit+)?
+    boollit     =  "true" | "false"
+    strlit      =  "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
+    escape      =  "\\" ("\\" | "\"" | "n")                          -- simple
+                |  "\\u" hexDigit+                                   -- codepoint
+    indent      =  "⇨"
+    dedent      =  "⇦"
+
+    newline     =  "\n"+
+    space      :=  " " | "\t" | comment
+    comment     =  "#" (~"\n" any)*
+}
