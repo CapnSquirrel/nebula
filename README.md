@@ -18,7 +18,7 @@ Function print (0,1,0)
 Link (0,0,2) (0,2,0)
 ```
 ### Symbolic Diagram
-
+![](/example-programs/good-programs/HelloWorldExample.png)
 # Features
 - _Dynamic_: Dynamically typed by default, but optional static typing can be enforced
 - _Asynchronous_: Designed for asynchronous programming; can wait for events while retaining state
