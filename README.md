@@ -11,9 +11,17 @@ Nebula is a programming language intended for expression.  Its use of multidimen
 - _Efficent_: Closures and anonymous functions are supported
 - _Spatially Scoped_: Spatial programmingn is a brand new way of determining the realms within which variables and objects exist
 
-Symbol | Text
--------|-------
-![can i put an image here](/logos/Nebula-logo-small.png) | columns
+Construct   | Symbol       | Text
+------------|--------------|--------
+Parameter   | pic          | columns
+Control     | pic          | columns
+Return      | pic          | columns
+Link        | pic          | columns
+Accessor    | pic          | columns
+Declarator  | pic          | columns
+Function    | pic          | columns
+Conditional | pic          | columns
+Ternary     | pic          | columns
 
 # Grammar (Ohm)
 ```
