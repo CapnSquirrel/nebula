@@ -35,7 +35,7 @@ Nebula has both a textual and symbolic representation, and it is important to un
 
 Example     | Symbol       | Text
 ------------|--------------|--------
-Hello World | ![](/example-programs/hello_world.png          | Origin default (0,0,0)
+Hello World | ![](/example-programs/hello_world.png)          | Origin default (0,0,0)
             |               |     id "hello"
             |               |     Result <0,0,1>
             |               |         Callback <0,0,1>            #global pos (0,0,2)
