@@ -27,6 +27,11 @@ Link (0,0,2) (0,2,0)
 - _Efficent_: Closures and anonymous functions are supported
 - _Spatially Scoped_: Spatial programmingn is a brand new way of determining the realms within which variables and objects exist
 
+# References and Examples
+
+Nebula has both a textual and symbolic representation, and it is important to understand both. First, here is a symbol key.
+![symbol key](/images/symbol-key.png)
+
 Construct   | Symbol       | Text
 ------------|--------------|--------
 Parameter   | pic          | columns
