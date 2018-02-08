@@ -9,3 +9,36 @@ Nebula is a programming language intended for expression.  Its use of multidimen
 - _Object Oriented_: Editable properties can be attached to every construct in the language, and these objects can be mutable or immutable
 - _Efficent_: Closures and anonymous functions are supported
 - _Spatially Scoped_: Spatial programmingn is a brand new way of determining the realms within which variables and objects exist
+# Grammar (Ohm)
+```
+Nebula {
+    Program     =  Construct*
+    Construct   =  Header Argument? Location+ newline+ Things?
+    Header      =  "Origin" | "Result" | "Link" | "Accessor"
+                |  "Function" | "Conditional" | "Parameter"
+                |  "Control" | "Return" | "Yield" | "Error"
+    Argument    =  "default" | id | strlit
+    Things      =  indent Traits+ newline+                             -- things
+                | Construct
+    Traits      =  Header | "primitive" (numlit | boollit | strlit)    -- traits
+
+    Location    =  "(" Coordinate ")" | "<" Coordinate ">"
+    Coordinate  =  numlit "," numlit "," numlit
+
+    keyword     =  ( "default" | "print" | "and" | "or"
+                |  "not" | "true" | "false" ) ~idrest
+    id          =  ~keyword ("_" | letter) idrest*
+    idrest      =  "_" | alnum
+    numlit      =  digit+ ("." digit+)?
+    boollit     =  "true" | "false"
+    strlit      =  "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
+    escape      =  "\\" ("\\" | "\"" | "n")                          -- simple
+                |  "\\u" hexDigit+                                   -- codepoint
+    indent      =  "⇨"
+    dedent      =  "⇦"
+
+    newline     =  "\n"+
+    space      :=  " " | "\t" | comment
+    comment     =  "#" (~"\n" any)*
+}
+```
