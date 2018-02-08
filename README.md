@@ -13,7 +13,7 @@ Nebula is a programming language intended for expression.  Its use of multidimen
 
 Symbol | Text
 -------|-------
-testing the markdown | columns
+![can i put an image here](/logos/Nebula-small-logo.png) | columns
 
 # Grammar (Ohm)
 ```
