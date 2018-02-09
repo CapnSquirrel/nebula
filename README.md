@@ -20,6 +20,7 @@ Link (0,0,2) (0,2,0)
 ```
 ### Symbolic Diagram
 ![hello world](/example-programs/hello_world.png)
+
 Unlike most programming languages, Nebula doesn't evaluate anything in order.  A Nebula program is essentially a collection of linked nodes whose parameter values rely on the actions of other nodes.  In hello_world.star, the action begins at the return statement.  Realizing that it needs a value, the return statement queries its callback.  The callback leads to a simple print function that does what you'd expect... Sends data to stdout.  The print function has its own parameter to satisfy, and luckily, it's been linked to a primitive variable: the string "Hello, World!".  Now, as the data ripples forward, we can finally satisfy the return statement.
 # Features
 - _Dynamic_: Dynamically typed by default, but optional static typing can be enforced
@@ -36,6 +37,15 @@ Nebula has both a textual and symbolic representation, and it is important to un
 ![symbol key](/images/symbol-key.png)
 
 # Program Examples
+
+## Fibonacci Sequence: Recursive
+### Nebula Text
+### Symbolic Diagram
+![recursive fibonacci](/example-programs/recursive_fib.png)
+## Fibonacci Sequence: Iterative
+### Nebula Text
+### Symbolic Diagram
+![iterative fibonacci](/example-programs/iterative_fib.png)
 
 # Grammar (Ohm)
 ```
