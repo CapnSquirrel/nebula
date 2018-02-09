@@ -8,7 +8,7 @@ Nebula {
                     |  "Function" | "Conditional" | "Parameter"
                     |  "Control" | "Return" | "Yield" | "Error"
     traitLabel      =  "primitive" | "id" | "access" | "initialize"
-    Argument        =  "default" | id | strlit | numlit | boollit | strlit
+    Argument        =  "default" | id | strlit | numlit
     Location        =  "(" Coordinate ")" | "<" Coordinate ">"
     Coordinate      =  numlit "," numlit "," numlit
 
