@@ -27,31 +27,27 @@ Link (0,0,2) (0,2,0)
 - _Efficent_: Closures and anonymous functions are supported
 - _Spatially Scoped_: Spatial programmingn is a brand new way of determining the realms within which variables and objects exist
 
-# References and Examples
+# References
 
 Nebula has both a textual and symbolic representation, and it is important to understand both. First, here is a symbol key.
 
 ![symbol key](/images/symbol-key.png)
 
-Example     | Symbol       | Text
-------------|--------------|--------
-Hello World | ![](/example-programs/hello_world.png)          | Origin default (0,0,0)
-            |               |     id "hello"
-            |               |     Result <0,0,1>
-            |               |         Callback <0,0,1>            #global pos (0,0,2)
-            |               | Function print (0,1,0)
-            |               |     Parameter <0,1,0>
-            |               |         primitive "Hello, world!"
-            |               |     Callback <0,1,0>                #global pos (0,2,0)
-            |               | Link (0,0,2) (0,2,0)
-Control     | pic          | columns
-Return      | pic          | columns
-Link        | pic          | columns
-Accessor    | pic          | columns
-Declarator  | pic          | columns
-Function    | pic          | columns
-Conditional | pic          | columns
-Ternary     | pic          | columns
+# Program Examples
+
+![](/example-programs/hello_world.png)
+ 
+```
+Origin default (0,0,0)
+    id "hello"
+    Result <0,0,1>
+        Callback <0,0,1>            #global pos (0,0,2)
+Function print (0,1,0)
+    Parameter <0,1,0>
+        primitive "Hello, world!"
+    Callback <0,1,0>                #global pos (0,2,0)
+Link (0,0,2) (0,2,0)
+ ```
 
 # Grammar (Ohm)
 ```
