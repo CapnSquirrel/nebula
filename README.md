@@ -20,6 +20,7 @@ Link (0,0,2) (0,2,0)
 ```
 ### Symbolic Diagram
 ![hello world](/example-programs/hello_world.png)
+Unlike most programming languages, Nebula doesn't evaluate anything in order.  A Nebula program is essentially a collection of linked nodes whose parameter values rely on the actions of other nodes.  In hello_world.star, the action begins at the return statement.  Realizing that it needs a value, the return statement queries its callback.  The callback leads to a simple print function that does what you'd expect... Sends data to stdout.  The print function has its own parameter to satisfy, and luckily, it's been linked to a primitive variable: the string "Hello, World!".  Now, as the data ripples forward, we can finally satisfy the return statement.
 # Features
 - _Dynamic_: Dynamically typed by default, but optional static typing can be enforced
 - _Asynchronous_: Designed for asynchronous programming; can wait for events while retaining state
@@ -30,7 +31,7 @@ Link (0,0,2) (0,2,0)
 
 # References
 
-Nebula has both a textual and symbolic representation, and it is important to understand both. First, here is a symbol key.
+Nebula has both a textual and symbolic representation, and it is important to understand both. Here is a symbol key that should provide a better understanding of any symbolic diagrams of Nebula programs.
 
 ![symbol key](/images/symbol-key.png)
 
