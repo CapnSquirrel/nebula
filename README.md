@@ -13,7 +13,7 @@ Nebula is a programming language intended for expression.  Its use of multidimen
 - _Spatially Scoped_: Spatial programmingn is a brand new way of determining the realms within which variables and objects exist
 
 # Hello, World!
-Let's take a look at hello_world.star, a basic program written in Nebula.
+Let's take a look at hello_world.star, a basic program written in Nebula.  Additional, more complex, examples can be found below.
 ### Nebula Text
 ```
 Origin default (0,0,0)
