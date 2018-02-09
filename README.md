@@ -5,6 +5,7 @@
 Nebula is a programming language intended for expression.  Its use of multidimensional logical constructs to perform actions between nodes likens it to a Turing Machine.  These nodes are powerful; rather than simply holding data and linking to other structures, they can trigger actions on the global environment and ultimately cause the execution of functions whose return values may in fact ripple back to the original node.  Inspirations for the project include Javascript, Python, Go, and Haskell.  Many of the constructs in Nebula's standard library as well as its primitive structures and types are derived from these languages.  Though it borrows some ideas from some  of these well-known programming languages, Nebula also offers a new programming paradigm, "spatial programming", an intuitive and fresh way to work with scoping.
 
 # Hello, World!
+Let's start things off by taking a look at hello_world.star, a basic program written in Nebula.
 ### Nebula Text
 ```
 Origin default (0,0,0)
@@ -18,7 +19,7 @@ Function print (0,1,0)
 Link (0,0,2) (0,2,0)
 ```
 ### Symbolic Diagram
-![](/example-programs/good-programs/HelloWorldExample.png)
+![hello world](/example-programs/hello_world.png)
 # Features
 - _Dynamic_: Dynamically typed by default, but optional static typing can be enforced
 - _Asynchronous_: Designed for asynchronous programming; can wait for events while retaining state
@@ -34,20 +35,6 @@ Nebula has both a textual and symbolic representation, and it is important to un
 ![symbol key](/images/symbol-key.png)
 
 # Program Examples
-
-![](/example-programs/hello_world.png)
- 
-```
-Origin default (0,0,0)
-    id "hello"
-    Result <0,0,1>
-        Callback <0,0,1>            #global pos (0,0,2)
-Function print (0,1,0)
-    Parameter <0,1,0>
-        primitive "Hello, world!"
-    Callback <0,1,0>                #global pos (0,2,0)
-Link (0,0,2) (0,2,0)
- ```
 
 # Grammar (Ohm)
 ```
