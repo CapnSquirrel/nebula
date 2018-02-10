@@ -35,7 +35,7 @@ Unlike most programming languages, Nebula doesn't evaluate anything in order.  A
 
 Nebula has both a textual and symbolic representation, and it is important to understand both. Here is a symbol key that should provide a better understanding of any symbolic diagrams of Nebula programs.
 
-![symbol key](/images/symbol-key.png)
+![symbol key](/images/Symbol-Key.png)
 
 # Program Examples
 
