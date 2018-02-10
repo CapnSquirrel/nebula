@@ -1,30 +1,28 @@
 Nebula {
-    Program     =  Construct*
-    Construct   =  Header Argument? Location+ newline+ Things?
-    Header      =  "Origin" | "Result" | "Link" | "Accessor"
-                |  "Function" | "Conditional" | "Parameter"
-                |  "Control" | "Return" | "Yield" | "Error"
-    Argument    =  "default" | id | strlit
-    Things      =  indent Traits+ newline+                             -- things
-                | Construct
-    Traits      =  Header | "primitive" (numlit | boollit | strlit)    -- traits
+    Program         =  Object*
+    Object          =  (Construct | Trait) newline Block?
+    Construct       =  constructLabel Argument* Location+
+    Trait           =  traitLabel Argument*
+    Block           =  indent Object+ dedent
+    constructLabel  =  "Origin" | "Result" | "Link" | "Accessor"
+                    |  "Function" | "Conditional" | "Parameter"
+                    |  "Control" | "Return" | "Yield" | "Error"
+    traitLabel      =  "primitive" | "id" | "access" | "initialize"
+    Argument        =  "default" | id | strlit | numlit
+    Location        =  "(" Coordinate ")" | "<" Coordinate ">"
+    Coordinate      =  numlit "," numlit "," numlit
 
-    Location    =  "(" Coordinate ")" | "<" Coordinate ">"
-    Coordinate  =  numlit "," numlit "," numlit
+    keyword         =  ( constructLabel | traitLabel ) ~idrest
+    id              =  ~keyword ("_" | letter) idrest*
+    idrest          =  "_" | alnum
+    numlit          =  digit+ ("." digit+)?
+    strlit          =  "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
+    escape          =  "\\" ( "\'" | "\"" | "r" | "n" | "\\" | "u")      -- simple
+                    |  "\\u" hexDigit hexDigit hexDigit hexDigit         -- codepoint
+    indent          =  "⇨"
+    dedent          =  "⇦"
 
-    keyword     =  ( "default" | "print" | "and" | "or"
-                |  "not" | "true" | "false" ) ~idrest
-    id          =  ~keyword ("_" | letter) idrest*
-    idrest      =  "_" | alnum
-    numlit      =  digit+ ("." digit+)?
-    boollit     =  "true" | "false"
-    strlit      =  "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
-    escape      =  "\\" ("\\" | "\"" | "n")                          -- simple
-                |  "\\u" hexDigit+                                   -- codepoint
-    indent      =  "⇨"
-    dedent      =  "⇦"
-
-    newline     =  "\n"+
-    space      :=  " " | "\t" | comment
-    comment     =  "#" (~"\n" any)*
+    newline         =  "\n"+
+    space           :=  " " | "\t" | comment
+    comment         =  "#" (~"\n" any)*
 }
