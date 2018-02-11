@@ -40,10 +40,120 @@ Nebula has both a textual and symbolic representation, and it is important to un
 
 ## Fibonacci Sequence: Recursive
 ### Nebula Text
+```
+Origin default (0,0,0)
+  Parameter n <0,0,1>
+  id "_fib"
+  Result <0,0,2>
+    Callback <0,0,1>
+
+Function ? (0,1,0)
+  Parameter T <0,0,1>
+  Parameter F <0,0,2>
+  Parameter cond <0,0,3>
+  Return <0,0,4>
+    Callback <0,0,1>
+
+Function p1<=p2 (0,2,0)
+  Parameter p1 <0,0,1>
+    access n
+  Parameter p2 <0,0,2>
+    primitive 1
+  Return <0,0,3>
+
+Function p1+p2 (0,3,0)
+  Parameter p1 <0,0,1>
+  Parameter p2 <0,0,2>
+  Return <0,0,3>
+
+Function p1-p2 (0,4,0)
+  Parameter p1 <0,0,1>
+    access n
+  Parameter p2 <0,0,2>
+    primitive 1
+  Return <0,0,3>
+
+Function p1-p2 (0,5,0)
+  Parameter p1 <0,0,1>
+    access n
+  Parameter p2 <0,0,2>
+    primitve 2
+  Return <0,0,3>
+
+
+Link (0,0,3) (0,4,1) # Program result <-> ternary return
+Link (0,1,3) (0,2,3) # Ternary condition <-> p1 <= p2 evaluation
+Link (0,1,2) (0,3,3) # Ternary false param <-> p1 + p2
+Link (0,3,1) (0,0,2) # p1 <-> return of recursive call of _fib
+Link (0,3,2) (0,0,2) # p2 <-> return of recursive call of _fib
+Link (0,4,3) (0,0,1) # p1 - p2 <-> parameter for recursive call of _fib
+Link (0,5,3) (0,0,1) # p1 - p2 <-> parameter for recursive call of _fib
+```
 ### Symbolic Diagram
 ![recursive fibonacci](/example-programs/recursive_fib.png)
 ## Fibonacci Sequence: Iterative
 ### Nebula Text
+```
+Origin default (0,0,0)
+  Parameter n <0,0,1>
+  id "_fib"
+  Result <0,0,2>
+    Callback <0,0,1>
+
+id "a"
+  primitive 0
+id "b"
+  primitive 1
+id "c"
+  primitive 0
+
+Conditional (0,1,0)
+  Parameter T <0,0,1>
+    Callback <0,0,1>
+  Parameter F <0,0,3>
+    Callback <0,0,1>
+  Parameter cond <0,0,5>
+
+Function p1<=p2 (0,2,0)
+  Parameter p1 <0,0,1>
+    access c
+  Parameter p2 <0,0,2>
+    access n
+  Return <0,0,3>
+  Callback <0,0,4>
+
+Function p1++ (0,3,0)
+  Parameter p1 <0,0,1>
+    access c
+
+Function p1=p2 (0,4,0)
+  Parameter p1 <0,0,1>
+    access b
+  Parameter p2 <0,0,2>
+    access t
+  Callback <0,0,3>
+  Callback <0,0,4>
+
+Function p1+p2 (0,5,0)
+  Parameter p1 <0,0,1>
+  Parameter p2 <0,0,2>
+  Callback <0,0,3>
+  Callback <0,0,4>
+  Return <0,0,5>
+
+id "t" (0,6,0)
+  Callback <0,0,1>
+  Callback <0,0,2>
+
+Link (0,0,3) (0,1,2) # Result <-> Conditional true
+Link (0,1,5) (0,2,3) # cond <-> p1<=p2 return
+Link (0,2,4) (0,4,3) # p1<=p2 callback <-> b=t callback
+Link (0,4,4) (0,6,1) # b=t callback <-> variable t callback
+Link (0,1,3) (0,3,1) # conditional false <-> p1++ callback
+Link (0,3,2) (0,5,3) # p1++ callback <-> p1+p2 callback
+Link (0,5,4) (0,6,2) # p1+p2 callback <-> t callback
+Link (0,5,5) (0,0,6) # p1+p2 return <-> variable t
+```
 ### Symbolic Diagram
 ![iterative fibonacci](/example-programs/iterative_fib.png)
 
