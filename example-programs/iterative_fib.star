@@ -2,7 +2,7 @@ Origin default (0,0,0)
   Parameter n <0,0,1>
   id "_fib"
   Result <0,0,2>
-    Callback <0,0,1>
+    Control <0,0,1>
 
 id "a"
   primitive 0
@@ -13,41 +13,41 @@ id "c"
 
 Conditional (0,1,0)
   Parameter T <0,0,1>
-    Callback <0,0,1>
+    Control <0,0,1>
   Parameter F <0,0,3>
-    Callback <0,0,1>
+    Control <0,0,1>
   Parameter cond <0,0,5>
 
-Function p1<=p2 (0,2,0)
+Function p1 leq p2 (0,2,0)
   Parameter p1 <0,0,1>
     access c
   Parameter p2 <0,0,2>
     access n
   Return <0,0,3>
-  Callback <0,0,4>
+  Control <0,0,4>
 
-Function p1++ (0,3,0)
+Function p1 plusplus (0,3,0)
   Parameter p1 <0,0,1>
     access c
 
-Function p1=p2 (0,4,0)
+Function p1 e p2 (0,4,0)
   Parameter p1 <0,0,1>
     access b
   Parameter p2 <0,0,2>
     access t
-  Callback <0,0,3>
-  Callback <0,0,4>
+  Control <0,0,3>
+  Control <0,0,4>
 
-Function p1+p2 (0,5,0)
+Function p1 plus p2 (0,5,0)
   Parameter p1 <0,0,1>
   Parameter p2 <0,0,2>
-  Callback <0,0,3>
-  Callback <0,0,4>
+  Control <0,0,3>
+  Control <0,0,4>
   Return <0,0,5>
 
 id "t" (0,6,0)
-  Callback <0,0,1>
-  Callback <0,0,2>
+  Control <0,0,1>
+  Control <0,0,2>
 
 Link (0,0,3) (0,1,2) # Result <-> Conditional true
 Link (0,1,5) (0,2,3) # cond <-> p1<=p2 return
