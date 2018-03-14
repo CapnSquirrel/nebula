@@ -5,32 +5,32 @@ Origin default (0,0,0)
     Control <0,0,1>
 
 Function ternary (0,1,0)
-  Parameter T <0,0,1>
-  Parameter F <0,0,2>
+  Parameter true <0,0,1>
+  Parameter false <0,0,2>
   Parameter cond <0,0,3>
   Return <0,0,4>
     Control <0,0,1>
 
-Function p1 leq p2 (0,2,0)
+Function "p1 leq p2" (0,2,0)
   Parameter p1 <0,0,1>
     access n
   Parameter p2 <0,0,2>
     primitive 1
   Return <0,0,3>
 
-Function p1 plus p2 (0,3,0)
+Function "p1 plus p2" (0,3,0)
   Parameter p1 <0,0,1>
   Parameter p2 <0,0,2>
   Return <0,0,3>
 
-Function p1 minus p2 (0,4,0)
+Function "p1 minus p2" (0,4,0)
   Parameter p1 <0,0,1>
     access n
   Parameter p2 <0,0,2>
     primitive 1
   Return <0,0,3>
 
-Function p1 minus p2 (0,5,0)
+Function "p1 minus p2" (0,5,0)
   Parameter p1 <0,0,1>
     access n
   Parameter p2 <0,0,2>
