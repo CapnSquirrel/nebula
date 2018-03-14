@@ -4,7 +4,7 @@
   "description": "The Nebula programming language",
   "main": "index.js",
   "scripts": {
-    "test": "mocha tests/*.test.js"
+    "test": "jest tests/*.test.js"
   },
   "repository": {
     "type": "git",
@@ -21,10 +21,9 @@
     "eslint": "^4.17.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "jest": "^22.4.2",
     "mocha": "^5.0.0",
     "ohm-js": "^0.14.0"
   },
-  "dependencies": {
-    
-  }
+  "dependencies": {}
 }
