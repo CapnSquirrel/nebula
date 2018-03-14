@@ -10,7 +10,7 @@ Nebula {
     traitLabel      =  "primitive" | "id" | "access" | "initialize"
     Argument        =  "default" | id | strlit | numlit
     Location        =  "(" Coordinate ")" | "<" Coordinate ">"
-    Coordinate      =  numlit "," numlit "," numlit
+    Coordinate      =  NonemptyListOf<numlit, ",">
 
     keyword         =  ( constructLabel | traitLabel ) ~idrest
     id              =  ~keyword ("_" | letter) idrest*

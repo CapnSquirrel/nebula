@@ -1,3 +1,3 @@
-const Construct = require('../Construct.js');
+const Construct = require('../bases/Construct.js');
 
 module.exports = class Parameter extends Construct {};
