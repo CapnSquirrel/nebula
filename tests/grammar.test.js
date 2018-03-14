@@ -1,5 +1,5 @@
 const fs = require('fs');
-const parse = require('../parser');
+const parse = require('../syntax/parser');
 
 const TEST_DIR = 'tests/data/good-programs';
 

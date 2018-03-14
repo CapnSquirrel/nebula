@@ -1,5 +1,5 @@
 const fs = require('fs');
-const parse = require('../parser');
+const parse = require('../syntax/parser');
 const assert = require('chai').assert;
 
 const TEST_DIR = 'tests/data/syntax-errors';
