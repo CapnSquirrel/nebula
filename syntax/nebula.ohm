@@ -1,8 +1,8 @@
 Nebula {
     Program         =  Object*
-    Object          =  (Construct | Trait) newline Block?
-    Construct       =  constructLabel Argument* Location+
-    Trait           =  traitLabel Argument*
+    Object          =  Construct | Trait
+    Construct       =  constructLabel Argument* Location+ newline Block?
+    Trait           =  traitLabel Argument* newline Block?
     Block           =  indent Object+ dedent
     constructLabel  =  "Origin" | "Result" | "Link" | "Accessor"
                     |  "Function" | "Conditional" | "Parameter"

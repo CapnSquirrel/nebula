@@ -1,28 +1,36 @@
-const ohm = require('ohm-js');
 const fs = require('fs');
+const ohm = require('ohm-js');
+const withIndentsAndDedents = require('./preparser');
+
+const {
+  Program, Constructs, Traits, Location, Coordinate,
+} = require('../ast');
+
 const grammar = ohm.grammar(fs.readFileSync('./syntax/nebula.ohm'));
 
-const Program = require('../ast/program');
-const Object = require('../ast/object');
-const Origin = require('../ast/Origin');
-const Result = require('../ast/link');
-const Link = require('../ast/link');
-const Accessor = require('../ast/accessor');
-const Function = require('../ast/function');
-const Conditional = require('../ast/conditional');
-const Parameter = require('../ast/parameter');
-const caseontrol = require('../ast/control');
-const Return = require('../ast/return');
-const Yield = require('../ast/yield');
-const Error = require('../ast/error');
-const Primitive = require('../ast/primitive');
-const Id = require('../ast/id');
-const Access = require('../ast/access');
-const Initialize = require('../ast/initialize');
+const format = (label) => {
+  const s = label.sourceString;
+  return s[0].toUpperCase() + s.substring(1);
+};
 
-const withIndentsAndDedents = require('./preparser');
+/* eslint-disable no-unused-vars */
+const astGenerator = grammar.createSemantics().addOperation('ast', {
+  Program: body => new Program(body.ast()),
+  Construct: (label, args, locations, _, body) =>
+    new Constructs[(format(label))](args.ast(), locations.ast(), body.ast()),
+  Trait: (label, args, _, body) => new Traits[(format(label))](args.ast(), body.ast()),
+  Block: (_1, body, _2) => body.ast(),
+  Argument: arg => arg.sourceString,
+  Location: (_, coord, brace) => new Location(brace.sourceString === ')', coord.ast()),
+  Coordinate: (x, _1, y, _2, z) => new Coordinate(x.sourceString, y.sourceString, z.sourceString),
+  _terminal: () => this.sourceString,
+});
+/* eslint-enable no-unused-vars */
 
 module.exports = (text) => {
   const match = grammar.match(withIndentsAndDedents(text));
-  return match;
+  if (!match.succeeded()) {
+    throw new Error(`Syntax Error: ${match.message}`);
+  }
+  return astGenerator(match).ast();
 };
