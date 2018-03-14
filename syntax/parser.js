@@ -10,6 +10,7 @@ const {
   Coordinate,
   NumericLiteral,
   StringLiteral,
+  IdLiteral,
 } = require('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('./syntax/nebula.ohm'));
@@ -38,7 +39,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
     return new NumericLiteral(+this.sourceString);
   },
   id(_1, _2) {
-    return this.sourceString;
+    return new IdLiteral(this.sourceString);
   },
   _terminal() {
     return this.sourceString;
