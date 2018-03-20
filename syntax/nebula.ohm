@@ -8,15 +8,16 @@ Nebula {
                     |  "Function" | "Conditional" | "Parameter"
                     |  "Control" | "Return" | "Yield" | "Error"
     traitLabel      =  "primitive" | "id" | "access" | "initialize" | "evaluate"
-    Argument        =  id | strlit | numlit
+    Argument        =  id | strlit | numlit | boollit
     Location        =  "(" Coordinate ")" | "<" Coordinate ">"
     Coordinate      =  NonemptyListOf<numlit, ",">
 
     keyword         =  ( constructLabel | traitLabel ) ~idrest
     id              =  ~keyword ("_" | letter) idrest*
     idrest          =  "_" | alnum
-    numlit          =  digit+ ("." digit+)?
+    numlit          =  "-"? digit+ ("." digit+)?
     strlit          =  "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
+    boollit         =  "true" | "false"
     escape          =  "\\" ( "\'" | "\"" | "r" | "n" | "\\" | "u")      -- simple
                     |  "\\u" hexDigit hexDigit hexDigit hexDigit         -- codepoint
     indent          =  "⇨"

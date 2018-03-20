@@ -10,13 +10,14 @@ const {
   Coordinate,
   NumericLiteral,
   StringLiteral,
+  BooleanLiteral,
   IdLiteral,
 } = require('../ast');
 
 const grammar = ohm.grammar(fs.readFileSync('./syntax/nebula.ohm'));
 
 const format = (label) => {
-  const s = label.sourceString;
+  const s = label.ast();
   return s[0].toUpperCase() + s.substring(1);
 };
 
@@ -35,8 +36,11 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   strlit(_1, _2, _3) {
     return new StringLiteral(this.sourceString);
   },
-  numlit(_1, _2, _3) {
+  numlit(_1, _2, _3, _4) {
     return new NumericLiteral(+this.sourceString);
+  },
+  boollit(_1) {
+    return new BooleanLiteral(this.sourceString);
   },
   id(_1, _2) {
     return new IdLiteral(this.sourceString);
