@@ -1,0 +1,99 @@
+"Program {
+  body:
+   [ Origin {
+       args: [ IdLiteral { value: 'default' } ],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate:
+             Coordinate {
+               x: NumericLiteral { value: 0 },
+               y: NumericLiteral { value: 0 },
+               z: NumericLiteral { value: 0 },
+               w: 0 } } ],
+       body:
+        [ [ Id { args: [ StringLiteral { value: '"hello"' } ], body: [] },
+            Result {
+              args: [],
+              locations:
+               [ Location {
+                   isAbsolute: false,
+                   coordinate:
+                    Coordinate {
+                      x: NumericLiteral { value: 0 },
+                      y: NumericLiteral { value: 0 },
+                      z: NumericLiteral { value: 1 },
+                      w: 0 } } ],
+              body:
+               [ [ Control {
+                     args: [],
+                     locations:
+                      [ Location {
+                          isAbsolute: false,
+                          coordinate:
+                           Coordinate {
+                             x: NumericLiteral { value: 0 },
+                             y: NumericLiteral { value: 0 },
+                             z: NumericLiteral { value: 1 },
+                             w: 0 } } ],
+                     body: [] } ] ] } ] ] },
+     Function {
+       args: [ IdLiteral { value: 'print' } ],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate:
+             Coordinate {
+               x: NumericLiteral { value: 0 },
+               y: NumericLiteral { value: 1 },
+               z: NumericLiteral { value: 0 },
+               w: 0 } } ],
+       body:
+        [ [ Parameter {
+              args: [],
+              locations:
+               [ Location {
+                   isAbsolute: false,
+                   coordinate:
+                    Coordinate {
+                      x: NumericLiteral { value: 0 },
+                      y: NumericLiteral { value: 1 },
+                      z: NumericLiteral { value: 0 },
+                      w: 0 } } ],
+              body:
+               [ [ Primitive {
+                     args: [ StringLiteral { value: '"Hello, world!"' } ],
+                     body: [] } ] ] },
+            Control {
+              args: [],
+              locations:
+               [ Location {
+                   isAbsolute: false,
+                   coordinate:
+                    Coordinate {
+                      x: NumericLiteral { value: 0 },
+                      y: NumericLiteral { value: 1 },
+                      z: NumericLiteral { value: 0 },
+                      w: 0 } } ],
+              body: [] } ] ] },
+     Link {
+       args: [],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate:
+             Coordinate {
+               x: NumericLiteral { value: 0 },
+               y: NumericLiteral { value: 0 },
+               z: NumericLiteral { value: 2 },
+               w: 0 } },
+          Location {
+            isAbsolute: true,
+            coordinate:
+             Coordinate {
+               x: NumericLiteral { value: 0 },
+               y: NumericLiteral { value: 2 },
+               z: NumericLiteral { value: 0 },
+               w: 0 } } ],
+       body: [] } ] }
+"
