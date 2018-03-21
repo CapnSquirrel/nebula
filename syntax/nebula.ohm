@@ -1,5 +1,5 @@
 Nebula {
-    Program         =  Object*
+    Program         =  newline* (Object newline*)* newline*
     Object          =  Construct | Trait
     Construct       =  constructLabel Argument* Location+ newline Block?
     Trait           =  traitLabel Argument* newline Block?

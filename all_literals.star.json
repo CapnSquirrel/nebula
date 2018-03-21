@@ -1,0 +1,48 @@
+Program {
+  body: 
+   [ Origin {
+       args: [ IdLiteral { value: 'default' } ],
+       locations: 
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 0 }, y: 0, z: 0, w: 0 } } ],
+       body: [] },
+     Function {
+       args: [ IdLiteral { value: 'test' } ],
+       locations: 
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 1 }, y: 0, z: 0, w: 0 } } ],
+       body: 
+        [ [ Parameter {
+              args: [ IdLiteral { value: 'idlit' } ],
+              locations: 
+               [ Location {
+                   isAbsolute: true,
+                   coordinate: Coordinate { x: NumericLiteral { value: 2 }, y: 0, z: 0, w: 0 } } ],
+              body: 
+               [ [ Primitive { args: [ IdLiteral { value: 'test' } ], body: [] } ] ] },
+            Parameter {
+              args: [ IdLiteral { value: 'strlit' } ],
+              locations: 
+               [ Location {
+                   isAbsolute: true,
+                   coordinate: Coordinate { x: NumericLiteral { value: 3 }, y: 0, z: 0, w: 0 } } ],
+              body: 
+               [ [ Primitive { args: [ StringLiteral { value: '"test"' } ], body: [] } ] ] },
+            Parameter {
+              args: [ IdLiteral { value: 'numlit' } ],
+              locations: 
+               [ Location {
+                   isAbsolute: true,
+                   coordinate: Coordinate { x: NumericLiteral { value: 4 }, y: 0, z: 0, w: 0 } } ],
+              body: 
+               [ [ Primitive { args: [ NumericLiteral { value: -10.32 } ], body: [] } ] ] },
+            Parameter {
+              args: [ IdLiteral { value: 'boollit' } ],
+              locations: 
+               [ Location {
+                   isAbsolute: true,
+                   coordinate: Coordinate { x: NumericLiteral { value: 5 }, y: 0, z: 0, w: 0 } } ],
+              body: 
+               [ [ Primitive { args: [ IdLiteral { value: 'false' } ], body: [] } ] ] } ] ] } ] }

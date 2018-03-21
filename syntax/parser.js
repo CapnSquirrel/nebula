@@ -23,7 +23,7 @@ const format = (label) => {
 
 /* eslint-disable no-unused-vars */
 const astGenerator = grammar.createSemantics().addOperation('ast', {
-  Program: body => new Program(body.ast()),
+  Program: (_1, body, _2, _3) => new Program(body.ast()),
   Construct: (label, args, locations, _, body) =>
     new Constructs[(format(label))](args.ast(), locations.ast(), body.ast()),
   Trait: (label, args, _, body) => new Traits[(format(label))](args.ast(), body.ast()),

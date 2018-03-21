@@ -1,0 +1,82 @@
+Program {
+  body:
+   [ Accessor {
+       args: [ IdLiteral { value: 'var' } ],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 0 }, y: 0, z: 0, w: 0 } } ],
+       body: [] },
+     Conditional {
+       args: [],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 1 }, y: 0, z: 0, w: 0 } } ],
+       body: [] },
+     Control {
+       args: [],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 2 }, y: 0, z: 0, w: 0 } } ],
+       body: [] },
+     Error {
+       args: [],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 3 }, y: 0, z: 0, w: 0 } } ],
+       body: [] },
+     Function {
+       args: [ IdLiteral { value: 'func' } ],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 4 }, y: 0, z: 0, w: 0 } } ],
+       body: [] },
+     Link {
+       args: [],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 5 }, y: 0, z: 0, w: 0 } },
+          Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 6 }, y: 0, z: 0, w: 0 } } ],
+       body: [] },
+     Origin {
+       args: [ IdLiteral { value: 'default' } ],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 7 }, y: 0, z: 0, w: 0 } } ],
+       body: [] },
+     Parameter {
+       args: [],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 8 }, y: 0, z: 0, w: 0 } } ],
+       body: [] },
+     Result {
+       args: [],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 9 }, y: 0, z: 0, w: 0 } } ],
+       body: [] },
+     Return {
+       args: [],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 10 }, y: 0, z: 0, w: 0 } } ],
+       body: [] },
+     Yield {
+       args: [],
+       locations:
+        [ Location {
+            isAbsolute: true,
+            coordinate: Coordinate { x: NumericLiteral { value: 11 }, y: 0, z: 0, w: 0 } } ],
+       body: [] } ] }

@@ -1,4 +1,4 @@
-"Program {
+Program {
   body:
    [ Origin {
        args: [ IdLiteral { value: 'default' } ],
@@ -42,4 +42,3 @@
                    isAbsolute: true,
                    coordinate: Coordinate { x: NumericLiteral { value: 5 }, y: 0, z: 0, w: 0 } } ],
               body: [ [ Primitive { args: [ IdLiteral { value: 'false' } ], body: [] } ] ] } ] ] } ] }
-"

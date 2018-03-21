@@ -6,7 +6,7 @@ Origin default (0,0,0)
   id "_pow"
   Result <0,0,3>
 
-Ternary (1,0,0)
+Function ternary (1,0,0)
   Parameter condition <0,0,1>
   Parameter true <0,0,2>
     primitive 1
@@ -20,7 +20,7 @@ Function "p1 == p2" (1,1,0)
     primitive 0
   Return <0,0,3>
 
-Ternary (2,0,0)
+Function ternary (2,0,0)
   Parameter condition <0,0,1>
   Parameter true <0,0,2>
     primitive 1
