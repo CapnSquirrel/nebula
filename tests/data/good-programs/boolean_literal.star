@@ -1,5 +1,5 @@
 Origin default (0,0,0,0)
-    id "boolean literal"
+    id "_bool_lit"
     Result <0,0,1,0>
         Control <0,0,1,0>         #global pos (0,0,2) dimension 0
 
