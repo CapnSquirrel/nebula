@@ -1,7 +1,7 @@
 Origin default (0)
 
 Function test (1)
-  Parameter id (2)
+  Parameter idlit (2)
     primitive test
   Parameter strlit (3)
     primitive "test"
