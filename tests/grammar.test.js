@@ -3,16 +3,16 @@ const parse = require('../syntax/parser');
 const assert = require('chai').assert;
 
 const TEST_DIR = 'tests/data/good-programs';
+/* eslint-disable no-undef */
 
 describe('The grammar', () => {
   fs.readdirSync(TEST_DIR).forEach((name) => {
-    if (name.endsWith('.star')) {
-      test(`should parse ${name} without errors`, (done) => {
-        assert.doesNotThrow(() => {
-          parse(fs.readFileSync(`${TEST_DIR}/${name}`, 'utf-8'));
-        });
-        done();
+    test(`should parse ${name} without errors`, (done) => {
+      assert.doesNotThrow(() => {
+        parse(fs.readFileSync(`${TEST_DIR}/${name}`, 'utf-8'));
       });
-    }
+      done();
+    });
   });
 });
+/* eslint-enable no-undef */

@@ -2,8 +2,9 @@ const fs = require('fs');
 const assert = require('assert');
 const parse = require('../syntax/parser');
 
-const TEST_DIR = 'tests/data/good-programs';
+const TEST_DIR = 'tests/data/ast-tests';
 
+/* eslint-disable no-undef */
 describe('The parser', () => {
   fs.readdirSync(TEST_DIR).forEach((name) => {
     if (name.endsWith('.star')) {
@@ -19,3 +20,5 @@ describe('The parser', () => {
     }
   });
 });
+
+/* eslint-enable no-undef */
