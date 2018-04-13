@@ -2,20 +2,21 @@ const fs = require('fs');
 const parse = require('../syntax/parser');
 const assert = require('chai').assert;
 
-const TEST_DIR = 'tests/data/good-programs';
+const GOOD_PROGRAMS = 'tests/data/good-programs';
+const ERROR_PROGRAMS = 'tests/data/semantic-errors';
 
 describe('The semantic analyzer', () => {
-  fs.readdirSync(TEST_DIR).forEach((name) => {
+  fs.readdirSync(ERROR_PROGRAMS).forEach((name) => {
     if (name.endsWith('.error')) {
-      it(`detects a ${name.replace(/[^a-z]/g, ' ')}`, (done) => {
-        const program = parse(fs.readFileSync(`${TEST_DIR}/${name}`, 'utf-8'));
+      test(`detects a ${name.replace(/[^a-z]/g, ' ')}`, (done) => {
+        const program = parse(fs.readFileSync(`${ERROR_PROGRAMS}/${name}`, 'utf-8'));
         const errorPattern = RegExp(name.replace('.error', '').replace(/-/g, ' '), 'i');
         assert.throws(() => program.analyze(), errorPattern);
         done();
       });
     } else if (name.endsWith('.star')) {
-      it(`should analyze ${name} without errors`, (done) => {
-        const program = parse(fs.readFileSync(`${TEST_DIR}/${name}`, 'utf-8'));
+      test(`should analyze ${name} without errors`, (done) => {
+        const program = parse(fs.readFileSync(`${GOOD_PROGRAMS}/${name}`, 'utf-8'));
         program.analyze();
         done();
       });
