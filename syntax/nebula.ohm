@@ -7,7 +7,7 @@ Nebula {
     constructLabel  =  "Origin" | "Result" | "Link" | "Accessor"
                     |  "Function" | "Conditional" | "Parameter"
                     |  "Control" | "Return" | "Yield" | "Error"
-    traitLabel      =  "primitive" | "id" | "access" | "initialize" | "evaluate"
+    traitLabel      =  "number" | "string" | "boolean" | "access" | "initialize" | "evaluate"
     Argument        =  id | strlit | numlit | boollit
     Location        =  "(" Coordinate ")" | "<" Coordinate ">"
     Coordinate      =  NonemptyListOf<numlit, ",">

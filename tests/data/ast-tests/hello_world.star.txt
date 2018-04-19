@@ -1,7 +1,9 @@
 Program {
   body:
    [ Origin {
-       args: [ IdLiteral { value: 'default' } ],
+       args:
+        [ IdLiteral { value: 'default' },
+          StringLiteral { value: '"hello"' } ],
        locations:
         [ Location {
             isAbsolute: true,
@@ -12,8 +14,7 @@ Program {
                z: NumericLiteral { value: 0 },
                w: 0 } } ],
        body:
-        [ [ Id { args: [ StringLiteral { value: '"hello"' } ], body: [] },
-            Result {
+        [ [ Result {
               args: [],
               locations:
                [ Location {
@@ -38,7 +39,7 @@ Program {
                              w: 0 } } ],
                      body: [] } ] ] } ] ] },
      Function {
-       args: [ IdLiteral { value: 'print' } ],
+       args: [ StringLiteral { value: '"print"' } ],
        locations:
         [ Location {
             isAbsolute: true,
@@ -61,9 +62,12 @@ Program {
                       z: NumericLiteral { value: 0 },
                       w: 0 } } ],
               body:
-               [ [ Primitive {
-                     args: [ StringLiteral { value: '"Hello, world!"' } ],
-                     body: [] } ] ] },
+               [ [ Initialize {
+                     args: [],
+                     body:
+                      [ [ String {
+                            args: [ StringLiteral { value: '"Hello, world!"' } ],
+                            body: [] } ] ] } ] ] },
             Control {
               args: [],
               locations:

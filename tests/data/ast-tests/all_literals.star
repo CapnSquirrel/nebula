@@ -1,11 +1,12 @@
 Origin default (0)
 
-Function test (1)
-  Parameter idlit (2)
-    primitive test
-  Parameter strlit (3)
-    primitive "test"
-  Parameter numlit (4)
-    primitive -10.32
-  Parameter boollit (5)
-    primitive false
+Function "test" (1)
+  Parameter "strlit" (3)
+    initialize
+      string "test"
+  Parameter "numlit" (4)
+    initialize
+      number -10.32
+  Parameter "boollit" (5)
+    initialize
+      boolean false

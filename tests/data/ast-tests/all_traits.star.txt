@@ -9,6 +9,5 @@ Program {
        body:
         [ [ Access { args: [ IdLiteral { value: 'var' } ], body: [] },
             Evaluate { args: [ StringLiteral { value: '"1 + 5"' } ], body: [] },
-            Id { args: [ IdLiteral { value: 'string' } ], body: [] },
             Initialize { args: [ IdLiteral { value: 'var' } ], body: [] },
-            Primitive { args: [ StringLiteral { value: '"primitive"' } ], body: [] } ] ] } ] }
+            String { args: [ StringLiteral { value: '"string"' } ], body: [] } ] ] } ] }

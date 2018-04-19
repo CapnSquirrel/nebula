@@ -9,7 +9,7 @@ Program {
        body: [] },
      Conditional {
        args: [],
-       locations:
+       locations: 
         [ Location {
             isAbsolute: true,
             coordinate: Coordinate { x: NumericLiteral { value: 1 }, y: 0, z: 0, w: 0 } } ],
@@ -29,7 +29,7 @@ Program {
             coordinate: Coordinate { x: NumericLiteral { value: 3 }, y: 0, z: 0, w: 0 } } ],
        body: [] },
      Function {
-       args: [ IdLiteral { value: 'func' } ],
+       args: [ StringLiteral { value: '"func"' } ],
        locations:
         [ Location {
             isAbsolute: true,

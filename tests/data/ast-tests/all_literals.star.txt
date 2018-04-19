@@ -8,37 +8,42 @@ Program {
             coordinate: Coordinate { x: NumericLiteral { value: 0 }, y: 0, z: 0, w: 0 } } ],
        body: [] },
      Function {
-       args: [ IdLiteral { value: 'test' } ],
+       args: [ StringLiteral { value: '"test"' } ],
        locations:
         [ Location {
             isAbsolute: true,
             coordinate: Coordinate { x: NumericLiteral { value: 1 }, y: 0, z: 0, w: 0 } } ],
-       body:
+       body: 
         [ [ Parameter {
-              args: [ IdLiteral { value: 'idlit' } ],
-              locations:
-               [ Location {
-                   isAbsolute: true,
-                   coordinate: Coordinate { x: NumericLiteral { value: 2 }, y: 0, z: 0, w: 0 } } ],
-              body: [ [ Primitive { args: [ IdLiteral { value: 'test' } ], body: [] } ] ] },
-            Parameter {
-              args: [ IdLiteral { value: 'strlit' } ],
+              args: [ StringLiteral { value: '"strlit"' } ],
               locations:
                [ Location {
                    isAbsolute: true,
                    coordinate: Coordinate { x: NumericLiteral { value: 3 }, y: 0, z: 0, w: 0 } } ],
-              body: [ [ Primitive { args: [ StringLiteral { value: '"test"' } ], body: [] } ] ] },
+              body:
+               [ [ Initialize {
+                     args: [],
+                     body:
+                      [ [ String { args: [ StringLiteral { value: '"test"' } ], body: [] } ] ] } ] ] },
             Parameter {
-              args: [ IdLiteral { value: 'numlit' } ],
+              args: [ StringLiteral { value: '"numlit"' } ],
               locations:
                [ Location {
                    isAbsolute: true,
                    coordinate: Coordinate { x: NumericLiteral { value: 4 }, y: 0, z: 0, w: 0 } } ],
-              body: [ [ Primitive { args: [ NumericLiteral { value: -10.32 } ], body: [] } ] ] },
+              body:
+               [ [ Initialize {
+                     args: [],
+                     body:
+                      [ [ Number { args: [ NumericLiteral { value: -10.32 } ], body: [] } ] ] } ] ] },
             Parameter {
-              args: [ IdLiteral { value: 'boollit' } ],
+              args: [ StringLiteral { value: '"boollit"' } ],
               locations:
                [ Location {
                    isAbsolute: true,
                    coordinate: Coordinate { x: NumericLiteral { value: 5 }, y: 0, z: 0, w: 0 } } ],
-              body: [ [ Primitive { args: [ IdLiteral { value: 'false' } ], body: [] } ] ] } ] ] } ] }
+              body:
+               [ [ Initialize {
+                     args: [],
+                     body:
+                      [ [ Boolean { args: [ IdLiteral { value: 'false' } ], body: [] } ] ] } ] ] } ] ] } ] }

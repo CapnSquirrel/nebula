@@ -1,6 +1,5 @@
-Origin default (0,0,0)
+Origin default "_fib" (0,0,0)
   Parameter n <0,0,1>
-  id "_fib"
   Result <0,0,2>
 
 Function ternary (1,0,0)
@@ -15,7 +14,8 @@ Function "p1 <= p2" (1,1,0)
   Parameter p1 <0,0,1>
     access n
   Parameter p2 <0,0,2>
-    primitive 1
+    initialize
+      number 1
   Return <0,0,3>
 
 Function "p1 + p2" (2,0,0)
@@ -31,7 +31,8 @@ Function "p1 - p2" (3,1,0)
   Parameter p1 <0,0,1>
     access n
   Parameter p2 <0,0,2>
-    primitive 1
+    initialize
+      number 1
   Return <0,0,3>
 
 Function "_fib" (4,0,0)
@@ -42,7 +43,8 @@ Function "p1 - p2" (4,1,0)
   Parameter p1 <0,0,1>
     access n
   Parameter p2 <0,0,2>
-    primitive 2
+    initialize
+      number 2
   Return <0,0,3>
 
 

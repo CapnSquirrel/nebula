@@ -1,49 +1,48 @@
-Origin default (0,0,0)
-  Parameter n <0,0,1>
-  id "_prime"
+Origin default "_prime" (0,0,0)
+  Parameter "n" <0,0,1>
   Result <0,0,2>
     Control <0,1,0>
 
-Accessor i (1,0,0)
+Accessor "i" (1,0,0)
   initialize
-    primitive 2
+    number 2
 
-Accessor prime (2,0,0)
+Accessor "prime" (2,0,0)
   Control <0,0,1>
   Control <0,0,2> # false condition
   Control <0,0,3> # true condition
 
 # Condition_1
 Conditional (3,0,0)
-  Parameter condition <0,0,1>
-  Control true <0,0,2>
-  Control false <0,0,3>
-  
+  Parameter "condition" <0,0,1>
+  Control "true" <0,0,2>
+  Control "false" <0,0,3>
+
 Function "p1 % p2 != 0" (4,0,0)
-  Parameter p1 <0,0,1>
-    access n
-  Parameter p2 <0,0,2>
-    access i
+  Parameter "p1" <0,0,1>
+    access "n"
+  Parameter "p2" <0,0,2>
+    access "i"
   Return <0,0,3>
   Control <0,0,4>
 
 Function "++" (5,0,0)
   Parameter <0,0,1>
-    access i
+    access "i"
   Control <0,0,2>
   Control <0,0,3>
-  
+
 # Condition_2
 Conditional (6,0,0)
-  Parameter condition <0,0,1>
-  Control true <0,0,2>
-  Control false <0,0,3>
+  Parameter "condition" <0,0,1>
+  Control "true" <0,0,2>
+  Control "false" <0,0,3>
 
 Function "p1 > (p2 / 2)" (7,0,0)
-  Parameter p1 <0,0,1>
-    access i
-  Parameter p2 <0,0,2>
-    access n
+  Parameter "p1" <0,0,1>
+    access "i"
+  Parameter "p2" <0,0,2>
+    access "n"
   Return <0,0,4>
   Control <0,0,5>
 

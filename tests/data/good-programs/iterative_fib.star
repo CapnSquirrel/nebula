@@ -1,64 +1,63 @@
-Origin default (0,0,0)
-  Parameter n <0,0,1>
-  id "_fib"
+Origin default "_fib" (0,0,0)
+  Parameter "n" <0,0,1>
   Result <0,0,2>
     Control <0,0,1>
 
-Accessor a (1,0,1)
+Accessor "a" (1,0,1)
   initialize
-    primitive 0
+    number 0
 
-Accessor b (1,0,2)
+Accessor "b" (1,0,2)
   initialize
-    primitive 1
+    number 1
 
-Accessor c (1,0,3)
+Accessor "c" (1,0,3)
   initialize
-    primitive 0
+    number 0
 
 Conditional (2,0,0)
-  Parameter condition <0,0,1>
+  Parameter "condition" <0,0,1>
   Control true <0,0,2>
   Control false <0,0,3>
 
 Function "p1 <= p2" (2,1,0)
-  Parameter p1 <0,0,1>
-    access c
-  Parameter p2 <0,0,2>
-    access n
+  Parameter "p1" <0,0,1>
+    access "c"
+  Parameter "p2" <0,0,2>
+    access "n"
   Return <0,0,3>
   Control <0,0,4>
   Control <0,0,5>
 
 Function "++" <3,0,0>
   Parameter <0,0,1>
-    access c
+    access "c"
   Control <0,0,2>
   Control <0,0,3>
 
 Function "p1 + p2" (4,0,0)
-  Parameter p1 <0,0,1>
-    access a
-  Parameter p2 <0,0,2>
-    access b
+  Parameter "p1" <0,0,1>
+    access "a"
+  Parameter "p2" <0,0,2>
+    access "b "
   Control <0,0,3>
   Control <0,0,4>
   Return <0,0,5>
 
-Accessor t (5,0,0)
-  Parameter <0,0,1>
+Accessor "t" (5,0,0)
+  Parameter "set" <0,0,1>
   Control <0,0,2>
   Control <0,0,3>
 
-Accessor a (6,0,0)
-  Parameter <0,0,1>
-    access b
+Accessor "a" (6,0,0)
+  Parameter "set" <0,0,1>
+    access "b"
   Control <0,0,2>
   Control <0,0,3>
 
-Accessor b (7,0,0)
-  Parameter <0,0,1>
-    access t
+Accessor "b" (7,0,0)
+  Parameter "set" <0,0,1>
+    access "t"
   Control <0,0,2>
   Control <0,0,3>
 
