@@ -12,7 +12,7 @@ Nebula {
     Location        =  "(" Coordinate ")" | "<" Coordinate ">"
     Coordinate      =  NonemptyListOf<numlit, ",">
 
-    keyword         =  ( constructLabel | traitLabel | type ) ~idrest
+    keyword         =  ( constructLabel | traitLabel | type | boollit ) ~idrest
     id              =  ~keyword ("_" | letter) idrest*
     type            =  "number" | "string" | "boolean" | "void"
     idrest          =  "_" | alnum
