@@ -1,15 +1,14 @@
 # Recursive program for Pow
 
 Origin default "_pow" (0,0,0)
-  Parameter "b" <0,0,1>
-  Parameter "p" <0,0,2>
-  Result <0,0,3>
+  Parameter number "b" <0,0,1>
+  Parameter number "p" <0,0,2>
+  Result number <0,0,3>
 
 Function "ternary" (1,0,0)
   Parameter "condition" <0,0,1>
   Parameter "true" <0,0,2>
-    initialize
-      number 1
+    initialize number 1
   Parameter "false" <0,0,3>
   Return <0,0,4>
 
@@ -17,15 +16,13 @@ Function "p1 == p2" (1,1,0)
   Parameter "p1" <0,0,1>
     access p
   Parameter "p2" <0,0,2>
-    initialize
-      number 0
+    initialize number 0
   Return <0,0,3>
 
 Function "ternary" (2,0,0)
   Parameter "condition" <0,0,1>
   Parameter "true" <0,0,2>
-    initialize
-      number 1
+    initialize number 1
   Parameter "false" <0,0,3>
   Return <0,0,4>
 
@@ -33,8 +30,7 @@ Function "p1 < p2" (2,1,0)
   Parameter "p1" <0,0,1>
     access "p"
   Parameter "p2" <0,0,2>
-    initialize
-      number 0
+    initialize number 0
   Return <0,0,3>
 
 # handle positive case
@@ -55,8 +51,7 @@ Function "p1 - p2" (5,0,0)
   Parameter "p1" <0,0,1>
     access "p"
   Parameter "p2" <0,0,2>
-    initialize
-      number 1
+    initialize number 1
   Return <0,0,3>
 
 # handle negative case
@@ -77,8 +72,7 @@ Function "p1 + p2" (8,0,0)
   Parameter "p1" <0,0,1>
     access "p"
   Parameter "p2" <0,0,2>
-    initialize
-      number 1
+    initialize number 1
   Return <0,0,3>
 
 Link (1,0,4) (0,0,3) # ternary1 return <-> Result

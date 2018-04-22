@@ -1,19 +1,16 @@
 Origin default "_fib" (0,0,0)
-  Parameter "n" <0,0,1>
-  Result <0,0,2>
+  Parameter number "n" <0,0,1>
+  Result number <0,0,2>
     Control <0,0,1>
 
 Accessor "a" (1,0,1)
-  initialize
-    number 0
+  initialize number 0
 
 Accessor "b" (1,0,2)
-  initialize
-    number 1
+  initialize number 1
 
 Accessor "c" (1,0,3)
-  initialize
-    number 0
+  initialize number 0
 
 Conditional (2,0,0)
   Parameter "condition" <0,0,1>

@@ -13,7 +13,7 @@ Program {
         [ Location {
             isAbsolute: true,
             coordinate: Coordinate { x: NumericLiteral { value: 1 }, y: 0, z: 0, w: 0 } } ],
-       body: 
+       body:
         [ [ Parameter {
               args: [ StringLiteral { value: '"strlit"' } ],
               locations:
@@ -22,9 +22,8 @@ Program {
                    coordinate: Coordinate { x: NumericLiteral { value: 3 }, y: 0, z: 0, w: 0 } } ],
               body:
                [ [ Initialize {
-                     args: [],
-                     body:
-                      [ [ String { args: [ StringLiteral { value: '"test"' } ], body: [] } ] ] } ] ] },
+                     args: [ 'string', StringLiteral { value: '"test"' } ],
+                     body: [] } ] ] },
             Parameter {
               args: [ StringLiteral { value: '"numlit"' } ],
               locations:
@@ -33,9 +32,8 @@ Program {
                    coordinate: Coordinate { x: NumericLiteral { value: 4 }, y: 0, z: 0, w: 0 } } ],
               body:
                [ [ Initialize {
-                     args: [],
-                     body:
-                      [ [ Number { args: [ NumericLiteral { value: -10.32 } ], body: [] } ] ] } ] ] },
+                     args: [ 'number', NumericLiteral { value: -10.32 } ],
+                     body: [] } ] ] },
             Parameter {
               args: [ StringLiteral { value: '"boollit"' } ],
               locations:
@@ -43,7 +41,4 @@ Program {
                    isAbsolute: true,
                    coordinate: Coordinate { x: NumericLiteral { value: 5 }, y: 0, z: 0, w: 0 } } ],
               body:
-               [ [ Initialize {
-                     args: [],
-                     body:
-                      [ [ Boolean { args: [ IdLiteral { value: 'false' } ], body: [] } ] ] } ] ] } ] ] } ] }
+               [ [ Initialize { args: [ 'boolean', IdLiteral { value: 'false' } ], body: [] } ] ] } ] ] } ] }

@@ -1,11 +1,10 @@
 Origin default "_prime" (0,0,0)
-  Parameter "n" <0,0,1>
-  Result <0,0,2>
+  Parameter number "n" <0,0,1>
+  Result boolean <0,0,2>
     Control <0,1,0>
 
 Accessor "i" (1,0,0)
-  initialize
-    number 2
+  initialize number 2
 
 Accessor "prime" (2,0,0)
   Control <0,0,1>

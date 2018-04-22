@@ -1,18 +1,19 @@
 /* Things we need to do semantic analysis for...
-  1. Program must have an Origin Default
-  2. For every object, do we have necessary return, params, and possible control?
+  1. Program must have an Origin Default.
+  2. Every Origin must have types for result and parameters.
+  3. For every object, do we have necessary return, params, and possible control?
     a. and Coordinate, 2 for links, 1 for the rest.
-  3. There must be a path from return to a value for every Origin (function)?
-  4. LINKS:
+  4. There must be a path from return to a value for every Origin (function)?
+  5. LINKS:
     a. must be one of the following connections
       1. return -> param
       2. control -> control
     b. each param can only have one Link
     c. each control can only have one link into it
-  5. variable/name resolutions:
+  6. variable/name resolutions:
     a. each "id" must have one and only one _init_
     b. Origins must have a unique id.
-  6. Cannot have coordinate overlaps
+  7. Cannot have coordinate overlaps
  */
 
 class Context {

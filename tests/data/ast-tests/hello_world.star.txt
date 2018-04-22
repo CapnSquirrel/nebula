@@ -15,7 +15,7 @@ Program {
                w: 0 } } ],
        body:
         [ [ Result {
-              args: [],
+              args: [ 'void' ],
               locations:
                [ Location {
                    isAbsolute: false,
@@ -63,11 +63,8 @@ Program {
                       w: 0 } } ],
               body:
                [ [ Initialize {
-                     args: [],
-                     body:
-                      [ [ String {
-                            args: [ StringLiteral { value: '"Hello, world!"' } ],
-                            body: [] } ] ] } ] ] },
+                     args: [ 'string', StringLiteral { value: '"Hello, world!"' } ],
+                     body: [] } ] ] },
             Control {
               args: [],
               locations:
