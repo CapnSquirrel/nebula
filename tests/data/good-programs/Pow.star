@@ -1,8 +1,8 @@
 # Recursive program for Pow
 
 Origin default "_pow" (0,0,0)
-  Parameter number "b" <0,0,1>
-  Parameter number "p" <0,0,2>
+  Argument number "b" <0,0,1>
+  Argument number "p" <0,0,2>
   Result number <0,0,3>
 
 Function "ternary" (1,0,0)

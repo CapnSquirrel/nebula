@@ -4,9 +4,9 @@ Nebula {
     Construct       =  constructLabel Argument* Location+ newline Block?
     Trait           =  traitLabel Argument* newline Block?
     Block           =  indent Object+ dedent newline?
-    constructLabel  =  "Origin" | "Result" | "Link" | "Accessor"
-                    |  "Function" | "Conditional" | "Parameter"
-                    |  "Control" | "Return" | "Yield" | "Error"
+    constructLabel  =  "Origin" | "Result" | "Link" | "Accessor" | "Argument"
+                    |  "Function" | "Conditional" | "Parameter" | "Control" 
+                    | "Return" | "Yield" | "Error"
     traitLabel      =  "access" | "initialize" | "evaluate"
     Argument        =  id | type | strlit | numlit | boollit
     Location        =  "(" Coordinate ")" | "<" Coordinate ">"

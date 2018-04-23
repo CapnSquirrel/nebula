@@ -1,5 +1,5 @@
 Origin default "_fib" (0,0,0)
-  Parameter n <0,0,1>
+  Argument n <0,0,1>
   Result <0,0,2>
 
 Function ternary (1,0,0)

@@ -1,5 +1,5 @@
 Origin default "_fib" (0,0,0)
-  Parameter number "n" <0,0,1>
+  Argument number "n" <0,0,1>
   Result number <0,0,2>
     Control <0,0,1>
 

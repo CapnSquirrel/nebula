@@ -41,4 +41,4 @@ Program {
                    isAbsolute: true,
                    coordinate: Coordinate { x: NumericLiteral { value: 5 }, y: 0, z: 0, w: 0 } } ],
               body:
-               [ [ Initialize { args: [ 'boolean', IdLiteral { value: 'false' } ], body: [] } ] ] } ] ] } ] }
+               [ [ Initialize { args: [ 'boolean', BooleanLiteral { value: 'false' } ], body: [] } ] ] } ] ] } ] }
