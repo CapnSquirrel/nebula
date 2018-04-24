@@ -1,5 +1,5 @@
 Origin default (0,0,0)
-  Parameter n <0,0,1>
+  Argument n <0,0,1>
   id "_fib"
   Result <0,0,2>
 

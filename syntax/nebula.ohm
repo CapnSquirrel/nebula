@@ -1,21 +1,37 @@
 Nebula {
     Program         =  newline* (Object newline*)* newline*
-    Object          =  Construct | Trait
-    Construct       =  constructLabel Argument* Location+ newline Block?
-    Trait           =  traitLabel Argument* newline Block?
-    Block           =  indent Object+ dedent newline?
-    constructLabel  =  "Origin" | "Result" | "Link" | "Accessor" | "Argument"
-                    |  "Function" | "Conditional" | "Parameter" | "Control" 
-                    | "Return" | "Yield" | "Error"
-    traitLabel      =  "access" | "initialize" | "evaluate"
-    Argument        =  id | type | strlit | numlit | boollit
+    Object          =  Origin | Function | Link | Accessor | Conditional
+
+    Origin          =  "Origin" "default"? strlit Location newline OriginBlock
+    OriginBlock     =  indent Argument* Result dedent
+    Argument        =  "Argument" type strlit Location newline
+    Result          =  "Result" type Location newline (indent (Access | Initialize | Evaluate)? Control dedent)?
+
+    Function        =  "Function" strlit Location newline FunctionBlock
+    FunctionBlock   =  indent Parameter* Return dedent
+    Parameter       =  "Parameter" strlit? Location newline (indent (Access | Initialize) dedent)?
+    Return          =  "Return" Location newline (indent Control dedent)?
+
+    Initialize      =  "initialize" ("string" strlit | "boolean" boollit | "number" numlit) newline
+    Access          =  "access" strlit newline
+    Evaluate        =  "evaluate" strlit newline
+
+    Conditional     =  "Conditional" Location newline indent Condition TrueControl FalseControl dedent
+    Condition       =  "Parameter" "condition" Location newline (indent ( Access | Evaluate ) dedent)?
+    TrueControl     =  "Control" "true" Location newline
+    FalseControl    =  "Control" "false" Location newline
+
+    Accessor        =  "Accessor" strlit Location newline AccessorBlock
+    AccessorBlock   =  indent  (Initialize | Parameter*) Control? dedent
+
+    traitLabel      =  "evaluate"
+
+    Link            =  "Link" Location Location
     Location        =  "(" Coordinate ")" | "<" Coordinate ">"
+    Control         =  "Control" Location newline
     Coordinate      =  NonemptyListOf<numlit, ",">
 
-    keyword         =  ( constructLabel | traitLabel | type | boollit ) ~idrest
-    id              =  ~keyword ("_" | letter) idrest*
     type            =  "number" | "string" | "boolean" | "void"
-    idrest          =  "_" | alnum
     numlit          =  "-"? digit+ ("." digit+)?
     strlit          =  "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
     boollit         =  "true" | "false"

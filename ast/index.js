@@ -12,12 +12,4 @@ const requireDir = (directory) => {
 };
 /* eslint-enable global-require, import/no-dynamic-require */
 
-const Bases = requireDir('bases');
-const Constructs = requireDir('constructs');
-const Traits = requireDir('traits');
-
-module.exports = {
-  ...Bases,
-  Constructs,
-  Traits,
-};
+module.exports = requireDir('.');

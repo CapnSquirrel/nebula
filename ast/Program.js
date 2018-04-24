@@ -1,4 +1,4 @@
-const Context = require('../../semantics/context');
+const Context = require('../semantics/context');
 
 module.exports = class Program {
   constructor(body) {
@@ -8,7 +8,6 @@ module.exports = class Program {
   analyze() {
     // need to anaylze Accessors and Origins first to check for declared variables
     const context = new Context({ parent: Context.INITIAL });
-    this.statements.sort(a => a instanceof 'Origin').sort(a => a instanceof 'Accessor');
     this.statements.forEach(s => s.analyze(context));
 
     // resolve links

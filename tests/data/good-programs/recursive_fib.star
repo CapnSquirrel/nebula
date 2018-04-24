@@ -1,46 +1,45 @@
 Origin default "_fib" (0,0,0)
-  Argument n <0,0,1>
-  Result <0,0,2>
+  Argument number "n" <0,0,1>
+  Result number <0,0,2>
 
-Function ternary (1,0,0)
-  Parameter true <0,0,1>
-    access n
-  Parameter false <0,0,2>
-  Parameter condition <0,0,3>
+Function "ternary" (1,0,0)
+  Parameter "true" <0,0,1>
+    access "n"
+  Parameter "false" <0,0,2>
+  Parameter "condition" <0,0,3>
   Return <0,0,4>
-    Control <0,0,1>
 
 Function "p1 <= p2" (1,1,0)
-  Parameter p1 <0,0,1>
-    access n
-  Parameter p2 <0,0,2>
+  Parameter "p1" <0,0,1>
+    access "n"
+  Parameter "p2" <0,0,2>
     initialize number 1
   Return <0,0,3>
 
 Function "p1 + p2" (2,0,0)
-  Parameter p1 <0,0,1>
-  Parameter p2 <0,0,2>
+  Parameter "p1" <0,0,1>
+  Parameter "p2" <0,0,2>
   Return <0,0,3>
 
 Function "_fib" (3,0,0)
-  Parameter n <0,0,1>
+  Parameter "n" <0,0,1>
   Return <0,0,2>
 
 Function "p1 - p2" (3,1,0)
-  Parameter p1 <0,0,1>
-    access n
-  Parameter p2 <0,0,2>
+  Parameter "p1" <0,0,1>
+    access "n"
+  Parameter "p2" <0,0,2>
     initialize number 1
   Return <0,0,3>
 
 Function "_fib" (4,0,0)
-  Parameter n <0,0,1>
+  Parameter "n" <0,0,1>
   Return <0,0,2>
 
 Function "p1 - p2" (4,1,0)
-  Parameter p1 <0,0,1>
-    access n
-  Parameter p2 <0,0,2>
+  Parameter "p1" <0,0,1>
+    access "n"
+  Parameter "p2" <0,0,2>
     initialize number 2
   Return <0,0,3>
 

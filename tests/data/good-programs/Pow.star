@@ -14,7 +14,7 @@ Function "ternary" (1,0,0)
 
 Function "p1 == p2" (1,1,0)
   Parameter "p1" <0,0,1>
-    access p
+    access "p"
   Parameter "p2" <0,0,2>
     initialize number 0
   Return <0,0,3>
