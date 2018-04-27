@@ -7,4 +7,16 @@ module.exports = class Result {
       control,
     });
   }
+
+  analyze(context) {
+    this.location.analyze(context);
+    context.addResult(this);
+    if (this.body) {
+      this.body.analyze(context.createChildContextForConstruct(this));
+    }
+    if (this.control) {
+      this.control.analyze(context.createChildContextForConstruct(this));
+    }
+    context.addConstruct(this);
+  }
 };

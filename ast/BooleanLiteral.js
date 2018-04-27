@@ -1,5 +1,5 @@
 module.exports = class BooleanLiteral {
-  constructor(boolean) {
-    Object.assign(this, { boolean });
+  constructor(value) {
+    Object.assign(this, { value });
   }
 };
