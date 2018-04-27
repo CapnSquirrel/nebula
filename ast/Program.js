@@ -1,4 +1,5 @@
 const Context = require('../semantics/context');
+const Origin = require('./Origin');
 
 module.exports = class Program {
   constructor(body) {
@@ -6,10 +7,12 @@ module.exports = class Program {
   }
 
   analyze() {
-    // need to anaylze Accessors and Origins first to check for declared variables
-    const context = new Context({ parent: Context.INITIAL });
+    const context = Context.INITIAL;
+
+    // we need to analyze origins first so we have all of the function objects in our declarations.
+    this.statements.sort(a => a instanceof Origin);
     this.statements.forEach(s => s.analyze(context));
 
-    // resolve links
+    // traverse the graph
   }
 };

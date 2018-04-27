@@ -7,4 +7,12 @@ module.exports = class Origin {
       body,
     });
   }
+
+  analyze(context) {
+    if (this.isDefault) context.defaultExists();
+    this.location.analyze(context);
+    context.addID(Object.create(null), this.id.value);
+    this.body.forEach(b => b.analyze(context.createChildContextFoConstruct(this)));
+    context.addConstruct(this);
+  }
 };

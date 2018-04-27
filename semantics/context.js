@@ -35,50 +35,53 @@ const Link = require('../ast/Link.js');
 
 class Context {
   constructor({
-    coords = {
+    coordinate = {
       x: 0,
       y: 0,
       z: 0,
       w: 0,
     },
-    currentConstruct = null,
-    originExists = false,
+    defaultExists = false,
+    parentConstruct = null,
+    currentFunctionObject = null,
+    declarations = Object.create(null),
+    accesses = Object.create(null),
+    constructMap = Object.create(null),
   } = {}) {
     Object.assign(this, {
-      coords,
-      currentConstruct,
-      originExists,
-      declarations: Object.create(null),
-      constructMap: Object.create(null),
+      coordinate,
+      defaultExists,
+      parentConstruct,
+      currentFunctionObject,
+      declarations,
+      accesses,
+      constructMap,
     });
   }
 
-  createChildContextForOriginBody(currentFunction) {
-    // When entering a new function, we're not in a loop anymore
-    return new Context({
-      coords: this.coords,
-      parent: this,
-      currentFunction,
-    });
+  // This is called if an Origin has the default tag. If another default Origin
+  // already called this function, it will throw an error.
+  defaultExists() {
+    if (this.defaultExists) throw new Error('Can only have one default Origin');
+    this.defaultExists = true;
   }
 
-  createChildContextForFunction() {
-    // For a simple block (i.e., in an if-statement), we have to retain both
-    // the function and loop settings.
+  createChildContextForFunction(funct) {
     return new Context({
-      coords: this.coords,
-      parent: this,
-      currentFunction: this.id,
+      coordinate: funct.location.coordinate,
+      parentConstruct: funct,
+      currentFunctionObject: funct.functionObject,
+      declarations: this.declarations,
+      constructMap: this.constructMap,
     });
   }
 
   createChildContextForConstruct(construct) {
-    // For a simple block (i.e., in an if-statement), we have to retain both
-    // the function and loop settings.
     return new Context({
-      coords: this.coords,
-      currentConstruct: construct,
-      currentFunction: this.id,
+      coordinate: construct.location.coordinate,
+      parentConstruct: construct,
+      declarations: this.declarations,
+      constructMap: this.constructMap,
     });
   }
 
@@ -133,31 +136,104 @@ class Context {
     }
   }
 
+  // add an Argument to FunctionObject in declarations
+  addArgument(argument) {
+    this.declarations[this.currentConstruct.id][argument.id] = argument.type;
+  }
+
+  // add the Result to FunctionObject in declarations
+  addResult(result) {
+    this.declarations[this.currentConstruct.id].return = result.type;
+  }
+
   // Call this to add a new entity (which could be a variable, a function,
   // or a parameter) to this context. It will check to see if the entity's
   // identifier has already been declared in this context. It does not need
   // to check enclosing contexts because in this language, shadowing is always
   // allowed. Note that if we allowed overloading, this method would have to
   // be a bit more sophisticated.
-  addID(entity) {
-    if (entity.id in this.declarations) {
-      throw new Error(`Identitier ${entity.id} already declared in this scope`);
+  addID(typeOrFunctionObject, id) {
+    if (!(id in this.declarations)) {
+      this.declarations[id] = typeOrFunctionObject;
+    } else if (this.declarations[id].expectedType && this.declarations[id].expectedType
+        !== typeOrFunctionObject) {
+      throw new Error(`Reinitialization Error: ${id} initialized as ${this.typeOrFunctionObject} but expected ${this.declarations[id].expectedType}`);
+    } else {
+      throw new Error(`Reinitialization Error: ${id} was already initialized`);
     }
-    this.declarations[entity.id] = entity;
   }
 
   // Returns the entity bound to the given identifier, starting from this
   // context and searching "outward" through enclosing contexts if necessary.
-  lookupID(id) {
+  accessID(id) {
     if (id in this.declarations) {
       return this.declarations[id];
-    } else if (this.parent === null) {
-      throw new Error(`Identifier ${id} has not been declared`);
-    } else {
-      return this.parent.lookup(id);
     }
+    return false;
   }
 }
 
 Context.INITIAL = new Context();
+/* eslint-disable dot-notation */
+Context.INITIAL.declarations['ternary'] = {
+  condition: 'boolean',
+  true: 'any',
+  false: 'any',
+  return: 'any',
+};
+Context.INITIAL.declarations['p1 + p2'] = {
+  p1: 'number',
+  p2: 'number',
+  return: 'number',
+};
+Context.INITIAL.declarations['p1 - p2'] = {
+  p1: 'number',
+  p2: 'number',
+  return: 'number',
+};
+Context.INITIAL.declarations['p1 * p2'] = {
+  p1: 'number',
+  p2: 'number',
+  return: 'number',
+};
+Context.INITIAL.declarations['p1 / p2'] = {
+  p1: 'number',
+  p2: 'number',
+  return: 'number',
+};
+Context.INITIAL.declarations['sqrt p1'] = {
+  p1: 'number',
+  return: 'number',
+};
+Context.INITIAL.declarations['p1 % p2'] = {
+  p1: 'number',
+  p2: 'number',
+  return: 'number',
+};
+Context.INITIAL.declarations['p1 < p2'] = {
+  p1: 'number',
+  p2: 'number',
+  return: 'boolean',
+};
+Context.INITIAL.declarations['p1 > p2'] = {
+  p1: 'number',
+  p2: 'number',
+  return: 'boolean',
+};
+Context.INITIAL.declarations['p1 <= p2'] = {
+  p1: 'number',
+  p2: 'number',
+  return: 'boolean',
+};
+Context.INITIAL.declarations['p1 >= p2'] = {
+  p1: 'number',
+  p2: 'number',
+  return: 'boolean',
+};
+/* eslint-disable dot-notation */
+Context.INITIAL.declarations['print'] = {
+  string: 'string',
+  return: 'void',
+};
+
 module.exports = Context;

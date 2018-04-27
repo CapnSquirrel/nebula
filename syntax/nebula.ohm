@@ -9,11 +9,11 @@ Nebula {
 
     Function        =  "Function" strlit Location newline FunctionBlock
     FunctionBlock   =  indent Parameter* Return dedent
-    Parameter       =  "Parameter" strlit? Location newline (indent (Access | Initialize) dedent)?
+    Parameter       =  "Parameter" strlit Location newline (indent (Access | Initialize) dedent)?
     Return          =  "Return" Location newline (indent Control dedent)?
 
     Initialize      =  "initialize" ("string" strlit | "boolean" boollit | "number" numlit) newline
-    Access          =  "access" strlit newline
+    Access          =  "access" type strlit newline
     Evaluate        =  "evaluate" strlit newline
 
     Conditional     =  "Conditional" Location newline indent Condition TrueControl FalseControl dedent
@@ -22,7 +22,8 @@ Nebula {
     FalseControl    =  "Control" "false" Location newline
 
     Accessor        =  "Accessor" strlit Location newline AccessorBlock
-    AccessorBlock   =  indent  (Initialize | Parameter*) Control? dedent
+    AccessorBlock   =  indent (Access | Initialize | SetParameter | Evaluate) Control? dedent
+    SetParameter    =  "Parameter" "set" type Location newline
 
     traitLabel      =  "evaluate"
 
