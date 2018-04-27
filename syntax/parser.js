@@ -93,6 +93,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   },
 });
 /* eslint-enable no-unused-vars */
+/* eslint-enable no-new-func */
 
 module.exports = (text) => {
   const match = grammar.match(withIndentsAndDedents(text));

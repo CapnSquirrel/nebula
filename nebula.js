@@ -21,6 +21,7 @@
  * built into Node.js.
  */
 
+/* eslint-disable no-console */
 const { argv } = require('yargs')
   .usage('$0 [-a] [-o] [-i] filename')
   .boolean(['a', 'o', 'i'])
@@ -32,6 +33,7 @@ const { argv } = require('yargs')
 const fs = require('fs');
 const util = require('util');
 const parse = require('./syntax/parser');
+
 
 fs.readFile(argv._[0], 'utf-8', (err, text) => {
   if (err) {
@@ -54,3 +56,5 @@ fs.readFile(argv._[0], 'utf-8', (err, text) => {
   }
   program.gen();
 });
+
+/* eslint-enable no-console */

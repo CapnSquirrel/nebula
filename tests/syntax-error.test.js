@@ -1,15 +1,17 @@
 const fs = require('fs');
 const parse = require('../syntax/parser');
-const assert = require('chai').assert;
+const chai = require('chai');
 
 const TEST_DIR = 'tests/data/syntax-errors';
 
+/* eslint-disable no-undef */
 describe('The parser detects a syntax error for', () => {
-  fs.readdirSync(TEST_DIR).forEach(name => {
+  fs.readdirSync(TEST_DIR).forEach((name) => {
     const check = name.replace(/-/g, ' ').replace(/\.star$/, '');
-    test(check, done => {
-      assert.throws(() => { parse(fs.readFileSync(`${TEST_DIR}/${name}`, 'utf-8')); });
+    test(check, (done) => {
+      chai.assert.throws(() => { parse(fs.readFileSync(`${TEST_DIR}/${name}`, 'utf-8')); });
       done();
     });
   });
 });
+/* eslint-enable no-undef */
