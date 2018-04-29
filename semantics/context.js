@@ -175,11 +175,17 @@ class Context {
 
 Context.INITIAL = new Context();
 /* eslint-disable dot-notation */
-Context.INITIAL.declarations['ternary'] = {
+Context.INITIAL.declarations['ternaryN'] = {
   condition: 'boolean',
-  true: 'any',
-  false: 'any',
-  return: 'any',
+  true: 'number',
+  false: 'number',
+  return: 'number',
+};
+Context.INITIAL.declarations['ternaryS'] = {
+  condition: 'boolean',
+  true: 'string',
+  false: 'string',
+  return: 'string',
 };
 Context.INITIAL.declarations['p1 + p2'] = {
   p1: 'number',

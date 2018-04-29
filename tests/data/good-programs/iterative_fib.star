@@ -19,37 +19,35 @@ Conditional (2,0,0)
 
 Function "p1 <= p2" (2,1,0)
   Parameter "p1" <0,0,1>
-    access "c"
+    access number "c"
   Parameter "p2" <0,0,2>
-    access "n"
+    access number "n"
   Return <0,0,3>
 
 Function "++" <3,0,0>
-  Parameter <0,0,1>
-    access "c"
+  Parameter "p1" <0,0,1>
+    access number "c"
   Return <0,0,2>
     Control <0,0,1>
 
 Function "p1 + p2" (4,0,0)
   Parameter "p1" <0,0,1>
-    access "a"
+    access number "a"
   Parameter "p2" <0,0,2>
-    access "b"
+    access number "b"
   Return <0,0,3>
     Control <0,0,1>
 
 Accessor "t" (5,0,0)
-  Parameter "set" <0,0,1>
+  Parameter "set" number <0,0,1>
   Control <0,0,2>
 
 Accessor "a" (6,0,0)
-  Parameter "set" <0,0,1>
-    access "b"
+  access number "b"
   Control <0,0,2>
 
 Accessor "b" (7,0,0)
-  Parameter "set" <0,0,1>
-    access "t"
+  access number "t"
   Control <0,0,2>
 
 Link (2,0,3) (0,0,3) # conditional false -> result control

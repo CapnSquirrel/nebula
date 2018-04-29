@@ -14,7 +14,7 @@ Function "ternary" (1,0,0)
 
 Function "p1 == p2" (1,1,0)
   Parameter "p1" <0,0,1>
-    access "p"
+    access number "p"
   Parameter "p2" <0,0,2>
     initialize number 0
   Return <0,0,3>
@@ -28,7 +28,7 @@ Function "ternary" (2,0,0)
 
 Function "p1 < p2" (2,1,0)
   Parameter "p1" <0,0,1>
-    access "p"
+    access number "p"
   Parameter "p2" <0,0,2>
     initialize number 0
   Return <0,0,3>
@@ -38,18 +38,18 @@ Function "p1 < p2" (2,1,0)
 Function "p1 * p2" (3,0,0)
   Parameter "p1" <0,0,1>
   Parameter "p2" <0,0,2>
-    access "b"
+    access number "b"
   Return <0,0,3>
 
 Function "_pow" (4,0,0)
   Parameter "b" <0,0,1>
-    access "b"
+    access number "b"
   Parameter "p" <0,0,2>
   Return <0,0,3>
 
 Function "p1 - p2" (5,0,0)
   Parameter "p1" <0,0,1>
-    access "p"
+    access number "p"
   Parameter "p2" <0,0,2>
     initialize number 1
   Return <0,0,3>
@@ -59,18 +59,18 @@ Function "p1 - p2" (5,0,0)
 Function "p1 / p2" (6,0,0)
   Parameter "p1" <0,0,1>
   Parameter "p2" <0,0,2>
-    access "b"
+    access number "b"
   Return <0,0,3>
 
 Function "_pow" (7,0,0)
   Parameter "b" <0,0,1>
-    access "b"
+    access number "b"
   Parameter "p" <0,0,2>
   Return <0,0,3>
 
 Function "p1 + p2" (8,0,0)
   Parameter "p1" <0,0,1>
-    access "p"
+    access number "p"
   Parameter "p2" <0,0,2>
     initialize number 1
   Return <0,0,3>

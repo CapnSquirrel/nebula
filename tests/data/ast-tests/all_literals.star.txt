@@ -1,39 +1,39 @@
 Program {
   body:
    [ Function {
-       id: StringLiteral { string: '"test"' },
+       id: StringLiteral { value: '"test"' },
        location:
         Location {
           isAbsolute: true,
-          coordinate: Coordinate { x: NumericLiteral { number: 1 }, y: 0, z: 0, w: 0 } },
+          coordinate: Coordinate { x: NumericLiteral { value: 1 }, y: 0, z: 0, w: 0 } },
        body:
-        [ [ Parameter {
-              id: [ StringLiteral { string: '"strlit"' } ],
-              location:
-               Location {
-                 isAbsolute: true,
-                 coordinate: Coordinate { x: NumericLiteral { number: 3 }, y: 0, z: 0, w: 0 } },
-              body:
-               [ Initialize { type: 'string', value: StringLiteral { string: '"test"' } } ] },
-            Parameter {
-              id: [ StringLiteral { string: '"numlit"' } ],
-              location:
-               Location {
-                 isAbsolute: true,
-                 coordinate: Coordinate { x: NumericLiteral { number: 4 }, y: 0, z: 0, w: 0 } },
-              body:
-               [ Initialize { type: 'number', value: NumericLiteral { number: -10.32 } } ] },
-            Parameter {
-              id: [ StringLiteral { string: '"boollit"' } ],
-              location:
-               Location {
-                 isAbsolute: true,
-                 coordinate: Coordinate { x: NumericLiteral { number: 5 }, y: 0, z: 0, w: 0 } },
-              body:
-               [ Initialize { type: 'boolean', value: BooleanLiteral { boolean: 'false' } } ] } ],
+        [ Parameter {
+            id: StringLiteral { value: '"strlit"' },
+            location:
+             Location {
+               isAbsolute: true,
+               coordinate: Coordinate { x: NumericLiteral { value: 3 }, y: 0, z: 0, w: 0 } },
+            body:
+             [ Initialize { type: 'string', value: StringLiteral { value: '"test"' } } ] },
+          Parameter {
+            id: StringLiteral { value: '"numlit"' },
+            location:
+             Location {
+               isAbsolute: true,
+               coordinate: Coordinate { x: NumericLiteral { value: 4 }, y: 0, z: 0, w: 0 } },
+            body:
+             [ Initialize { type: 'number', value: NumericLiteral { value: -10.32 } } ] },
+          Parameter {
+            id: StringLiteral { value: '"boollit"' },
+            location:
+             Location {
+               isAbsolute: true,
+               coordinate: Coordinate { x: NumericLiteral { value: 5 }, y: 0, z: 0, w: 0 } },
+            body:
+             [ Initialize { type: 'boolean', value: BooleanLiteral { value: true } } ] },
           Return {
             location:
              Location {
                isAbsolute: true,
-               coordinate: Coordinate { x: NumericLiteral { number: 6 }, y: 0, z: 0, w: 0 } },
+               coordinate: Coordinate { x: NumericLiteral { value: 6 }, y: 0, z: 0, w: 0 } },
             control: [] } ] } ] }

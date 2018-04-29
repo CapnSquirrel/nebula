@@ -23,7 +23,7 @@ Nebula {
 
     Accessor        =  "Accessor" strlit Location newline AccessorBlock
     AccessorBlock   =  indent (Access | Initialize | SetParameter | Evaluate) Control? dedent
-    SetParameter    =  "Parameter" "set" type Location newline
+    SetParameter    =  "Parameter" "\"set\"" type Location newline
 
     traitLabel      =  "evaluate"
 

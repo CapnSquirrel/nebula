@@ -2,28 +2,27 @@ Program {
   body:
    [ Origin {
        isDefault: true,
-       id: StringLiteral { string: '"hello"' },
+       id: StringLiteral { value: '"hello"' },
        location:
         Location {
           isAbsolute: true,
           coordinate:
            Coordinate {
-             x: NumericLiteral { number: 0 },
-             y: NumericLiteral { number: 0 },
-             z: NumericLiteral { number: 0 },
+             x: NumericLiteral { value: 0 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 0 },
              w: 0 } },
        body:
-        [ [],
-          Result {
-            type: StringLiteral { string: 'void' },
+        [ Result {
+            type: 'void',
             location:
              Location {
                isAbsolute: false,
                coordinate:
                 Coordinate {
-                  x: NumericLiteral { number: 0 },
-                  y: NumericLiteral { number: 0 },
-                  z: NumericLiteral { number: 1 },
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 1 },
                   w: 0 } },
             body: [ [] ],
             control:
@@ -33,46 +32,46 @@ Program {
                     isAbsolute: false,
                     coordinate:
                      Coordinate {
-                       x: NumericLiteral { number: 0 },
-                       y: NumericLiteral { number: 0 },
-                       z: NumericLiteral { number: 1 },
+                       x: NumericLiteral { value: 0 },
+                       y: NumericLiteral { value: 0 },
+                       z: NumericLiteral { value: 1 },
                        w: 0 } } } ] } ] },
      Function {
-       id: StringLiteral { string: '"print"' },
+       id: StringLiteral { value: '"print"' },
        location:
         Location {
           isAbsolute: true,
           coordinate:
            Coordinate {
-             x: NumericLiteral { number: 0 },
-             y: NumericLiteral { number: 1 },
-             z: NumericLiteral { number: 0 },
+             x: NumericLiteral { value: 0 },
+             y: NumericLiteral { value: 1 },
+             z: NumericLiteral { value: 0 },
              w: 0 } },
        body:
-        [ [ Parameter {
-              id: [],
-              location:
-               Location {
-                 isAbsolute: false,
-                 coordinate:
-                  Coordinate {
-                    x: NumericLiteral { number: 0 },
-                    y: NumericLiteral { number: 1 },
-                    z: NumericLiteral { number: 0 },
-                    w: 0 } },
-              body:
-               [ Initialize {
-                   type: 'string',
-                   value: StringLiteral { string: '"Hello, world!"' } } ] } ],
+        [ Parameter {
+            id: StringLiteral { value: '"string"' },
+            location:
+             Location {
+               isAbsolute: false,
+               coordinate:
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 1 },
+                  z: NumericLiteral { value: 0 },
+                  w: 0 } },
+            body:
+             [ Initialize {
+                 type: 'string',
+                 value: StringLiteral { value: '"Hello, world!"' } } ] },
           Return {
             location:
              Location {
                isAbsolute: false,
                coordinate:
                 Coordinate {
-                  x: NumericLiteral { number: 0 },
-                  y: NumericLiteral { number: 2 },
-                  z: NumericLiteral { number: 0 },
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 2 },
+                  z: NumericLiteral { value: 0 },
                   w: 0 } },
             control:
              [ Control {
@@ -81,26 +80,26 @@ Program {
                     isAbsolute: false,
                     coordinate:
                      Coordinate {
-                       x: NumericLiteral { number: 0 },
-                       y: NumericLiteral { number: 1 },
-                       z: NumericLiteral { number: 0 },
+                       x: NumericLiteral { value: 0 },
+                       y: NumericLiteral { value: 1 },
+                       z: NumericLiteral { value: 0 },
                        w: 0 } } } ] } ] },
      Link {
-       from: 
+       from:
         Location {
           isAbsolute: true,
           coordinate:
            Coordinate {
-             x: NumericLiteral { number: 0 },
-             y: NumericLiteral { number: 4 },
-             z: NumericLiteral { number: 0 },
+             x: NumericLiteral { value: 0 },
+             y: NumericLiteral { value: 4 },
+             z: NumericLiteral { value: 0 },
              w: 0 } },
        to:
         Location {
           isAbsolute: true,
           coordinate:
            Coordinate {
-             x: NumericLiteral { number: 0 },
-             y: NumericLiteral { number: 0 },
-             z: NumericLiteral { number: 2 },
+             x: NumericLiteral { value: 0 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 2 },
              w: 0 } } } ] }

@@ -10,7 +10,6 @@ module.exports = class Parameter {
     if (!context.functionObject[this.id]) {
       throw new Error(`Incorrect parameter ${this.id} given for function ${context.currentConstruct.id}`);
     }
-
     if (this.body) {
       this.body.analyze(context.createChildContextForConstruct(this));
       this.isLeaf = true;
