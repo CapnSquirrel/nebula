@@ -49,7 +49,7 @@ Program {
              w: 0 } },
        body:
         [ Parameter {
-            id: StringLiteral { value: '"string"' },
+            id: StringLiteral { value: '"message"' },
             location:
              Location {
                isAbsolute: false,

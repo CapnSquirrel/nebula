@@ -22,5 +22,4 @@ describe('The parser', () => {
     }
   });
 });
-
 /* eslint-enable no-undef */

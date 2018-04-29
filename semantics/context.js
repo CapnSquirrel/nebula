@@ -238,7 +238,7 @@ Context.INITIAL.declarations['p1 >= p2'] = {
 };
 /* eslint-disable dot-notation */
 Context.INITIAL.declarations['print'] = {
-  string: 'string',
+  message: 'string',
   return: 'void',
 };
 
