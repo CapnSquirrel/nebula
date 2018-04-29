@@ -32,6 +32,7 @@
  */
 
 const Link = require('../ast/Link.js');
+const defaultFunctions = require('../backend/default-modules');
 
 class Context {
   constructor({
@@ -44,9 +45,9 @@ class Context {
     defaultExists = false,
     parentConstruct = null,
     currentFunctionObject = null,
-    declarations = Object.create(null),
-    accesses = Object.create(null),
-    constructMap = Object.create(null),
+    declarations = {},
+    accesses = {},
+    constructMap = {},
   } = {}) {
     Object.assign(this, {
       coordinate,
@@ -93,13 +94,13 @@ class Context {
     const fromCoords = link.from.coordinate;
     const [tx, ty, tz, tw] =
       [toCoords.x.value, toCoords.y.value, toCoords.z.value, toCoords.w.value];
+    this.prepareCoordinate(tx, ty, tz);
     const [fx, fy, fz, fw] =
       [fromCoords.x.value, fromCoords.y.value, fromCoords.z.value, fromCoords.w.value];
+    this.prepareCoordinate(fx, fy, fz, fw);
     if (!this.constructMap[fx][fy][fz][fw]) {
-      this.prepareCoordinate(fx, fy, fz, fw);
       this.constructMap[fx][fy][fz][fw] = link;
     } else if (!this.constructMap[tx][ty][tz][tw]) {
-      this.prepareCoordinate(tx, ty, tz);
       this.constructMap[tx][ty][tz][tw] = link;
     } else {
       this.constructMap[tx][ty][tz][tw].link = this.constructMap[fx][fy][fz][fw];
@@ -112,8 +113,8 @@ class Context {
   addConstruct(construct) {
     const coords = construct.location.coordinate;
     const [x, y, z, w] = [coords.x.value, coords.y.value, coords.z.value, coords.w.value];
+    this.prepareCoordinate(x, y, z);
     if (!this.constructMap[x][y][z][w]) {
-      this.prepareCoordinate(x, y, z);
       this.constructMap[x][y][z][w] = construct;
     } else if (this.constructMap[x][y][z][w] instanceof Link) {
       const link = this.constructMap[x][y][z][w];
@@ -128,11 +129,13 @@ class Context {
   // currently undefined locations. This is also where we check for coordinate overlaps
   prepareCoordinate(x, y, z) {
     if (!this.constructMap[x]) {
-      this.constructMap[x] = { y: { z: [] } };
-    } else if (!this.constructMap[x][y]) {
-      this.constructMap[x][y] = { z: [] };
-    } else if (!this.constructMap[x][y][z]) {
-      this.constructMap[x][y][z] = [];
+      this.constructMap[x] = {};
+    }
+    if (!this.constructMap[x][y]) {
+      this.constructMap[x][y] = {};
+    }
+    if (!this.constructMap[x][y][z]) {
+      this.constructMap[x][y][z] = {};
     }
   }
 
@@ -174,72 +177,9 @@ class Context {
 }
 
 Context.INITIAL = new Context();
-/* eslint-disable dot-notation */
-Context.INITIAL.declarations['ternaryN'] = {
-  condition: 'boolean',
-  true: 'number',
-  false: 'number',
-  return: 'number',
-};
-Context.INITIAL.declarations['ternaryS'] = {
-  condition: 'boolean',
-  true: 'string',
-  false: 'string',
-  return: 'string',
-};
-Context.INITIAL.declarations['p1 + p2'] = {
-  p1: 'number',
-  p2: 'number',
-  return: 'number',
-};
-Context.INITIAL.declarations['p1 - p2'] = {
-  p1: 'number',
-  p2: 'number',
-  return: 'number',
-};
-Context.INITIAL.declarations['p1 * p2'] = {
-  p1: 'number',
-  p2: 'number',
-  return: 'number',
-};
-Context.INITIAL.declarations['p1 / p2'] = {
-  p1: 'number',
-  p2: 'number',
-  return: 'number',
-};
-Context.INITIAL.declarations['sqrt p1'] = {
-  p1: 'number',
-  return: 'number',
-};
-Context.INITIAL.declarations['p1 % p2'] = {
-  p1: 'number',
-  p2: 'number',
-  return: 'number',
-};
-Context.INITIAL.declarations['p1 < p2'] = {
-  p1: 'number',
-  p2: 'number',
-  return: 'boolean',
-};
-Context.INITIAL.declarations['p1 > p2'] = {
-  p1: 'number',
-  p2: 'number',
-  return: 'boolean',
-};
-Context.INITIAL.declarations['p1 <= p2'] = {
-  p1: 'number',
-  p2: 'number',
-  return: 'boolean',
-};
-Context.INITIAL.declarations['p1 >= p2'] = {
-  p1: 'number',
-  p2: 'number',
-  return: 'boolean',
-};
-/* eslint-disable dot-notation */
-Context.INITIAL.declarations['print'] = {
-  message: 'string',
-  return: 'void',
-};
+Object.keys(defaultFunctions).forEach(key => Object.assign(
+  { key: defaultFunctions[key] },
+  Context.INITIAL.declarations,
+));
 
 module.exports = Context;

@@ -10,8 +10,8 @@ module.exports = class Program {
     const context = Context.INITIAL;
 
     // we need to analyze origins first so we have all of the function objects in our declarations.
-    this.statements.sort(a => a instanceof Origin);
-    this.statements.forEach(s => s.analyze(context));
+    this.body.sort(a => a instanceof Origin);
+    this.body.forEach(b => b.analyze(context));
 
     // traverse the graph
   }
