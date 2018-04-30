@@ -1,8 +1,7 @@
 const print = {
-  args: { message: 'string' },
+  args: { message: 'any' },
   returns: 'void',
-  funct: 'console.log',
-  order: ['message'],
+  eval: 'console.log(#{message})',
 };
 
 const ternary = {

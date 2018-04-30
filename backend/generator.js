@@ -15,15 +15,16 @@ const jsName = (() => {
   };
 })();
 
-// const createOriginFunction = ;
+const createOriginFunction = item => `(ctx) => ${jsName(item.result)}(ctx)`;
 
 const getArg = item => (arg) => {
+  if (item.type === 'Variable') return `ctx.${item.id}`;
   const param = item.params[arg];
   switch (typeof param) {
     case 'string':
       return `"${param}"`;
     case 'object':
-      return `${jsName(param)}()`;
+      return param.type === 'Variable' ? `ctx.${param.id}` : `${jsName(param)}(ctx)`;
     default:
       return param;
   }
@@ -31,15 +32,22 @@ const getArg = item => (arg) => {
 
 const useModule = (item) => {
   const mod = modules.all[item.funct];
-  return `${mod.funct}(${mod.order.map(getArg(item)).join(', ')})`;
+  return mod.eval.replace(/#\{([^}]*)\}/g, (_, s) => getArg(item)(s));
 };
 
 const getStrVersion = (item) => {
   if (item.type === 'Function') {
-    return `() => ${idMap[item.funct] || useModule(item)}`; // requires module Implementation
+    const other = idMap[item.funct];
+    if (other) {
+      const paramsStr = Object.keys(item.params)
+        .map(key => `${key}: ${getArg(item)(key)}`)
+        .join(', ');
+      return `(ctx) => ${jsName(other)}({...ctx, ...{${paramsStr}}})`;
+    }
+    return `(ctx) => ${useModule(item)}`;
   }
   if (item.type === 'Origin') {
-    return `() => ${getArg(item)('result')}`;
+    return createOriginFunction(item);
   }
   if (item.type === 'Accessor') {
     return ''; // not implemented yet
@@ -47,33 +55,35 @@ const getStrVersion = (item) => {
   return '';
 };
 
-const defArgs = []; // populated by function
 const strVars = `let ${tokens.map(jsName).join(', ')};`;
 const funs = tokens.map(item => `${jsName(item)} = ${getStrVersion(item)};`).join('\n');
-const defEval = tokens
-  .filter(item => item.type === 'Origin' && item.default)
-  .map(item => `${jsName(item)}(${defArgs.join(',')})`)
-  .join('\n');
-const exps = tokens
-  .filter(item => item.type === 'Origin')
-  .map(item => `module.exports.${item.id} = ${jsName(item)};`)
-  .join('\n');
-const defaultExp = tokens
-  .filter(item => item.type === 'Origin' && item.default)
-  .map(item => `module.exports.default = ${jsName(item)};`)
-  .join('\n');
 
 module.exports = {
   createExports() {
     console.log(strVars);
     console.log(funs);
+    const exps = tokens
+      .filter(item => item.type === 'Origin')
+      .map(item => `module.exports.${item.id} = ${jsName(item)};`)
+      .join('\n');
+    const defaultExp = tokens
+      .filter(item => item.type === 'Origin' && item.default)
+      .map(item => `module.exports.default = ${jsName(item)};`)
+      .join('\n');
     console.log(exps);
     console.log(defaultExp);
   },
 
-  runProgram() {
+  runProgram(args, print) {
     console.log(strVars);
     console.log(funs);
-    console.log(defEval);
+    const objStr = Object.keys(args)
+      .map(key => `${key}: ${args[key]}`)
+      .join(', ');
+    const defEval = tokens
+      .filter(item => item.type === 'Origin' && item.default)
+      .map(item => `${jsName(item)}({${objStr}})`)
+      .join('\n');
+    console.log(print ? `console.log(${defEval})` : `${defEval}`);
   },
 };
