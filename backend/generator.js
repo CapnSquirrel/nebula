@@ -1,5 +1,7 @@
-const tokens = require('./test-data/hello-world.js');
+const tokens = require('./test-data/recursive-fib.js');
 const modules = require('./default-modules');
+
+const idMap = {};
 
 const jsName = (() => {
   let lastId = 0;
@@ -7,10 +9,13 @@ const jsName = (() => {
   return (v) => {
     if (!map.has(v)) {
       map.set(v, ++lastId); // eslint-disable-line no-plusplus
+      if (v.id) idMap[v.id] = v;
     }
-    return `_${map.get(v)}`;
+    return `${v.type}_${map.get(v)}`;
   };
 })();
+
+// const createOriginFunction = ;
 
 const getArg = item => (arg) => {
   const param = item.params[arg];
@@ -31,10 +36,10 @@ const useModule = (item) => {
 
 const getStrVersion = (item) => {
   if (item.type === 'Function') {
-    return useModule(item); // requires module Implementation
+    return `() => ${idMap[item.funct] || useModule(item)}`; // requires module Implementation
   }
   if (item.type === 'Origin') {
-    return getArg(item)('result');
+    return `() => ${getArg(item)('result')}`;
   }
   if (item.type === 'Accessor') {
     return ''; // not implemented yet
@@ -42,11 +47,12 @@ const getStrVersion = (item) => {
   return '';
 };
 
+const defArgs = []; // populated by function
 const strVars = `let ${tokens.map(jsName).join(', ')};`;
-const funs = tokens.map(item => `${jsName(item)} = () => ${getStrVersion(item)};`).join('\n');
+const funs = tokens.map(item => `${jsName(item)} = ${getStrVersion(item)};`).join('\n');
 const defEval = tokens
   .filter(item => item.type === 'Origin' && item.default)
-  .map(item => `${jsName(item)}()`)
+  .map(item => `${jsName(item)}(${defArgs.join(',')})`)
   .join('\n');
 const exps = tokens
   .filter(item => item.type === 'Origin')

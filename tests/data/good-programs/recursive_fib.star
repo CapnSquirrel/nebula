@@ -2,7 +2,7 @@ Origin default "_fib" (0,0,0)
   Argument number "n" <0,0,1>
   Result number <0,0,2>
 
-Function "ternaryN" (1,0,0)
+Function "ternary" (1,0,0)
   Parameter "true" <0,0,1>
     access number "n"
   Parameter "false" <0,0,2>
