@@ -1,14 +1,18 @@
-const print = {
+let [origin, print] = [];
+
+print = {
   type: 'Function',
   funct: 'print',
   params: { message: 'Hello, world!' },
 };
 
-const origin = {
+origin = {
   type: 'Origin',
   default: true,
   id: 'hello',
-  params: { result: print }, // params to Origin is the result
+  result: print,
+  args: {},
+  returns: 'void',
 };
 
 module.exports = [origin, print];

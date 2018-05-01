@@ -11,6 +11,7 @@ module.exports = (source) => {
       // Empty line
       result += content;
     } else if (/\s/.test(content[0])) {
+      console.log(content);
       // First non-space character is whitespace, may be confusing so error
       throw new Error(`Illegal whitespace character: \\u{${content.charCodeAt(0).toString(16)}}`);
     } else if (indent === stack[stack.length - 1]) {
