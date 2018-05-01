@@ -11,7 +11,7 @@ Program {
              x: NumericLiteral { value: 0 },
              y: NumericLiteral { value: 0 },
              z: NumericLiteral { value: 0 },
-             w: 0 } },
+             w: NumericLiteral { value: 0 } } },
        body:
         [ Result {
             type: 'void',
@@ -23,7 +23,7 @@ Program {
                   x: NumericLiteral { value: 0 },
                   y: NumericLiteral { value: 0 },
                   z: NumericLiteral { value: 1 },
-                  w: 0 } },
+                  w: NumericLiteral { value: 0 } } },
             body: [ [] ],
             control:
              [ Control {
@@ -35,7 +35,7 @@ Program {
                        x: NumericLiteral { value: 0 },
                        y: NumericLiteral { value: 0 },
                        z: NumericLiteral { value: 1 },
-                       w: 0 } } } ] } ] },
+                       w: NumericLiteral { value: 0 } } } } ] } ] },
      Function {
        id: StringLiteral { value: '"print"' },
        location:
@@ -46,7 +46,7 @@ Program {
              x: NumericLiteral { value: 0 },
              y: NumericLiteral { value: 1 },
              z: NumericLiteral { value: 0 },
-             w: 0 } },
+             w: NumericLiteral { value: 0 } } },
        body:
         [ Parameter {
             id: StringLiteral { value: '"message"' },
@@ -58,7 +58,7 @@ Program {
                   x: NumericLiteral { value: 0 },
                   y: NumericLiteral { value: 1 },
                   z: NumericLiteral { value: 0 },
-                  w: 0 } },
+                  w: NumericLiteral { value: 0 } } },
             body:
              [ Initialize {
                  type: 'string',
@@ -72,7 +72,7 @@ Program {
                   x: NumericLiteral { value: 0 },
                   y: NumericLiteral { value: 2 },
                   z: NumericLiteral { value: 0 },
-                  w: 0 } },
+                  w: NumericLiteral { value: 0 } } },
             control:
              [ Control {
                  location:
@@ -83,7 +83,7 @@ Program {
                        x: NumericLiteral { value: 0 },
                        y: NumericLiteral { value: 1 },
                        z: NumericLiteral { value: 0 },
-                       w: 0 } } } ] } ] },
+                       w: NumericLiteral { value: 0 } } } } ] } ] },
      Link {
        from:
         Location {
@@ -93,7 +93,7 @@ Program {
              x: NumericLiteral { value: 0 },
              y: NumericLiteral { value: 4 },
              z: NumericLiteral { value: 0 },
-             w: 0 } },
+             w: NumericLiteral { value: 0 } } },
        to:
         Location {
           isAbsolute: true,
@@ -102,4 +102,4 @@ Program {
              x: NumericLiteral { value: 0 },
              y: NumericLiteral { value: 0 },
              z: NumericLiteral { value: 2 },
-             w: 0 } } } ] }
+             w: NumericLiteral { value: 0 } } } } ] }

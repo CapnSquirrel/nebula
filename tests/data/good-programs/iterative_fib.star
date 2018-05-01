@@ -17,20 +17,20 @@ Conditional (2,0,0)
   Control true <0,0,2>
   Control false <0,0,3>
 
-Function "p1 <= p2" (2,1,0)
+Function "lessThanOrEqual" (2,1,0)
   Parameter "p1" <0,0,1>
     access number "c"
   Parameter "p2" <0,0,2>
     access number "n"
   Return <0,0,3>
 
-Function "++" <3,0,0>
+Function "increment" <3,0,0>
   Parameter "p1" <0,0,1>
     access number "c"
   Return <0,0,2>
     Control <0,0,1>
 
-Function "p1 + p2" (4,0,0)
+Function "Add" (4,0,0)
   Parameter "p1" <0,0,1>
     access number "a"
   Parameter "p2" <0,0,2>

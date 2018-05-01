@@ -12,7 +12,7 @@ Function "ternary" (1,0,0)
   Parameter "false" <0,0,3>
   Return <0,0,4>
 
-Function "p1 == p2" (1,1,0)
+Function "equals" (1,1,0)
   Parameter "p1" <0,0,1>
     access number "p"
   Parameter "p2" <0,0,2>
@@ -26,7 +26,7 @@ Function "ternary" (2,0,0)
   Parameter "false" <0,0,3>
   Return <0,0,4>
 
-Function "p1 < p2" (2,1,0)
+Function "lessThan" (2,1,0)
   Parameter "p1" <0,0,1>
     access number "p"
   Parameter "p2" <0,0,2>
@@ -35,7 +35,7 @@ Function "p1 < p2" (2,1,0)
 
 # handle positive case
 
-Function "p1 * p2" (3,0,0)
+Function "multiply" (3,0,0)
   Parameter "p1" <0,0,1>
   Parameter "p2" <0,0,2>
     access number "b"
@@ -47,7 +47,7 @@ Function "_pow" (4,0,0)
   Parameter "p" <0,0,2>
   Return <0,0,3>
 
-Function "p1 - p2" (5,0,0)
+Function "subtract" (5,0,0)
   Parameter "p1" <0,0,1>
     access number "p"
   Parameter "p2" <0,0,2>
@@ -56,7 +56,7 @@ Function "p1 - p2" (5,0,0)
 
 # handle negative case
 
-Function "p1 / p2" (6,0,0)
+Function "divide" (6,0,0)
   Parameter "p1" <0,0,1>
   Parameter "p2" <0,0,2>
     access number "b"
@@ -68,7 +68,7 @@ Function "_pow" (7,0,0)
   Parameter "p" <0,0,2>
   Return <0,0,3>
 
-Function "p1 + p2" (8,0,0)
+Function "add" (8,0,0)
   Parameter "p1" <0,0,1>
     access number "p"
   Parameter "p2" <0,0,2>

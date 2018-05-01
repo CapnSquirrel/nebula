@@ -5,8 +5,8 @@ module.exports = class Return {
 
   analyze(context) {
     this.location.analyze(context);
-    if (this.Control) {
-      this.Control.analyze(context.createChildContextForConstruct(this));
+    if (this.control) {
+      this.control.analyze(context.createChildContextForConstruct(this));
     }
     context.addConstruct(this);
   }

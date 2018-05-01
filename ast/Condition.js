@@ -5,8 +5,8 @@ module.exports = class Condition {
 
   analyze(context) {
     this.location.analyze(context);
-    if (this.body) {
-      this.body.analyze(context.createChildContextForConstruct(this));
+    if (this.body.length > 0) {
+      this.body.forEach(b => b.analyze(context.createChildContextForConstruct(this)));
       this.isLeaf = true;
     }
     context.addConstruct(this);

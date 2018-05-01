@@ -7,11 +7,11 @@ module.exports = class Parameter {
     this.location.analyze(context);
 
     // check if the function object has this parameter
-    if (!context.functionObject[this.id]) {
-      throw new Error(`Incorrect parameter ${this.id} given for function ${context.currentConstruct.id}`);
+    if (!context.functionObject.params[this.id.value]) {
+      throw new Error(`Incorrect parameter ${this.id.value} given for function ${context.parentConstruct.id.value}`);
     }
     if (this.body) {
-      this.body.analyze(context.createChildContextForConstruct(this));
+      this.body.forEach(b => b.analyze(context.createChildContextForConstruct(this)));
       this.isLeaf = true;
     }
     context.addConstruct(this);

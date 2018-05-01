@@ -40,7 +40,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Argument: (_1, type, id, location, _2) =>
     new Argument(type.sourceString, id.ast(), location.ast()),
   Result: (_1, type, location, _2, _3, body, control, _4) =>
-    new Result(type.sourceString, location.ast(), body.ast(), control.ast()),
+    new Result(type.sourceString, location.ast(), ...body.ast(), ...control.ast()),
   Function: (_1, id, location, _2, body) =>
     new Function(id.ast(), location.ast(), body.ast()),
   FunctionBlock: (_1, params, _return, _2) =>
@@ -66,7 +66,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Accessor: (_1, id, location, _2, body) =>
     new Accessor(id.ast(), location.ast(), body.ast()),
   AccessorBlock: (_1, body, control, _2) =>
-    (body.length ? [...body.ast(), control.ast()] : [body.ast(), control.ast()]),
+    (control ? [body.ast(), ...control.ast()] : [body.ast()]),
   SetParameter: (_1, _2, type, location, _3) =>
     new SetParameter(type.sourceString, location.ast()),
   Link: (_, fromLocation, toLocation) =>

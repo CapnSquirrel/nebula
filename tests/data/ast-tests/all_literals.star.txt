@@ -5,14 +5,24 @@ Program {
        location:
         Location {
           isAbsolute: true,
-          coordinate: Coordinate { x: NumericLiteral { value: 1 }, y: 0, z: 0, w: 0 } },
+          coordinate:
+           Coordinate {
+             x: NumericLiteral { value: 1 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 0 },
+             w: NumericLiteral { value: 0 } } },
        body:
         [ Parameter {
             id: StringLiteral { value: '"strlit"' },
             location:
              Location {
                isAbsolute: true,
-               coordinate: Coordinate { x: NumericLiteral { value: 3 }, y: 0, z: 0, w: 0 } },
+               coordinate:
+                Coordinate {
+                  x: NumericLiteral { value: 3 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 0 },
+                  w: NumericLiteral { value: 0 } } },
             body:
              [ Initialize { type: 'string', value: StringLiteral { value: '"test"' } } ] },
           Parameter {
@@ -20,7 +30,12 @@ Program {
             location:
              Location {
                isAbsolute: true,
-               coordinate: Coordinate { x: NumericLiteral { value: 4 }, y: 0, z: 0, w: 0 } },
+               coordinate:
+                Coordinate {
+                  x: NumericLiteral { value: 4 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 0 },
+                  w: NumericLiteral { value: 0 } } },
             body:
              [ Initialize { type: 'number', value: NumericLiteral { value: -10.32 } } ] },
           Parameter {
@@ -28,12 +43,22 @@ Program {
             location:
              Location {
                isAbsolute: true,
-               coordinate: Coordinate { x: NumericLiteral { value: 5 }, y: 0, z: 0, w: 0 } },
+               coordinate:
+                Coordinate {
+                  x: NumericLiteral { value: 5 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 0 },
+                  w: NumericLiteral { value: 0 } } },
             body:
              [ Initialize { type: 'boolean', value: BooleanLiteral { value: true } } ] },
           Return {
             location:
              Location {
                isAbsolute: true,
-               coordinate: Coordinate { x: NumericLiteral { value: 6 }, y: 0, z: 0, w: 0 } },
+               coordinate:
+                Coordinate {
+                  x: NumericLiteral { value: 6 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 0 },
+                  w: NumericLiteral { value: 0 } } },
             control: [] } ] } ] }

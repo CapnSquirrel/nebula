@@ -5,7 +5,7 @@ module.exports = class SetParameter {
 
   analyze(context) {
     this.location.analyze(context);
-    context.addID(this.type, context.currentConstruct.id.value);
+    context.addID(this.type, context.parentConstruct.id.value);
     context.addConstruct(this);
   }
 };

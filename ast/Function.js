@@ -9,8 +9,8 @@ module.exports = class Function {
     if (!this.functionObject) {
       throw new Error(`function ${this.id.value} does not exist`);
     }
-    if (this.functionObject.size !== this.body.length) {
-      throw new Error(`function ${this.id.value} given ${this.body.length} arguments, but it needs ${this.functionObject.size}`);
+    if (Object.keys(this.functionObject.params).length !== this.body.length - 1) {
+      throw new Error(`function ${this.id.value} given ${this.body.length - 1} arguments, but it needs ${Object.keys(this.functionObject.params).length}`);
     }
     this.body.forEach(b => b.analyze(context.createChildContextForFunction(this)));
     context.addConstruct(this);

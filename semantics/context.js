@@ -139,14 +139,18 @@ class Context {
     }
   }
 
+  markDefaultExists() {
+    this.defaultExists = true;
+  }
+
   // add an Argument to FunctionObject in declarations
   addArgument(argument) {
-    this.declarations[this.currentConstruct.id][argument.id] = argument.type;
+    this.declarations[this.parentConstruct.id.value].params[argument.id.value] = argument.type;
   }
 
   // add the Result to FunctionObject in declarations
   addResult(result) {
-    this.declarations[this.currentConstruct.id].return = result.type;
+    this.declarations[this.parentConstruct.id.value].returns = result.type;
   }
 
   // Call this to add a new entity (which could be a variable, a function,
@@ -176,10 +180,7 @@ class Context {
   }
 }
 
-Context.INITIAL = new Context();
-Object.keys(defaultFunctions).forEach(key => Object.assign(
-  { key: defaultFunctions[key] },
-  Context.INITIAL.declarations,
-));
+const declarations = Object.assign({}, defaultFunctions.all);
+Context.INITIAL = new Context({ declarations });
 
 module.exports = Context;

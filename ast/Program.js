@@ -7,11 +7,11 @@ module.exports = class Program {
   }
 
   analyze() {
-    const context = Context.INITIAL;
+    const context = new Context();
 
     // we need to analyze origins first so we have all of the function objects in our declarations.
-    this.body.sort(a => a instanceof Origin);
-    this.body.forEach(b => b.analyze(context));
+    this.body.filter(a => a instanceof Origin).forEach(o => o.analyze(context));
+    this.body.filter(a => !(a instanceof Origin)).forEach(b => b.analyze(context));
 
     // traverse the graph
   }

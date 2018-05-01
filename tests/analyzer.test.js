@@ -24,4 +24,3 @@ describe('The semantic analyzer', () => {
     }
   });
 });
-/* eslint-enable no-undef */

@@ -1,6 +1,13 @@
+const NumericLiteral = require('./NumericLiteral');
+
 module.exports = class Coordinate {
   constructor(args) {
-    const [x, y = 0, z = 0, w = 0] = args;
+    const [
+      x,
+      y = new NumericLiteral(0),
+      z = new NumericLiteral(0),
+      w = new NumericLiteral(0),
+    ] = args;
     Object.assign(this, {
       x,
       y,

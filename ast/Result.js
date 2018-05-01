@@ -3,16 +3,24 @@ module.exports = class Result {
     Object.assign(this, {
       type,
       location,
-      body,
-      control,
     });
+    if (body && body.length) {
+      Object.assign(this, {
+        body,
+      });
+    }
+    if (control) {
+      Object.assign(this, {
+        control,
+      });
+    }
   }
 
   analyze(context) {
     this.location.analyze(context);
     context.addResult(this);
     if (this.body) {
-      this.body.analyze(context.createChildContextForConstruct(this));
+      this.body.forEach(b => b.analyze(context.createChildContextForConstruct(this)));
     }
     if (this.control) {
       this.control.analyze(context.createChildContextForConstruct(this));

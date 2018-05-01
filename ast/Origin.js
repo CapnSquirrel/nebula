@@ -9,10 +9,10 @@ module.exports = class Origin {
   }
 
   analyze(context) {
-    if (this.isDefault) context.defaultExists();
+    if (this.isDefault) context.markDefaultExists();
     this.location.analyze(context);
-    context.addID(Object.create(null), this.id.value);
-    this.body.forEach(b => b.analyze(context.createChildContextFoConstruct(this)));
+    context.addID({ params: [] }, this.id.value);
+    this.body.forEach(b => b.analyze(context.createChildContextForConstruct(this)));
     context.addConstruct(this);
   }
 };
