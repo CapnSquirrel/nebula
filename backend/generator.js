@@ -1,4 +1,4 @@
-const tokens = require('./test-data/recursive-fib.js');
+const tokens = require('./test-data/hello-world.js');
 const modules = require('./default-modules');
 
 const idMap = {};

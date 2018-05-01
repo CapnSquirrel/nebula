@@ -2,8 +2,7 @@ module.exports = {
   '"print"': {
     args: { '"message"': 'string' },
     returns: 'void',
-    funct: 'console.log',
-    order: ['message'],
+    eval: 'console.log(#{"message"})',
   },
   '"ternary"': {
     args: { '"condition"': 'boolean', '"true"': 'any', '"false"': 'any' },

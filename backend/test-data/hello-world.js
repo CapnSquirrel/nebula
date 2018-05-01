@@ -2,14 +2,14 @@ let [origin, print] = [];
 
 print = {
   type: 'Function',
-  funct: 'print',
-  params: { message: 'Hello, world!' },
+  funct: '"print"',
+  params: { '"message"': 'Hello, world!' },
 };
 
 origin = {
   type: 'Origin',
   default: true,
-  id: 'hello',
+  id: '"hello"',
   result: print,
   args: {},
   returns: 'void',
