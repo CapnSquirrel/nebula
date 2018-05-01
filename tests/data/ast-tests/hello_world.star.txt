@@ -24,18 +24,17 @@ Program {
                   y: NumericLiteral { value: 0 },
                   z: NumericLiteral { value: 1 },
                   w: NumericLiteral { value: 0 } } },
-            body: [ [] ],
             control:
-             [ Control {
-                 location:
-                  Location {
-                    isAbsolute: false,
-                    coordinate:
-                     Coordinate {
-                       x: NumericLiteral { value: 0 },
-                       y: NumericLiteral { value: 0 },
-                       z: NumericLiteral { value: 1 },
-                       w: NumericLiteral { value: 0 } } } } ] } ] },
+             Control {
+               location:
+                Location {
+                  isAbsolute: false,
+                  coordinate:
+                   Coordinate {
+                     x: NumericLiteral { value: 0 },
+                     y: NumericLiteral { value: 0 },
+                     z: NumericLiteral { value: 1 },
+                     w: NumericLiteral { value: 0 } } } } } ] },
      Function {
        id: StringLiteral { value: '"print"' },
        location:
@@ -74,16 +73,16 @@ Program {
                   z: NumericLiteral { value: 0 },
                   w: NumericLiteral { value: 0 } } },
             control:
-             [ Control {
-                 location:
-                  Location {
-                    isAbsolute: false,
-                    coordinate:
-                     Coordinate {
-                       x: NumericLiteral { value: 0 },
-                       y: NumericLiteral { value: 1 },
-                       z: NumericLiteral { value: 0 },
-                       w: NumericLiteral { value: 0 } } } } ] } ] },
+             Control {
+               location:
+                Location {
+                  isAbsolute: false,
+                  coordinate: 
+                   Coordinate {
+                     x: NumericLiteral { value: 0 },
+                     y: NumericLiteral { value: 1 },
+                     z: NumericLiteral { value: 0 },
+                     w: NumericLiteral { value: 0 } } } } } ] },
      Link {
        from:
         Location {

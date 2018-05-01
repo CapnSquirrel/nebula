@@ -43,7 +43,7 @@ Program {
             location:
              Location {
                isAbsolute: true,
-               coordinate:
+               coordinate: 
                 Coordinate {
                   x: NumericLiteral { value: 5 },
                   y: NumericLiteral { value: 0 },
@@ -60,5 +60,4 @@ Program {
                   x: NumericLiteral { value: 6 },
                   y: NumericLiteral { value: 0 },
                   z: NumericLiteral { value: 0 },
-                  w: NumericLiteral { value: 0 } } },
-            control: [] } ] } ] }
+                  w: NumericLiteral { value: 0 } } } } ] } ] }
