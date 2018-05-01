@@ -48,10 +48,10 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   Parameter: (_1, id, location, _2, _3, body, _5) =>
     new Parameter(id.ast(), location.ast(), body.ast()),
   Return: (_1, location, _2, _3, control, _4) =>
-    new Return(location.ast(), control.ast()),
+    new Return(location.ast(), ...control.ast()),
   Initialize: (_1, type, value, _2) =>
     new Initialize(type.sourceString, value.ast()),
-  Access: (_1, id, type, _2) =>
+  Access: (_1, type, id, _2) =>
     new Access(type.sourceString, id.ast()),
   Evaluate: (_1, expr, _2) =>
     new Evaluate(expr.ast()),

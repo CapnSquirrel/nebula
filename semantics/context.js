@@ -44,7 +44,7 @@ class Context {
     },
     defaultExists = false,
     parentConstruct = null,
-    currentFunctionObject = null,
+    functionObject = null,
     declarations = {},
     accesses = {},
     constructMap = {},
@@ -53,7 +53,7 @@ class Context {
       coordinate,
       defaultExists,
       parentConstruct,
-      currentFunctionObject,
+      functionObject,
       declarations,
       accesses,
       constructMap,
@@ -71,7 +71,7 @@ class Context {
     return new Context({
       coordinate: funct.location.coordinate,
       parentConstruct: funct,
-      currentFunctionObject: funct.functionObject,
+      functionObject: funct.functionObject,
       declarations: this.declarations,
       constructMap: this.constructMap,
     });
@@ -81,6 +81,7 @@ class Context {
     return new Context({
       coordinate: construct.location.coordinate,
       parentConstruct: construct,
+      functionObject: this.functionObject,
       declarations: this.declarations,
       constructMap: this.constructMap,
     });
@@ -172,9 +173,12 @@ class Context {
 
   // Returns the entity bound to the given identifier, starting from this
   // context and searching "outward" through enclosing contexts if necessary.
-  accessID(id) {
+  accessID(id, expectedType = false) {
     if (id in this.declarations) {
       return this.declarations[id];
+    } else if (expectedType) {
+      this.declarations[id] = { expectedType };
+      return { type: expectedType };
     }
     return false;
   }

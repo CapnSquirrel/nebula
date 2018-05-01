@@ -1,19 +1,8 @@
 module.exports = class Result {
   constructor(type, location, body, control) {
-    Object.assign(this, {
-      type,
-      location,
-    });
-    if (body && body.length) {
-      Object.assign(this, {
-        body,
-      });
-    }
-    if (control) {
-      Object.assign(this, {
-        control,
-      });
-    }
+    Object.assign(this, { type, location });
+    if (body && body.length) Object.assign(this, { body });
+    if (control) Object.assign(this, { control });
   }
 
   analyze(context) {

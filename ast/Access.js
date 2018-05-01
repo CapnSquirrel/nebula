@@ -8,19 +8,20 @@ module.exports = class Access {
   }
 
   analyze(context) {
+    const idType = context.accessID(this.id.value, this.type).type;
     if (context.parentConstruct instanceof Accessor) {
-      if (!context.addID(context.accessID(this.id.value), context.parentConstruct.id.value)) {
-        context.addID({ expectedType: this.type }, this.id.value);
-        context.addID(this.type, context.parentConstruct.id.value);
+      if (idType !== this.type) {
+        throw new Error(`Type Error: ${idType} given for new variable ${context.parentConstruct.id.value} of type ${this.type}`);
+      } else {
+        context.addID(idType, context.parentConstruct.id.value);
       }
     } else if (context.parentConstruct instanceof Parameter) {
-      const functionObject = context.accessID(context.currentFunction.id.value);
-      const idType = context.accessID(this.id.value).type;
-      if (functionObject[context.currentFunction.id.value] !== idType) {
-        throw new Error(`Type Error: ${idType} given for parameter ${context.parentConstruct.id.value} of type ${functionObject[context.currentFunction.id.value]}`);
+      const parameterType = context.functionObject.args[context.parentConstruct.id.value];
+      if (parameterType !== idType) {
+        console.log(idType);
+        throw new Error(`Type Error: ${idType} given for parameter ${context.parentConstruct.id.value} of type ${parameterType}`);
       }
     } else if (context.parentConstruct instanceof Result) {
-      const idType = context.accessID(this.id.value).type;
       if (context.parentConstruct.type !== idType) {
         throw new Error(`Type Error: ${idType} given for Result of type ${context.parentConstruct.type}`);
       }

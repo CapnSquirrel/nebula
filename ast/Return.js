@@ -1,6 +1,7 @@
 module.exports = class Return {
   constructor(location, control) {
-    Object.assign(this, { location, control });
+    Object.assign(this, { location });
+    if (control) Object.assign(this, { control });
   }
 
   analyze(context) {

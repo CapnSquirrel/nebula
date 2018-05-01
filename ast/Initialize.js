@@ -11,8 +11,8 @@ module.exports = class Initialize {
     if (context.parentConstruct instanceof Accessor) {
       context.addID(this.type, context.parentConstruct.id.value);
     } else if (context.parentConstruct instanceof Parameter) {
-      const parameterType = context.functionObject[context.parentConstruct.id.value];
-      if (parameterType !== this.type) {
+      const parameterType = context.functionObject.params[context.parentConstruct.id.value];
+      if (parameterType !== 'any' && parameterType !== this.type) {
         throw new Error(`Type Error: ${this.type} given for parameter ${context.parentConstruct.id.value} of type ${parameterType}`);
       }
     } else if (context.parentConstruct instanceof Result) {
