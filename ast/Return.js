@@ -9,6 +9,7 @@ module.exports = class Return {
     if (this.control) {
       this.control.analyze(context.createChildContextForConstruct(this));
     }
+    this.functionToken = context.tokens[context.tokens.length - 1];
     context.addConstruct(this);
   }
 };

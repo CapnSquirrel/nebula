@@ -11,8 +11,10 @@ module.exports = class Parameter {
       throw new Error(`Incorrect parameter ${this.id.value} given for function ${context.parentConstruct.id.value}`);
     }
     if (this.body) {
-      this.body.forEach(b => b.analyze(context.createChildContextForConstruct(this)));
+      this.body.analyze(context.createChildContextForConstruct(this));
       this.isLeaf = true;
+    } else {
+      context.addTokenParam(this);
     }
     context.addConstruct(this);
   }

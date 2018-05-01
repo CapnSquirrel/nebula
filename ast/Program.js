@@ -14,6 +14,10 @@ module.exports = class Program {
     this.body.filter(a => a instanceof Origin).forEach(o => o.analyze(context));
     this.body.filter(a => !(a instanceof Origin)).forEach(b => b.analyze(context));
 
+    if (!context.defaultExists) throw new Error('no origin default');
+
+    context.mapCoordsToTokens();
+
     // traverse the graph
   }
 };

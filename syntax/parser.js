@@ -46,7 +46,7 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   FunctionBlock: (_1, params, _return, _2) =>
     [...params.ast(), _return.ast()],
   Parameter: (_1, id, location, _2, _3, body, _5) =>
-    new Parameter(id.ast(), location.ast(), body.ast()),
+    new Parameter(id.ast(), location.ast(), ...body.ast()),
   Return: (_1, location, _2, _3, control, _4) =>
     new Return(location.ast(), ...control.ast()),
   Initialize: (_1, type, value, _2) =>

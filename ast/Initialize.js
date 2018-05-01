@@ -15,11 +15,13 @@ module.exports = class Initialize {
       if (parameterType !== 'any' && parameterType !== this.type) {
         throw new Error(`Type Error: ${this.type} given for parameter ${context.parentConstruct.id.value} of type ${parameterType}`);
       }
+      context.addTokenParamInitialize(this, context.parentConstruct.id.value);
     } else if (context.parentConstruct instanceof Result) {
       const resultType = context.parentConstruct.type;
       if (resultType !== this.type) {
         throw new Error(`Type Error: ${this.type} given for result of type ${resultType}`);
       }
+      context.addTokenResultAccess(this);
     }
   }
 };

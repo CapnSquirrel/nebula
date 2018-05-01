@@ -23,8 +23,7 @@ Program {
                   y: NumericLiteral { value: 0 },
                   z: NumericLiteral { value: 0 },
                   w: NumericLiteral { value: 0 } } },
-            body:
-             [ Initialize { type: 'string', value: StringLiteral { value: '"test"' } } ] },
+            body: Initialize { type: 'string', value: StringLiteral { value: '"test"' } } },
           Parameter {
             id: StringLiteral { value: '"numlit"' },
             location:
@@ -36,21 +35,19 @@ Program {
                   y: NumericLiteral { value: 0 },
                   z: NumericLiteral { value: 0 },
                   w: NumericLiteral { value: 0 } } },
-            body:
-             [ Initialize { type: 'number', value: NumericLiteral { value: -10.32 } } ] },
+            body: Initialize { type: 'number', value: NumericLiteral { value: -10.32 } } },
           Parameter {
             id: StringLiteral { value: '"boollit"' },
             location:
              Location {
                isAbsolute: true,
-               coordinate: 
+               coordinate:
                 Coordinate {
                   x: NumericLiteral { value: 5 },
                   y: NumericLiteral { value: 0 },
                   z: NumericLiteral { value: 0 },
                   w: NumericLiteral { value: 0 } } },
-            body:
-             [ Initialize { type: 'boolean', value: BooleanLiteral { value: true } } ] },
+            body: Initialize { type: 'boolean', value: BooleanLiteral { value: true } } },
           Return {
             location:
              Location {

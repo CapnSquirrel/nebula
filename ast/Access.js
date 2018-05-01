@@ -18,13 +18,15 @@ module.exports = class Access {
       }
     } else if (context.parentConstruct instanceof Parameter) {
       const parameterType = context.functionObject.args[context.parentConstruct.id.value];
-      if (parameterType !== idType) {
+      if (parameterType !== 'any' && parameterType !== idType) {
         throw new Error(`Type Error: ${idType} given for parameter ${context.parentConstruct.id.value} of type ${parameterType}`);
       }
+      context.addTokenParamAccess(this, context.parentConstruct.id.value);
     } else if (context.parentConstruct instanceof Result) {
       if (context.parentConstruct.type !== idType) {
         throw new Error(`Type Error: ${idType} given for Result of type ${context.parentConstruct.type}`);
       }
+      context.addTokenResultAccess(this);
     }
   }
 };

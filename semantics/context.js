@@ -33,6 +33,7 @@
 
 const Link = require('../ast/Link.js');
 const defaultFunctions = require('../backend/default-modules');
+const Coordinate = require('../ast/Coordinate.js');
 
 class Context {
   constructor({
@@ -48,6 +49,8 @@ class Context {
     declarations = {},
     accesses = {},
     constructMap = {},
+    tokens = [],
+    tokenIndex = -1,
   } = {}) {
     Object.assign(this, {
       coordinate,
@@ -57,6 +60,8 @@ class Context {
       declarations,
       accesses,
       constructMap,
+      tokens,
+      tokenIndex,
     });
   }
 
@@ -74,6 +79,8 @@ class Context {
       functionObject: funct.functionObject,
       declarations: this.declarations,
       constructMap: this.constructMap,
+      tokens: this.tokens,
+      tokenIndex: this.tokenIndex,
     });
   }
 
@@ -84,6 +91,8 @@ class Context {
       functionObject: this.functionObject,
       declarations: this.declarations,
       constructMap: this.constructMap,
+      tokens: this.tokens,
+      tokenIndex: this.tokenIndex,
     });
   }
 
@@ -93,11 +102,19 @@ class Context {
   addLink(link) {
     const toCoords = link.to.coordinate;
     const fromCoords = link.from.coordinate;
-    const [tx, ty, tz, tw] =
-      [toCoords.x.value, toCoords.y.value, toCoords.z.value, toCoords.w.value];
+    const [tx, ty, tz, tw] = [
+      toCoords.x.value,
+      toCoords.y.value,
+      toCoords.z.value,
+      toCoords.w.value,
+    ];
     this.prepareCoordinate(tx, ty, tz);
-    const [fx, fy, fz, fw] =
-      [fromCoords.x.value, fromCoords.y.value, fromCoords.z.value, fromCoords.w.value];
+    const [fx, fy, fz, fw] = [
+      fromCoords.x.value,
+      fromCoords.y.value,
+      fromCoords.z.value,
+      fromCoords.w.value,
+    ];
     this.prepareCoordinate(fx, fy, fz, fw);
     if (!this.constructMap[fx][fy][fz][fw]) {
       this.constructMap[fx][fy][fz][fw] = link;
@@ -106,6 +123,55 @@ class Context {
     } else {
       this.constructMap[tx][ty][tz][tw].link = this.constructMap[fx][fy][fz][fw];
     }
+  }
+
+  addTokenOrigin(origin) {
+    this.tokenIndex += 1;
+    this.tokens[this.tokenIndex] = {
+      type: 'Origin',
+      default: origin.isDefault,
+      id: origin.id.value,
+      result: null,
+      args: {},
+      returns: origin.body[0].type,
+    };
+  }
+
+  addTokenArg(arg) {
+    this.tokens[this.tokenIndex].args[arg.id.value] = arg.type;
+  }
+
+  addTokenResult(result) {
+    this.tokens[this.tokenIndex].result = result.location.coordinate;
+  }
+
+  addTokenResultAccess(access) {
+    this.tokens[this.tokenIndex].result = access.id.value;
+  }
+
+  addTokenResultInitialize(initialize) {
+    this.tokens[this.tokenIndex].result = initialize.value.value;
+  }
+
+  addTokenFunction(funct) {
+    this.tokenIndex += 1;
+    this.tokens[this.tokenIndex] = {
+      type: 'Function',
+      funct: funct.id.value,
+      params: {},
+    };
+  }
+
+  addTokenParam(param) {
+    this.tokens[this.tokenIndex].params[param.id.value] = param.location.coordinate;
+  }
+
+  addTokenParamAccess(access, paramID) {
+    this.tokens[this.tokenIndex].params[paramID] = access.id.value;
+  }
+
+  addTokenParamInitialize(initialize, paramID) {
+    this.tokens[this.tokenIndex].params[paramID] = initialize.value.value;
   }
 
   // Adds the construct given to the constructMap. If a construct already exists there,
@@ -140,6 +206,26 @@ class Context {
     }
   }
 
+  retrieveCoordinate(coords) {
+    const [x, y, z, w] = [coords.x.value, coords.y.value, coords.z.value, coords.w.value];
+    return this.constructMap[x][y][z][w].link.functionToken;
+  }
+
+  mapCoordsToTokens() {
+    const originsWithCoords = this.tokens.filter(o => o.type === 'Origin' && o.result instanceof Coordinate);
+    for (let i = 0; i < originsWithCoords.length; i += 1) {
+      originsWithCoords[i].result = this.retrieveCoordinate(originsWithCoords[i].result);
+    }
+    const functions = this.tokens.filter(f => f.type === 'Function');
+    for (let i = 0; i < functions.length; i += 1) {
+      Object.keys(functions[i].params)
+        .filter(key => functions[i].params[key] instanceof Coordinate)
+        .forEach((key) => {
+          functions[i].params[key] = this.retrieveCoordinate(functions[i].params[key]);
+        });
+    }
+  }
+
   markDefaultExists() {
     this.defaultExists = true;
   }
@@ -163,9 +249,13 @@ class Context {
   addID(typeOrFunctionObject, id) {
     if (!(id in this.declarations)) {
       this.declarations[id] = typeOrFunctionObject;
-    } else if (this.declarations[id].expectedType && this.declarations[id].expectedType
-        !== typeOrFunctionObject) {
-      throw new Error(`Reinitialization Error: ${id} initialized as ${this.typeOrFunctionObject} but expected ${this.declarations[id].expectedType}`);
+    } else if (
+      this.declarations[id].expectedType &&
+      this.declarations[id].expectedType !== typeOrFunctionObject
+    ) {
+      throw new Error(`Reinitialization Error: ${id} initialized as ${this.typeOrFunctionObject} but expected ${
+        this.declarations[id].expectedType
+      }`);
     } else if (typeOrFunctionObject !== this.declarations[id]) {
       throw new Error(`Reinitialization Error: ${id} was already initialized`);
     }

@@ -59,9 +59,9 @@ Program {
                   z: NumericLiteral { value: 0 },
                   w: NumericLiteral { value: 0 } } },
             body:
-             [ Initialize {
-                 type: 'string',
-                 value: StringLiteral { value: '"Hello, world!"' } } ] },
+             Initialize {
+               type: 'string',
+               value: StringLiteral { value: '"Hello, world!"' } } },
           Return {
             location:
              Location {
@@ -77,7 +77,7 @@ Program {
                location:
                 Location {
                   isAbsolute: false,
-                  coordinate: 
+                  coordinate:
                    Coordinate {
                      x: NumericLiteral { value: 0 },
                      y: NumericLiteral { value: 1 },

@@ -10,6 +10,8 @@ module.exports = class Result {
     context.addResult(this);
     if (this.body) {
       this.body.forEach(b => b.analyze(context.createChildContextForConstruct(this)));
+    } else {
+      context.addTokenResult(this);
     }
     if (this.control) {
       this.control.analyze(context.createChildContextForConstruct(this));

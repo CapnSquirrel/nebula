@@ -46,7 +46,7 @@ fs.readFile(argv._[0], 'utf-8', (err, text) => {
     console.log(util.inspect(program, { depth: null }));
     return;
   }
-  // program.analyze();
+  program.analyze();
   if (argv.o) {
     console.error(new Error('Optimization not implemented yet'));
     // program = program.optimize();

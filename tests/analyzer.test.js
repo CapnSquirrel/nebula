@@ -12,7 +12,7 @@ describe('The semantic analyzer', () => {
       test(`detects a ${name.replace(/[^a-z]/g, ' ')}`, (done) => {
         const program = parse(fs.readFileSync(`${ERROR_PROGRAMS}/${name}`, 'utf-8'));
         const errorPattern = RegExp(name.replace('.error', '').replace(/-/g, ' '), 'i');
-        // TODO: throw correct errors during semantic analysis
+        // TODO: ensure proper semantic errors are thrown
         // chai.assert.throws(() => program.analyze(), errorPattern);
         done();
       });
