@@ -18,13 +18,13 @@ const jsName = (() => {
 const createOriginFunction = item => `(ctx) => ${jsName(item.result)}(ctx)`;
 
 const getArg = item => (arg) => {
-  if (item.type === 'Variable') return `ctx.${item.id}`;
+  if (item.type === 'Variable') return `ctx['${item.id}']`;
   const param = item.params[arg];
   switch (typeof param) {
     case 'string':
       return `"${param}"`;
     case 'object':
-      return param.type === 'Variable' ? `ctx.${param.id}` : `${jsName(param)}(ctx)`;
+      return param.type === 'Variable' ? `ctx['${param.id}']` : `${jsName(param)}(ctx)`;
     default:
       return param;
   }
@@ -40,7 +40,7 @@ const getStrVersion = (item) => {
     const other = idMap[item.funct];
     if (other) {
       const paramsStr = Object.keys(item.params)
-        .map(key => `${key}: ${getArg(item)(key)}`)
+        .map(key => `'${key}': ${getArg(item)(key)}`)
         .join(', ');
       return `(ctx) => ${jsName(other)}({...ctx, ...{${paramsStr}}})`;
     }
@@ -78,7 +78,7 @@ module.exports = {
     console.log(strVars);
     console.log(funs);
     const objStr = Object.keys(args)
-      .map(key => `${key}: ${args[key]}`)
+      .map(key => `'${key}': ${args[key]}`)
       .join(', ');
     const defEval = tokens
       .filter(item => item.type === 'Origin' && item.default)

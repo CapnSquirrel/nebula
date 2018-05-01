@@ -58,7 +58,7 @@ fs.readFile(argv._[0], 'utf-8', (err, text) => {
   if (argv.p) {
     generator.createExports();
   } else {
-    generator.runProgram({ n: 12 }, true);
+    generator.runProgram({ '"n"': 34 }, true);
   }
 });
 
