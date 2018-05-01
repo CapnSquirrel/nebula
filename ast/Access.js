@@ -8,7 +8,8 @@ module.exports = class Access {
   }
 
   analyze(context) {
-    const idType = context.accessID(this.id.value, this.type).type;
+    let idType = context.accessID(this.id.value, this.type);
+    if (idType.expectedType) idType = idType.expectedType;
     if (context.parentConstruct instanceof Accessor) {
       if (idType !== this.type) {
         throw new Error(`Type Error: ${idType} given for new variable ${context.parentConstruct.id.value} of type ${this.type}`);
@@ -18,7 +19,6 @@ module.exports = class Access {
     } else if (context.parentConstruct instanceof Parameter) {
       const parameterType = context.functionObject.args[context.parentConstruct.id.value];
       if (parameterType !== idType) {
-        console.log(idType);
         throw new Error(`Type Error: ${idType} given for parameter ${context.parentConstruct.id.value} of type ${parameterType}`);
       }
     } else if (context.parentConstruct instanceof Result) {

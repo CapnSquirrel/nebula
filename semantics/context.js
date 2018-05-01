@@ -146,7 +146,7 @@ class Context {
 
   // add an Argument to FunctionObject in declarations
   addArgument(argument) {
-    this.declarations[this.parentConstruct.id.value].params[argument.id.value] = argument.type;
+    this.declarations[this.parentConstruct.id.value].args[argument.id.value] = argument.type;
   }
 
   // add the Result to FunctionObject in declarations
@@ -166,7 +166,7 @@ class Context {
     } else if (this.declarations[id].expectedType && this.declarations[id].expectedType
         !== typeOrFunctionObject) {
       throw new Error(`Reinitialization Error: ${id} initialized as ${this.typeOrFunctionObject} but expected ${this.declarations[id].expectedType}`);
-    } else {
+    } else if (typeOrFunctionObject !== this.declarations[id]) {
       throw new Error(`Reinitialization Error: ${id} was already initialized`);
     }
   }
@@ -178,7 +178,7 @@ class Context {
       return this.declarations[id];
     } else if (expectedType) {
       this.declarations[id] = { expectedType };
-      return { type: expectedType };
+      return expectedType;
     }
     return false;
   }

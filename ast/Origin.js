@@ -11,7 +11,7 @@ module.exports = class Origin {
   analyze(context) {
     if (this.isDefault) context.markDefaultExists();
     this.location.analyze(context);
-    context.addID({ params: [] }, this.id.value);
+    context.addID({ args: [] }, this.id.value);
     this.body.forEach(b => b.analyze(context.createChildContextForConstruct(this)));
     context.addConstruct(this);
   }

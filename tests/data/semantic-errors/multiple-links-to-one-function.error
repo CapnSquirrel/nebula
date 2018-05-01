@@ -24,7 +24,7 @@ Function "lessThanOrEqual" (2,1,0)
     access number "n"
   Return <0,0,3>
 
-Function "increment" <3,0,0>
+Function "increment" (3,0,0)
   Parameter "p1" <0,0,1>
     access number "c"
   Return <0,0,2>

@@ -7,7 +7,7 @@ module.exports = class Parameter {
     this.location.analyze(context);
 
     // check if the function object has this parameter
-    if (!context.functionObject.params[this.id.value]) {
+    if (!context.functionObject.args[this.id.value]) {
       throw new Error(`Incorrect parameter ${this.id.value} given for function ${context.parentConstruct.id.value}`);
     }
     if (this.body) {
