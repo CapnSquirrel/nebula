@@ -1,4 +1,4 @@
-const tokens = require('./test-data/hello-world.js');
+const tokens = require('./test-data/recursive-fib.js');
 const modules = require('./default-modules');
 
 const idMap = {};
@@ -64,7 +64,7 @@ module.exports = {
     console.log(funs);
     const exps = tokens
       .filter(item => item.type === 'Origin')
-      .map(item => `module.exports.${item.id} = ${jsName(item)};`)
+      .map(item => `module.exports['${item.id}'] = ${jsName(item)};`)
       .join('\n');
     const defaultExp = tokens
       .filter(item => item.type === 'Origin' && item.default)
