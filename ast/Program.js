@@ -18,6 +18,6 @@ module.exports = class Program {
 
     context.mapCoordsToTokens();
 
-    // traverse the graph
+    this.tokens = context.tokens;
   }
 };

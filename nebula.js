@@ -56,9 +56,9 @@ fs.readFile(argv._[0], 'utf-8', (err, text) => {
     return;
   }
   if (argv.p) {
-    generator.createExports();
+    program.gen().createExports();
   } else {
-    generator.runProgram({ '"n"': 34 }, true);
+    program.gen().runProgram({ '"n"': 34 }, true);
   }
 });
 
