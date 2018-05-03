@@ -2,7 +2,7 @@ Program {
   body:
    [ Origin {
        isDefault: true,
-       id: StringLiteral { value: '"hello"' },
+       id: StringLiteral { value: 'hello' },
        location:
         Location {
           isAbsolute: true,
@@ -36,7 +36,7 @@ Program {
                      z: NumericLiteral { value: 1 },
                      w: NumericLiteral { value: 0 } } } } } ] },
      Function {
-       id: StringLiteral { value: '"print"' },
+       id: StringLiteral { value: 'print' },
        location:
         Location {
           isAbsolute: true,
@@ -48,7 +48,7 @@ Program {
              w: NumericLiteral { value: 0 } } },
        body:
         [ Parameter {
-            id: StringLiteral { value: '"message"' },
+            id: StringLiteral { value: 'message' },
             location:
              Location {
                isAbsolute: false,
@@ -61,7 +61,7 @@ Program {
             body:
              Initialize {
                type: 'string',
-               value: StringLiteral { value: '"Hello, world!"' } } },
+               value: StringLiteral { value: 'Hello, world!' } } },
           Return {
             location:
              Location {

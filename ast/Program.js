@@ -18,8 +18,6 @@ module.exports = class Program {
 
     context.mapCoordsToTokens();
 
-    console.log(context.tokens);
-
     this.tokens = context.tokens;
   }
 };

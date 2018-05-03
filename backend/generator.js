@@ -23,7 +23,7 @@ const processTokens = (tokens) => {
     const param = item.params[arg];
     switch (typeof param) {
       case 'string':
-        return `"${param}"`;
+        return `'${param}'`;
       case 'object':
         return param.type === 'Variable' ? `ctx['${param.id}']` : `${jsName(param)}(ctx)`;
       default:
@@ -41,7 +41,7 @@ const processTokens = (tokens) => {
       const other = idMap[item.funct];
       if (other) {
         const paramsStr = Object.keys(item.params)
-          .map(key => `'${key}': ${getArg(item)(key)}`)
+          .map(key => `${key}: ${getArg(item)(key)}`)
           .join(', ');
         return `(ctx) => ${jsName(other)}({...ctx, ...{${paramsStr}}})`;
       }
@@ -65,7 +65,7 @@ const processTokens = (tokens) => {
       console.log(funs);
       const exps = tokens
         .filter(item => item.type === 'Origin')
-        .map(item => `module.exports['${item.id}'] = ${jsName(item)};`)
+        .map(item => `module.exports[${item.id}] = ${jsName(item)};`)
         .join('\n');
       const defaultExp = tokens
         .filter(item => item.type === 'Origin' && item.default)
@@ -79,7 +79,7 @@ const processTokens = (tokens) => {
       console.log(strVars);
       console.log(funs);
       const objStr = Object.keys(args)
-        .map(key => `'${key}': ${args[key]}`)
+        .map(key => `${key}: ${args[key]}`)
         .join(', ');
       const defEval = tokens
         .filter(item => item.type === 'Origin' && item.default)

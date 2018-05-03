@@ -1,7 +1,7 @@
 Program {
   body:
    [ Function {
-       id: StringLiteral { value: '"test"' },
+       id: StringLiteral { value: 'test' },
        location:
         Location {
           isAbsolute: true,
@@ -13,7 +13,7 @@ Program {
              w: NumericLiteral { value: 0 } } },
        body:
         [ Parameter {
-            id: StringLiteral { value: '"strlit"' },
+            id: StringLiteral { value: 'strlit' },
             location:
              Location {
                isAbsolute: true,
@@ -23,9 +23,9 @@ Program {
                   y: NumericLiteral { value: 0 },
                   z: NumericLiteral { value: 0 },
                   w: NumericLiteral { value: 0 } } },
-            body: Initialize { type: 'string', value: StringLiteral { value: '"test"' } } },
+            body: Initialize { type: 'string', value: StringLiteral { value: 'test' } } },
           Parameter {
-            id: StringLiteral { value: '"numlit"' },
+            id: StringLiteral { value: 'numlit' },
             location:
              Location {
                isAbsolute: true,
@@ -37,7 +37,7 @@ Program {
                   w: NumericLiteral { value: 0 } } },
             body: Initialize { type: 'number', value: NumericLiteral { value: -10.32 } } },
           Parameter {
-            id: StringLiteral { value: '"boollit"' },
+            id: StringLiteral { value: 'boollit' },
             location:
              Location {
                isAbsolute: true,

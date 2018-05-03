@@ -10,7 +10,9 @@ module.exports = class Function {
       throw new Error(`function ${this.id.value} does not exist`);
     }
     if (Object.keys(this.functionObject.args).length !== this.body.length - 1) {
-      throw new Error(`function ${this.id.value} given ${this.body.length - 1} arguments, but it needs ${Object.keys(this.functionObject.args).length}`);
+      throw new Error(`function ${this.id.value} given ${this.body.length - 1} arguments, but it needs ${
+        Object.keys(this.functionObject.args).length
+      }`);
     }
     context.addTokenFunction(this);
     this.body.forEach(b => b.analyze(context.createChildContextForFunction(this)));
