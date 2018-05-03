@@ -50,7 +50,6 @@ class Context {
     accesses = {},
     constructMap = {},
     tokens = [],
-    tokenIndex = -1,
   } = {}) {
     Object.assign(this, {
       coordinate,
@@ -61,7 +60,6 @@ class Context {
       accesses,
       constructMap,
       tokens,
-      tokenIndex,
     });
   }
 
@@ -80,7 +78,6 @@ class Context {
       declarations: this.declarations,
       constructMap: this.constructMap,
       tokens: this.tokens,
-      tokenIndex: this.tokenIndex,
     });
   }
 
@@ -92,7 +89,6 @@ class Context {
       declarations: this.declarations,
       constructMap: this.constructMap,
       tokens: this.tokens,
-      tokenIndex: this.tokenIndex,
     });
   }
 
@@ -126,52 +122,50 @@ class Context {
   }
 
   addTokenOrigin(origin) {
-    this.tokenIndex += 1;
-    this.tokens[this.tokenIndex] = {
+    this.tokens.push({
       type: 'Origin',
       default: origin.isDefault,
       id: origin.id.value,
       result: null,
       args: {},
       returns: origin.body[0].type,
-    };
+    });
   }
 
   addTokenArg(arg) {
-    this.tokens[this.tokenIndex].args[arg.id.value] = arg.type;
+    this.tokens[this.tokens.length - 1].args[arg.id.value] = arg.type;
   }
 
   addTokenResult(result) {
-    this.tokens[this.tokenIndex].result = result.location.coordinate;
+    this.tokens[this.tokens.length - 1].result = result.location.coordinate;
   }
 
   addTokenResultAccess(access) {
-    this.tokens[this.tokenIndex].result = access.id.value;
+    this.tokens[this.tokens.length - 1].result = { type: 'Variable', id: access.id.value };
   }
 
   addTokenResultInitialize(initialize) {
-    this.tokens[this.tokenIndex].result = initialize.value.value;
+    this.tokens[this.tokens.length - 1].result = initialize.value.value;
   }
 
   addTokenFunction(funct) {
-    this.tokenIndex += 1;
-    this.tokens[this.tokenIndex] = {
+    this.tokens.push({
       type: 'Function',
       funct: funct.id.value,
       params: {},
-    };
+    });
   }
 
   addTokenParam(param) {
-    this.tokens[this.tokenIndex].params[param.id.value] = param.location.coordinate;
+    this.tokens[this.tokens.length - 1].params[param.id.value] = param.location.coordinate;
   }
 
   addTokenParamAccess(access, paramID) {
-    this.tokens[this.tokenIndex].params[paramID] = access.id.value;
+    this.tokens[this.tokens.length - 1].params[paramID] = { type: 'Variable', id: access.id.value };
   }
 
   addTokenParamInitialize(initialize, paramID) {
-    this.tokens[this.tokenIndex].params[paramID] = initialize.value.value;
+    this.tokens[this.tokens.length - 1].params[paramID] = initialize.value.value;
   }
 
   // Adds the construct given to the constructMap. If a construct already exists there,

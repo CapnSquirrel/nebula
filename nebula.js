@@ -58,7 +58,7 @@ fs.readFile(argv._[0], 'utf-8', (err, text) => {
   if (argv.p) {
     program.gen().createExports();
   } else {
-    program.gen().runProgram({ '"n"': 34 }, true);
+    program.gen().runProgram({ '"b"': 2, '"p"': 10 }, true);
   }
 });
 
