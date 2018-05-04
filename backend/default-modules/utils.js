@@ -2,7 +2,7 @@ module.exports = {
   print: {
     args: { message: 'any' },
     returns: 'void',
-    eval: "console.log(#{message} + '')",
+    eval: "console.log(`${#{message}}`)",
   },
   ternary: {
     args: { condition: 'boolean', true: 'any', false: 'any' },

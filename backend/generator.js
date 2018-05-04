@@ -65,7 +65,7 @@ const processTokens = (tokens) => {
       console.log(funs);
       const exps = tokens
         .filter(item => item.type === 'Origin')
-        .map(item => `module.exports[${item.id}] = ${jsName(item)};`)
+        .map(item => `module.exports['${item.id}'] = ${jsName(item)};`)
         .join('\n');
       const defaultExp = tokens
         .filter(item => item.type === 'Origin' && item.default)
@@ -75,7 +75,7 @@ const processTokens = (tokens) => {
       console.log(defaultExp);
     },
 
-    runProgram(args, print) {
+    runProgram(args) {
       console.log(strVars);
       console.log(funs);
       const objStr = Object.keys(args)
@@ -85,6 +85,8 @@ const processTokens = (tokens) => {
         .filter(item => item.type === 'Origin' && item.default)
         .map(item => `${jsName(item)}({${objStr}})`)
         .join('\n');
+      const print =
+        tokens.filter(item => item.type === 'Origin' && item.default)[0].returns !== 'void';
       console.log(print ? `console.log(${defEval})` : `${defEval}`);
     },
   };

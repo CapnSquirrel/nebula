@@ -17,13 +17,17 @@
  * ./nebula.js -o <filename>
  *     optimizes the intermediate code before generating target JavaScript.
  *
+ * ./nebula.js [flags] <filename> [arguments]
+ *     uses a well formed javascript object to populate the function's arguments.
+ *     [only applies when not using -p]
+ *
  * Output of the AST and decorated AST uses the object inspection functionality
  * built into Node.js.
  */
 
 /* eslint-disable no-console */
 const { argv } = require('yargs')
-  .usage('$0 [-a] [-o] [-i] [-r] filename')
+  .usage('$0 [-a] [-o] [-i] [-r] filename [arguments]')
   .boolean(['a', 'o', 'i', 'p'])
   .describe('a', 'show abstract syntax tree after parsing then stop')
   .describe('o', 'do optimizations')
@@ -58,7 +62,11 @@ fs.readFile(argv._[0], 'utf-8', (err, text) => {
   if (argv.p) {
     program.gen().createExports();
   } else {
-    program.gen().runProgram({ n: 10, p: 10 }, true);
+    let params = {};
+    if (argv._[1] !== undefined) {
+      params = JSON.parse(argv._[1]);
+    }
+    program.gen().runProgram(params, true);
   }
 });
 
