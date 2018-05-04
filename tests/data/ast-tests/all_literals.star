@@ -1,3 +1,5 @@
+# This program is not meant to be executed
+
 Function "test" (1)
   Parameter "strlit" (3)
     initialize string "test"
