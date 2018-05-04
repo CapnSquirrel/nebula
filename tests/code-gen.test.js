@@ -22,7 +22,6 @@ describe('The program', () => {
           const program = parse(text);
           program.analyze();
           const actual = `${eval(program.gen().runProgram({ n: 5, p: 2, b: 6 }))}`;
-          console.log(program.gen().runProgram({ n: 5, p: 2, b: 6 }));
           fs.readFile(`${TEST_DIR}/${name}.out`, 'utf-8', (_err, expected) => {
             chai.assert.equal(actual, expected.trim());
             done();
