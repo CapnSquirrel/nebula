@@ -1,3 +1,5 @@
+# Recursive program for Pow
+
 Origin default "_pow" (0,0,0)
   Argument number "b" <0,0,1>
   Argument number "p" <0,0,2>
@@ -64,6 +66,7 @@ Function "_pow" (7,0,0)
   Parameter "b" <0,0,1>
     access number "b"
   Parameter "p" <0,0,2>
+  Parameter "EXTRA EXTRA"
   Return <0,0,3>
 
 Function "add" (8,0,0)
@@ -83,6 +86,5 @@ Link (4,0,3) (3,0,1) # _fib result <-> p1
 Link (5,0,3) (4,0,2) # p - 1 <-> _fib p
 
 Link (6,0,3) (2,0,2) # p1 / p2 <-> ternary2 true
-Link (7,0,3) (2,0,2)
 Link (7,0,3) (6,0,1) # _fib result <-> p1
 Link (8,0,3) (7,0,2) # p + 1 <-> _fib p

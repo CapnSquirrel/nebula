@@ -12,19 +12,19 @@ module.exports = class Access {
     if (idType.expectedType) idType = idType.expectedType;
     if (context.parentConstruct instanceof Accessor) {
       if (idType !== this.type) {
-        throw new Error(`Type Error: ${idType} given for new variable ${context.parentConstruct.id.value} of type ${this.type}`);
+        throw new Error('Type Error: wrong type given to variable');
       } else {
         context.addID(idType, context.parentConstruct.id.value);
       }
     } else if (context.parentConstruct instanceof Parameter) {
-      const parameterType = context.functionObject.args[context.parentConstruct.id.value];
+      const parameterType = context.parentConstruct.type;
       if (parameterType !== 'any' && parameterType !== idType) {
-        throw new Error(`Type Error: ${idType} given for parameter ${context.parentConstruct.id.value} of type ${parameterType}`);
+        throw new Error('Type Error: wrong type given to parameter');
       }
       context.addTokenParamAccess(this, context.parentConstruct.id.value);
     } else if (context.parentConstruct instanceof Result) {
       if (context.parentConstruct.type !== idType) {
-        throw new Error(`Type Error: ${idType} given for Result of type ${context.parentConstruct.type}`);
+        throw new Error('Type Error: wrong type given to result');
       }
       context.addTokenResultAccess(this);
     }

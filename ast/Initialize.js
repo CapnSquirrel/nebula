@@ -11,15 +11,15 @@ module.exports = class Initialize {
     if (context.parentConstruct instanceof Accessor) {
       context.addID(this.type, context.parentConstruct.id.value);
     } else if (context.parentConstruct instanceof Parameter) {
-      const parameterType = context.functionObject.args[context.parentConstruct.id.value];
+      const parameterType = context.parentConstruct.type;
       if (parameterType !== 'any' && parameterType !== this.type) {
-        throw new Error(`Type Error: ${this.type} given for parameter ${context.parentConstruct.id.value} of type ${parameterType}`);
+        throw new Error('Type Error: wrong type given to parameter');
       }
       context.addTokenParamInitialize(this, context.parentConstruct.id.value);
     } else if (context.parentConstruct instanceof Result) {
       const resultType = context.parentConstruct.type;
       if (resultType !== this.type) {
-        throw new Error(`Type Error: ${this.type} given for result of type ${resultType}`);
+        throw new Error('Type Error: wrong type given to result');
       }
       context.addTokenResultAccess(this);
     }

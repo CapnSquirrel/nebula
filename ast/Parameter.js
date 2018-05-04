@@ -5,10 +5,11 @@ module.exports = class Parameter {
 
   analyze(context) {
     this.location.analyze(context);
+    this.type = context.functionObject.args[this.id.value];
 
     // check if the function object has this parameter
-    if (!context.functionObject.args[this.id.value]) {
-      throw new Error(`Incorrect parameter ${this.id.value} given for function ${context.parentConstruct.id.value}`);
+    if (!this.type) {
+      throw new Error('incorrect parameter given for function');
     }
     if (this.body) {
       this.body.analyze(context.createChildContextForConstruct(this));

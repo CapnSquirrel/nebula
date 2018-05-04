@@ -1,7 +1,10 @@
+# Recursive program for Pow
+
 Origin default "_pow" (0,0,0)
   Argument number "b" <0,0,1>
   Argument number "p" <0,0,2>
   Result number <0,0,3>
+    initialize string "HA GOTTEM"
 
 Function "ternary" (1,0,0)
   Parameter "condition" <0,0,1>
@@ -85,4 +88,3 @@ Link (5,0,3) (4,0,2) # p - 1 <-> _fib p
 Link (6,0,3) (2,0,2) # p1 / p2 <-> ternary2 true
 Link (7,0,3) (6,0,1) # _fib result <-> p1
 Link (8,0,3) (7,0,2) # p + 1 <-> _fib p
-Link (0,0,3) (0,0,2)

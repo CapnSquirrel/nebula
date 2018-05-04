@@ -33,7 +33,7 @@ const grammar = ohm.grammar(fs.readFileSync('./syntax/nebula.ohm'));
 const astGenerator = grammar.createSemantics().addOperation('ast', {
   Program: (_1, body, _2, _3) => new Program(body.ast()),
   Origin: (_1, def, id, location, _2, body) =>
-    new Origin(!!def, id.ast(), location.ast(), body.ast()),
+    new Origin(def.sourceString === 'default', id.ast(), location.ast(), body.ast()),
   OriginBlock: (_1, args, result, _2) => [...args.ast(), result.ast()],
   Argument: (_1, type, id, location, _2) =>
     new Argument(type.sourceString, id.ast(), location.ast()),

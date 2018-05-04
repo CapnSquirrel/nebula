@@ -31,9 +31,13 @@
     d. enable traversal from result -> values
  */
 
-const Link = require('../ast/Link.js');
 const defaultFunctions = require('../backend/default-modules');
+const Link = require('../ast/Link.js');
 const Coordinate = require('../ast/Coordinate.js');
+const Argument = require('../ast/Argument.js');
+const Result = require('../ast/Result.js');
+const Parameter = require('../ast/Parameter.js');
+const Return = require('../ast/Return.js');
 
 class Context {
   constructor({
@@ -94,7 +98,7 @@ class Context {
 
   // Tries to add a link between two constructs in the constructMap. If the "from"
   // location has no construct yet, we put the link to hold it's place and be added
-  // later. Similarly for the "to" location.
+  // later. Similarly for the "to" location. We also check the construct types being linked
   addLink(link) {
     const toCoords = link.to.coordinate;
     const fromCoords = link.from.coordinate;
@@ -105,6 +109,7 @@ class Context {
       toCoords.w.value,
     ];
     this.prepareCoordinate(tx, ty, tz);
+    const toConstruct = this.constructMap[tx][ty][tz][tw];
     const [fx, fy, fz, fw] = [
       fromCoords.x.value,
       fromCoords.y.value,
@@ -112,13 +117,84 @@ class Context {
       fromCoords.w.value,
     ];
     this.prepareCoordinate(fx, fy, fz, fw);
-    if (!this.constructMap[fx][fy][fz][fw]) {
+    const fromConstruct = this.constructMap[fx][fy][fz][fw];
+    if (!fromConstruct) {
       this.constructMap[fx][fy][fz][fw] = link;
-    } else if (!this.constructMap[tx][ty][tz][tw]) {
+    } else if (!toConstruct) {
       this.constructMap[tx][ty][tz][tw] = link;
+    } else if (toConstruct.link) {
+      throw new Error('multiple links to one parameter or result');
+    } else if (
+      (toConstruct instanceof Parameter || toConstruct instanceof Result) &&
+      (fromConstruct instanceof Return || fromConstruct instanceof Argument)
+    ) {
+      if (
+        toConstruct.type !== 'any' &&
+        toConstruct.type !== 'void' &&
+        fromConstruct.type !== 'any' &&
+        fromConstruct.type !== 'void' &&
+        toConstruct.type !== fromConstruct.type
+      ) {
+        throw new Error('Type Error: linkage of differing types');
+      }
+      toConstruct.link = fromConstruct;
     } else {
-      this.constructMap[tx][ty][tz][tw].link = this.constructMap[fx][fy][fz][fw];
+      throw new Error('link type incompatibility');
     }
+  }
+
+  // Adds the construct given to the constructMap. If a construct already exists there,
+  // prepare coordinates will throw an error. But if it's a Link, the construct will be added
+  // and the link will be added after.
+  addConstruct(construct) {
+    const coords = construct.location.coordinate;
+    const [x, y, z, w] = [coords.x.value, coords.y.value, coords.z.value, coords.w.value];
+    this.prepareCoordinate(x, y, z);
+    if (!this.constructMap[x][y][z][w]) {
+      this.constructMap[x][y][z][w] = construct;
+    } else if (this.constructMap[x][y][z][w] instanceof Link) {
+      const link = this.constructMap[x][y][z][w];
+      this.constructMap[x][y][z][w] = construct;
+      this.addLink(link);
+    } else {
+      throw new Error('coordinate overlap');
+    }
+  }
+
+  // Prepares the coordinateMap at the given coordinates by creating empty arrays at
+  // currently undefined locations. This is also where we check for coordinate overlaps
+  prepareCoordinate(x, y, z) {
+    if (!this.constructMap[x]) {
+      this.constructMap[x] = {};
+    }
+    if (!this.constructMap[x][y]) {
+      this.constructMap[x][y] = {};
+    }
+    if (!this.constructMap[x][y][z]) {
+      this.constructMap[x][y][z] = {};
+    }
+  }
+
+  mapCoordsToTokens() {
+    const originsWithCoords = this.tokens.filter(o => o.type === 'Origin' && o.result instanceof Coordinate);
+    for (let i = 0; i < originsWithCoords.length; i += 1) {
+      originsWithCoords[i].result = this.retrieveCoordinate(originsWithCoords[i].result);
+    }
+    const functions = this.tokens.filter(f => f.type === 'Function');
+    for (let i = 0; i < functions.length; i += 1) {
+      Object.keys(functions[i].params)
+        .filter(key => functions[i].params[key] instanceof Coordinate)
+        .forEach((key) => {
+          functions[i].params[key] = this.retrieveCoordinate(functions[i].params[key]);
+        });
+    }
+  }
+
+  retrieveCoordinate(coords) {
+    const [x, y, z, w] = [coords.x.value, coords.y.value, coords.z.value, coords.w.value];
+    const construct = this.constructMap[x][y][z][w].link;
+    if (!construct) throw new Error('no path from value to result');
+    return construct.functionToken;
   }
 
   addTokenOrigin(origin) {
@@ -168,58 +244,6 @@ class Context {
     this.tokens[this.tokens.length - 1].params[paramID] = initialize.value.value;
   }
 
-  // Adds the construct given to the constructMap. If a construct already exists there,
-  // prepare coordinates will throw an error. But if it's a Link, the construct will be added
-  // and the link will be added after.
-  addConstruct(construct) {
-    const coords = construct.location.coordinate;
-    const [x, y, z, w] = [coords.x.value, coords.y.value, coords.z.value, coords.w.value];
-    this.prepareCoordinate(x, y, z);
-    if (!this.constructMap[x][y][z][w]) {
-      this.constructMap[x][y][z][w] = construct;
-    } else if (this.constructMap[x][y][z][w] instanceof Link) {
-      const link = this.constructMap[x][y][z][w];
-      this.constructMap[x][y][z][w] = construct;
-      this.addLink(link);
-    } else {
-      throw new Error(`2 or more constructs located at (${x},${y},${z},${w})`);
-    }
-  }
-
-  // Prepares the coordinateMap at the given coordinates by creating empty arrays at
-  // currently undefined locations. This is also where we check for coordinate overlaps
-  prepareCoordinate(x, y, z) {
-    if (!this.constructMap[x]) {
-      this.constructMap[x] = {};
-    }
-    if (!this.constructMap[x][y]) {
-      this.constructMap[x][y] = {};
-    }
-    if (!this.constructMap[x][y][z]) {
-      this.constructMap[x][y][z] = {};
-    }
-  }
-
-  retrieveCoordinate(coords) {
-    const [x, y, z, w] = [coords.x.value, coords.y.value, coords.z.value, coords.w.value];
-    return this.constructMap[x][y][z][w].link.functionToken;
-  }
-
-  mapCoordsToTokens() {
-    const originsWithCoords = this.tokens.filter(o => o.type === 'Origin' && o.result instanceof Coordinate);
-    for (let i = 0; i < originsWithCoords.length; i += 1) {
-      originsWithCoords[i].result = this.retrieveCoordinate(originsWithCoords[i].result);
-    }
-    const functions = this.tokens.filter(f => f.type === 'Function');
-    for (let i = 0; i < functions.length; i += 1) {
-      Object.keys(functions[i].params)
-        .filter(key => functions[i].params[key] instanceof Coordinate)
-        .forEach((key) => {
-          functions[i].params[key] = this.retrieveCoordinate(functions[i].params[key]);
-        });
-    }
-  }
-
   markDefaultExists() {
     this.defaultExists = true;
   }
@@ -247,11 +271,9 @@ class Context {
       this.declarations[id].expectedType &&
       this.declarations[id].expectedType !== typeOrFunctionObject
     ) {
-      throw new Error(`Reinitialization Error: ${id} initialized as ${this.typeOrFunctionObject} but expected ${
-        this.declarations[id].expectedType
-      }`);
+      throw new Error('Type Error: wrong type given to variable');
     } else if (typeOrFunctionObject !== this.declarations[id]) {
-      throw new Error(`Reinitialization Error: ${id} was already initialized`);
+      throw new Error('origin was already initialized');
     }
   }
 

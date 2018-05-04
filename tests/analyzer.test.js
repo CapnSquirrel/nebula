@@ -12,8 +12,7 @@ describe('The semantic analyzer', () => {
       test(`detects a ${name.replace(/[^a-z]/g, ' ')}`, (done) => {
         const program = parse(fs.readFileSync(`${ERROR_PROGRAMS}/${name}`, 'utf-8'));
         const errorPattern = RegExp(name.replace('.error', '').replace(/-/g, ' '), 'i');
-        // TODO: ensure proper semantic errors are thrown
-        // chai.assert.throws(() => program.analyze(), errorPattern);
+        chai.assert.throws(() => program.analyze(), errorPattern);
         done();
       });
     } else if (name.endsWith('.star')) {

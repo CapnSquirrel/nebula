@@ -10,6 +10,12 @@ Function "ternary" (1,0,0)
   Parameter "false" <0,0,3>
   Return <0,0,4>
 
+Accessor "huh" (9001,0,0,0)
+  initialize string "IT\'S OVER 9000!!!"
+
+Accessor "huh" (9000,0,0,0)
+  initialize boolean false
+
 Function "equals" (1,1,0)
   Parameter "p1" <0,0,1>
     access number "p"
@@ -85,4 +91,3 @@ Link (5,0,3) (4,0,2) # p - 1 <-> _fib p
 Link (6,0,3) (2,0,2) # p1 / p2 <-> ternary2 true
 Link (7,0,3) (6,0,1) # _fib result <-> p1
 Link (8,0,3) (7,0,2) # p + 1 <-> _fib p
-Link (0,0,3) (0,0,2)
