@@ -61,8 +61,7 @@ const processTokens = (tokens) => {
 
   return {
     createExports() {
-      console.log(strVars);
-      console.log(funs);
+
       const exps = tokens
         .filter(item => item.type === 'Origin')
         .map(item => `module.exports['${item.id}'] = ${jsName(item)};`)
@@ -71,13 +70,11 @@ const processTokens = (tokens) => {
         .filter(item => item.type === 'Origin' && item.default)
         .map(item => `module.exports.default = ${jsName(item)};`)
         .join('\n');
-      console.log(exps);
-      console.log(defaultExp);
+        
+      return [strVars, funs, exps, defaultExp].join('\n');
     },
 
     runProgram(args) {
-      console.log(strVars);
-      console.log(funs);
       const objStr = Object.keys(args)
         .map(key => `${key}: ${args[key]}`)
         .join(', ');
@@ -87,7 +84,9 @@ const processTokens = (tokens) => {
         .join('\n');
       const print =
         tokens.filter(item => item.type === 'Origin' && item.default)[0].returns !== 'void';
-      console.log(print ? `console.log(${defEval})` : `${defEval}`);
+      const execStr = print ? `console.log(${defEval})` : `${defEval}`
+
+      return [strVars, funs, execStr].join('\n');
     },
   };
 };

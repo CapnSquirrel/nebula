@@ -60,13 +60,13 @@ fs.readFile(argv._[0], 'utf-8', (err, text) => {
     return;
   }
   if (argv.p) {
-    program.gen().createExports();
+    console.log(program.gen().createExports());
   } else {
     let params = {};
     if (argv._[1] !== undefined) {
       params = JSON.parse(argv._[1]);
     }
-    program.gen().runProgram(params);
+    console.log(program.gen().runProgram(params));
   }
 });
 
