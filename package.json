@@ -18,14 +18,14 @@
   "homepage": "https://github.com/CapnSquirrel/nebula#readme",
   "devDependencies": {
     "chai": "^4.1.2",
-    "eslint": "^4.17.0",
+    "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.9.0",
-    "jest": "^22.4.2"
+    "eslint-plugin-import": "^2.11.0",
+    "jest": "^22.4.3"
   },
   "dependencies": {
     "npm": "^5.8.0",
     "ohm-js": "^0.14.0",
-    "yargs": "^11.0.0"
+    "yargs": "^11.1.0"
   }
 }
