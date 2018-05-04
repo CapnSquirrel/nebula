@@ -75,15 +75,15 @@ Function "add" (8,0,0)
     initialize number 1
   Return <0,0,3>
 
-Link (1,0,4) (0,0,3) # ternary1 return <-> Result
-Link (1,1,3) (1,0,1) # p = 0 <-> ternary1 condition
-Link (2,0,4) (1,0,3) # ternary2 return <-> ternary1 false
-Link (2,1,3) (2,0,1) # p < 0 <-> ternary2 condition
+Link (1,0,4) (0,0,3)
+Link (1,1,3) (1,0,1)
+Link (2,0,4) (1,0,3)
+Link (2,1,3) (2,0,1)
 
-Link (3,0,3) (2,0,3) # p1 x p2 <-> ternary2 false
-Link (4,0,3) (3,0,1) # _fib result <-> p1
-Link (5,0,3) (4,0,2) # p - 1 <-> _fib p
+Link (3,0,3) (2,0,3)
+Link (4,0,3) (3,0,1)
+Link (5,0,3) (4,0,2)
 
-Link (6,0,3) (2,0,2) # p1 / p2 <-> ternary2 true
-Link (7,0,3) (6,0,1) # _fib result <-> p1
-Link (8,0,3) (7,0,2) # p + 1 <-> _fib p
+Link (6,0,3) (2,0,2)
+Link (7,0,3) (6,0,1)
+Link (8,0,3) (7,0,2)

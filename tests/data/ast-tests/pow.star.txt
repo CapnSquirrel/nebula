@@ -1,0 +1,724 @@
+Program {
+  body: 
+   [ Origin {
+       isDefault: true,
+       id: StringLiteral { value: '_pow' },
+       location: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 0 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 0 },
+             w: NumericLiteral { value: 0 } } },
+       body: 
+        [ Argument {
+            type: 'number',
+            id: StringLiteral { value: 'b' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 1 },
+                  w: NumericLiteral { value: 0 } } } },
+          Argument {
+            type: 'number',
+            id: StringLiteral { value: 'p' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 2 },
+                  w: NumericLiteral { value: 0 } } } },
+          Result {
+            type: 'number',
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 3 },
+                  w: NumericLiteral { value: 0 } } } } ] },
+     Function {
+       id: StringLiteral { value: 'ternary' },
+       location: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 1 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 0 },
+             w: NumericLiteral { value: 0 } } },
+       body: 
+        [ Parameter {
+            id: StringLiteral { value: 'condition' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 1 },
+                  w: NumericLiteral { value: 0 } } },
+            body: undefined },
+          Parameter {
+            id: StringLiteral { value: 'true' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 2 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Initialize { type: 'number', value: NumericLiteral { value: 1 } } },
+          Parameter {
+            id: StringLiteral { value: 'false' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 3 },
+                  w: NumericLiteral { value: 0 } } },
+            body: undefined },
+          Return {
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 4 },
+                  w: NumericLiteral { value: 0 } } } } ] },
+     Function {
+       id: StringLiteral { value: 'equals' },
+       location: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 1 },
+             y: NumericLiteral { value: 1 },
+             z: NumericLiteral { value: 0 },
+             w: NumericLiteral { value: 0 } } },
+       body: 
+        [ Parameter {
+            id: StringLiteral { value: 'p1' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 1 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Access { type: 'number', id: StringLiteral { value: 'p' } } },
+          Parameter {
+            id: StringLiteral { value: 'p2' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 2 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Initialize { type: 'number', value: NumericLiteral { value: 0 } } },
+          Return {
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 3 },
+                  w: NumericLiteral { value: 0 } } } } ] },
+     Function {
+       id: StringLiteral { value: 'ternary' },
+       location: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 2 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 0 },
+             w: NumericLiteral { value: 0 } } },
+       body: 
+        [ Parameter {
+            id: StringLiteral { value: 'condition' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 1 },
+                  w: NumericLiteral { value: 0 } } },
+            body: undefined },
+          Parameter {
+            id: StringLiteral { value: 'true' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 2 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Initialize { type: 'number', value: NumericLiteral { value: 1 } } },
+          Parameter {
+            id: StringLiteral { value: 'false' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 3 },
+                  w: NumericLiteral { value: 0 } } },
+            body: undefined },
+          Return {
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 4 },
+                  w: NumericLiteral { value: 0 } } } } ] },
+     Function {
+       id: StringLiteral { value: 'lessThan' },
+       location: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 2 },
+             y: NumericLiteral { value: 1 },
+             z: NumericLiteral { value: 0 },
+             w: NumericLiteral { value: 0 } } },
+       body: 
+        [ Parameter {
+            id: StringLiteral { value: 'p1' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 1 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Access { type: 'number', id: StringLiteral { value: 'p' } } },
+          Parameter {
+            id: StringLiteral { value: 'p2' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 2 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Initialize { type: 'number', value: NumericLiteral { value: 0 } } },
+          Return {
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 3 },
+                  w: NumericLiteral { value: 0 } } } } ] },
+     Function {
+       id: StringLiteral { value: 'multiply' },
+       location: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 3 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 0 },
+             w: NumericLiteral { value: 0 } } },
+       body: 
+        [ Parameter {
+            id: StringLiteral { value: 'p1' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 1 },
+                  w: NumericLiteral { value: 0 } } },
+            body: undefined },
+          Parameter {
+            id: StringLiteral { value: 'p2' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 2 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Access { type: 'number', id: StringLiteral { value: 'b' } } },
+          Return {
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 3 },
+                  w: NumericLiteral { value: 0 } } } } ] },
+     Function {
+       id: StringLiteral { value: '_pow' },
+       location: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 4 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 0 },
+             w: NumericLiteral { value: 0 } } },
+       body: 
+        [ Parameter {
+            id: StringLiteral { value: 'b' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 1 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Access { type: 'number', id: StringLiteral { value: 'b' } } },
+          Parameter {
+            id: StringLiteral { value: 'p' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 2 },
+                  w: NumericLiteral { value: 0 } } },
+            body: undefined },
+          Return {
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 3 },
+                  w: NumericLiteral { value: 0 } } } } ] },
+     Function {
+       id: StringLiteral { value: 'subtract' },
+       location: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 5 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 0 },
+             w: NumericLiteral { value: 0 } } },
+       body: 
+        [ Parameter {
+            id: StringLiteral { value: 'p1' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 1 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Access { type: 'number', id: StringLiteral { value: 'p' } } },
+          Parameter {
+            id: StringLiteral { value: 'p2' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 2 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Initialize { type: 'number', value: NumericLiteral { value: 1 } } },
+          Return {
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 3 },
+                  w: NumericLiteral { value: 0 } } } } ] },
+     Function {
+       id: StringLiteral { value: 'divide' },
+       location: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 6 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 0 },
+             w: NumericLiteral { value: 0 } } },
+       body: 
+        [ Parameter {
+            id: StringLiteral { value: 'p1' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 1 },
+                  w: NumericLiteral { value: 0 } } },
+            body: undefined },
+          Parameter {
+            id: StringLiteral { value: 'p2' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 2 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Access { type: 'number', id: StringLiteral { value: 'b' } } },
+          Return {
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 3 },
+                  w: NumericLiteral { value: 0 } } } } ] },
+     Function {
+       id: StringLiteral { value: '_pow' },
+       location: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 7 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 0 },
+             w: NumericLiteral { value: 0 } } },
+       body: 
+        [ Parameter {
+            id: StringLiteral { value: 'b' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 1 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Access { type: 'number', id: StringLiteral { value: 'b' } } },
+          Parameter {
+            id: StringLiteral { value: 'p' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 2 },
+                  w: NumericLiteral { value: 0 } } },
+            body: undefined },
+          Return {
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 3 },
+                  w: NumericLiteral { value: 0 } } } } ] },
+     Function {
+       id: StringLiteral { value: 'add' },
+       location: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 8 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 0 },
+             w: NumericLiteral { value: 0 } } },
+       body: 
+        [ Parameter {
+            id: StringLiteral { value: 'p1' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 1 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Access { type: 'number', id: StringLiteral { value: 'p' } } },
+          Parameter {
+            id: StringLiteral { value: 'p2' },
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 2 },
+                  w: NumericLiteral { value: 0 } } },
+            body: Initialize { type: 'number', value: NumericLiteral { value: 1 } } },
+          Return {
+            location: 
+             Location {
+               isAbsolute: false,
+               coordinate: 
+                Coordinate {
+                  x: NumericLiteral { value: 0 },
+                  y: NumericLiteral { value: 0 },
+                  z: NumericLiteral { value: 3 },
+                  w: NumericLiteral { value: 0 } } } } ] },
+     Link {
+       from: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 1 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 4 },
+             w: NumericLiteral { value: 0 } } },
+       to: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 0 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 3 },
+             w: NumericLiteral { value: 0 } } } },
+     Link {
+       from: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 1 },
+             y: NumericLiteral { value: 1 },
+             z: NumericLiteral { value: 3 },
+             w: NumericLiteral { value: 0 } } },
+       to: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 1 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 1 },
+             w: NumericLiteral { value: 0 } } } },
+     Link {
+       from: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 2 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 4 },
+             w: NumericLiteral { value: 0 } } },
+       to: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 1 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 3 },
+             w: NumericLiteral { value: 0 } } } },
+     Link {
+       from: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 2 },
+             y: NumericLiteral { value: 1 },
+             z: NumericLiteral { value: 3 },
+             w: NumericLiteral { value: 0 } } },
+       to: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 2 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 1 },
+             w: NumericLiteral { value: 0 } } } },
+     Link {
+       from: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 3 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 3 },
+             w: NumericLiteral { value: 0 } } },
+       to: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 2 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 3 },
+             w: NumericLiteral { value: 0 } } } },
+     Link {
+       from: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 4 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 3 },
+             w: NumericLiteral { value: 0 } } },
+       to: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 3 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 1 },
+             w: NumericLiteral { value: 0 } } } },
+     Link {
+       from: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 5 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 3 },
+             w: NumericLiteral { value: 0 } } },
+       to: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 4 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 2 },
+             w: NumericLiteral { value: 0 } } } },
+     Link {
+       from: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 6 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 3 },
+             w: NumericLiteral { value: 0 } } },
+       to: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 2 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 2 },
+             w: NumericLiteral { value: 0 } } } },
+     Link {
+       from: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 7 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 3 },
+             w: NumericLiteral { value: 0 } } },
+       to: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 6 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 1 },
+             w: NumericLiteral { value: 0 } } } },
+     Link {
+       from: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 8 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 3 },
+             w: NumericLiteral { value: 0 } } },
+       to: 
+        Location {
+          isAbsolute: true,
+          coordinate: 
+           Coordinate {
+             x: NumericLiteral { value: 7 },
+             y: NumericLiteral { value: 0 },
+             z: NumericLiteral { value: 2 },
+             w: NumericLiteral { value: 0 } } } } ] }

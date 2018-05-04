@@ -1,30 +1,35 @@
 const fs = require('fs');
 const parse = require('../syntax/parser');
 const chai = require('chai');
+require('../backend/generator.js');
 
-const TEST_DIR = 'tests/data/good-programs';
+const TEST_DIR = 'tests/data/code-gen-tests';
 
 /* eslint-disable no-undef */
 /* eslint-disable no-eval */
+
+const logger = console.log;
+console.log = (x) => {
+  logger(x);
+  return `${x}`;
+};
+
 describe('The program', () => {
   fs.readdirSync(TEST_DIR).forEach((name) => {
-    // TODO: Fix code generation tests
-    test(`should compile and run ${name} without errors`, (done) => {
-      // chai.assert.doesNotThrow(() => {
-      //   fs.readFile(name, 'utf-8', (err, text) => {
-      //     if (err) {
-      //       throw err;
-      //     }
-      //     const program = parse(text);
-      //     program.analyze();
-      //     // program = program.optimize();
-      //     const actual = eval(program.gen());
-      //     // we don't have a way to get expected yet
-      //     assert.equal(actual, expected);
-      //   });
-      // });
-      done();
-    });
+    if (name.endsWith('.star')) {
+      it(`produces the correct output for ${name}`, (done) => {
+        fs.readFile(`${TEST_DIR}/${name}`, 'utf-8', (err, text) => {
+          const program = parse(text);
+          program.analyze();
+          const actual = `${eval(program.gen().runProgram({ n: 5, p: 2, b: 6 }))}`;
+          console.log(program.gen().runProgram({ n: 5, p: 2, b: 6 }));
+          fs.readFile(`${TEST_DIR}/${name}.out`, 'utf-8', (_err, expected) => {
+            chai.assert.equal(actual, expected.trim());
+            done();
+          });
+        });
+      });
+    }
   });
 });
 /* eslint-enable no-undef */

@@ -15,15 +15,15 @@ Nebula is a programming language intended for expression. Its use of multidimens
 Let's take a look at hello-world.star, a basic program written in Nebula. Additional, more complex, examples can be found below.
 ### Nebula Text
 ```
-Origin default (0,0,0)
-    id "hello"
-    Result <0,0,1>
-        Callback <0,0,1>            #global pos (0,0,2)
-Function print (0,1,0)
-    Parameter <0,1,0>
-        primitive "Hello, world!"
-    Callback <0,1,0>                #global pos (0,2,0)
-Link (0,0,2) (0,2,0)
+Origin default "hello" (0,0,0)
+  Result void <0,0,1>
+
+Function "print" (0,1,0)
+  Parameter "message" <0,1,0>
+    initialize string "Hello, world!"
+  Return <0,2,0>
+
+Link (0,3,0) (0,0,1)
 ```
 ### Symbolic Diagram
 ![hello world](/example-programs/hello_world.png)
@@ -41,143 +41,103 @@ Nebula has both a textual and symbolic representation, and it is important to un
 ## Fibonacci Sequence: Recursive
 ### Nebula Text
 ```
-Origin default (0,0,0)
-  Parameter n <0,0,1>
-  id "_fib"
-  Result <0,0,2>
-    Control <0,0,1>
+Origin default "_fib" (0,0,0)
+  Argument number "n" <0,0,1>
+  Result number <0,0,2>
 
-Function ternary (0,1,0)
-  Parameter T <0,0,1>
-  Parameter F <0,0,2>
-  Parameter cond <0,0,3>
+Function "ternary" (1,0,0)
+  Parameter "true" <0,0,1>
+    access number "n"
+  Parameter "false" <0,0,2>
+  Parameter "condition" <0,0,3>
   Return <0,0,4>
-    Control <0,0,1>
 
-Function p1 leq p2 (0,2,0)
-  Parameter p1 <0,0,1>
-    access n
-  Parameter p2 <0,0,2>
-    primitive 1
+Function "lessThanOrEqual" (1,1,0)
+  Parameter "p1" <0,0,1>
+    access number "n"
+  Parameter "p2" <0,0,2>
+    initialize number 1
   Return <0,0,3>
 
-Function p1 plus p2 (0,3,0)
-  Parameter p1 <0,0,1>
-  Parameter p2 <0,0,2>
+Function "add" (2,0,0)
+  Parameter "p1" <0,0,1>
+  Parameter "p2" <0,0,2>
   Return <0,0,3>
 
-Function p1 minus p2 (0,4,0)
-  Parameter p1 <0,0,1>
-    access n
-  Parameter p2 <0,0,2>
-    primitive 1
+Function "_fib" (3,0,0)
+  Parameter "n" <0,0,1>
+  Return <0,0,2>
+
+Function "subtract" (3,1,0)
+  Parameter "p1" <0,0,1>
+    access number "n"
+  Parameter "p2" <0,0,2>
+    initialize number 1
   Return <0,0,3>
 
-Function p1 minus p2 (0,5,0)
-  Parameter p1 <0,0,1>
-    access n
-  Parameter p2 <0,0,2>
-    primitive 2
+Function "_fib" (4,0,0)
+  Parameter "n" <0,0,1>
+  Return <0,0,2>
+
+Function "subtract" (4,1,0)
+  Parameter "p1" <0,0,1>
+    access number "n"
+  Parameter "p2" <0,0,2>
+    initialize number 2
   Return <0,0,3>
 
 
-Link (0,0,2) (0,4,1) # Program result <-> ternary return
-Link (0,1,3) (0,2,3) # Ternary condition <-> p1 <= p2 evaluation
-Link (0,1,2) (0,3,3) # Ternary false param <-> p1 + p2
-Link (0,3,1) (0,0,2) # p1 <-> return of recursive call of _fib
-Link (0,3,2) (0,0,2) # p2 <-> return of recursive call of _fib
-Link (0,4,3) (0,0,1) # p1 - p2 <-> parameter for recursive call of _fib
-Link (0,5,3) (0,0,1) # p1 - p2 <-> parameter for recursive call of _fib
+Link (1,0,4) (0,0,2) # ternary return <-> result
+Link (1,1,3) (1,0,3) # p1 <= p2 <-> ternary condition
+Link (2,0,3) (1,0,2) # p1 + p2 <-> ternary false
+Link (3,0,2) (2,0,1) # _fib result <-> p1
+Link (3,1,3) (3,0,1) # p1 - p2 <-> _fib n
+Link (4,0,2) (2,0,2) # _fib result <-> p2
+Link (4,1,3) (4,0,1) # p1 - p2 <-> _fib n
 ```
 ### Symbolic Diagram
 ![recursive fibonacci](/example-programs/recursive_fib.png)
-## Fibonacci Sequence: Iterative
-### Nebula Text
-```
-Origin default (0,0,0)
-  Parameter n <0,0,1>
-  id "_fib"
-  Result <0,0,2>
-    Control <0,0,1>
-
-id "a"
-  primitive 0
-id "b"
-  primitive 1
-id "c"
-  primitive 0
-
-Conditional (0,1,0)
-  Parameter T <0,0,1>
-    Control <0,0,1>
-  Parameter F <0,0,3>
-    Control <0,0,1>
-  Parameter cond <0,0,5>
-
-Function p1 leq p2 (0,2,0)
-  Parameter p1 <0,0,1>
-    access c
-  Parameter p2 <0,0,2>
-    access n
-  Return <0,0,3>
-  Control <0,0,4>
-
-Function p1 plusplus (0,3,0)
-  Parameter p1 <0,0,1>
-    access c
-
-Function p1 e p2 (0,4,0)
-  Parameter p1 <0,0,1>
-    access b
-  Parameter p2 <0,0,2>
-    access t
-  Control <0,0,3>
-  Control <0,0,4>
-
-Function p1 plus p2 (0,5,0)
-  Parameter p1 <0,0,1>
-  Parameter p2 <0,0,2>
-  Control <0,0,3>
-  Control <0,0,4>
-  Return <0,0,5>
-
-id "t"
-  Control <0,0,1>
-  Control <0,0,2>
-
-Link (0,0,3) (0,1,2) # Result <-> Conditional true
-Link (0,1,5) (0,2,3) # cond <-> p1<=p2 return
-Link (0,2,4) (0,4,3) # p1<=p2 callback <-> b=t callback
-Link (0,4,4) (0,6,1) # b=t callback <-> variable t callback
-Link (0,1,3) (0,3,1) # conditional false <-> p1++ callback
-Link (0,3,2) (0,5,3) # p1++ callback <-> p1+p2 callback
-Link (0,5,4) (0,6,2) # p1+p2 callback <-> t callback
-Link (0,5,5) (0,0,6) # p1+p2 return <-> variable t
-```
-### Symbolic Diagram
-![iterative fibonacci](/example-programs/iterative_fib.png)
 
 # Grammar (Ohm)
 ```
 Nebula {
-    Program         =  Object*
-    Object          =  (Construct | Trait) newline Block?
-    Construct       =  constructLabel Argument* Location+
-    Trait           =  traitLabel Argument*
-    Block           =  indent Object+ dedent
-    constructLabel  =  "Origin" | "Result" | "Link" | "Accessor"
-                    |  "Function" | "Conditional" | "Parameter"
-                    |  "Control" | "Return" | "Yield" | "Error"
-    traitLabel      =  "primitive" | "id" | "access" | "initialize"
-    Argument        =  "default" | id | strlit | numlit
-    Location        =  "(" Coordinate ")" | "<" Coordinate ">"
-    Coordinate      =  numlit "," numlit "," numlit
+    Program         =  newline* (Object newline*)* newline*
+    Object          =  Origin | Function | Link | Accessor | Conditional
 
-    keyword         =  ( constructLabel | traitLabel ) ~idrest
-    id              =  ~keyword ("_" | letter) idrest*
-    idrest          =  "_" | alnum
-    numlit          =  digit+ ("." digit+)?
+    Origin          =  "Origin" "default"? strlit Location newline OriginBlock
+    OriginBlock     =  indent Argument* Result dedent
+    Argument        =  "Argument" type strlit Location newline
+    Result          =  "Result" type Location newline (indent (Access | Initialize | Evaluate)? Control dedent)?
+
+    Function        =  "Function" strlit Location newline FunctionBlock
+    FunctionBlock   =  indent Parameter* Return dedent
+    Parameter       =  "Parameter" strlit Location newline (indent (Access | Initialize) dedent)?
+    Return          =  "Return" Location newline (indent Control dedent)?
+
+    Initialize      =  "initialize" ("string" strlit | "boolean" boollit | "number" numlit) newline
+    Access          =  "access" type strlit newline
+    Evaluate        =  "evaluate" strlit newline
+
+    Conditional     =  "Conditional" Location newline indent Condition TrueControl FalseControl dedent
+    Condition       =  "Parameter" "condition" Location newline (indent ( Access | Evaluate ) dedent)?
+    TrueControl     =  "Control" "true" Location newline
+    FalseControl    =  "Control" "false" Location newline
+
+    Accessor        =  "Accessor" strlit Location newline AccessorBlock
+    AccessorBlock   =  indent (Access | Initialize | SetParameter | Evaluate) Control? dedent
+    SetParameter    =  "Parameter" "\"set\"" type Location newline
+
+    traitLabel      =  "evaluate"
+
+    Link            =  "Link" Location Location
+    Location        =  "(" Coordinate ")" | "<" Coordinate ">"
+    Control         =  "Control" Location newline
+    Coordinate      =  NonemptyListOf<numlit, ",">
+
+    type            =  "number" | "string" | "boolean" | "void"
+    numlit          =  "-"? digit+ ("." digit+)?
     strlit          =  "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
+    boollit         =  "true" | "false"
     escape          =  "\\" ( "\'" | "\"" | "r" | "n" | "\\" | "u")      -- simple
                     |  "\\u" hexDigit hexDigit hexDigit hexDigit         -- codepoint
     indent          =  "⇨"
