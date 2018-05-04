@@ -66,7 +66,7 @@ fs.readFile(argv._[0], 'utf-8', (err, text) => {
     if (argv._[1] !== undefined) {
       params = JSON.parse(argv._[1]);
     }
-    program.gen().runProgram(params, true);
+    program.gen().runProgram(params);
   }
 });
 
