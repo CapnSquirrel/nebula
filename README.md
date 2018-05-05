@@ -4,6 +4,8 @@
 # Programming in a Multidemensional Environment
 Nebula is a programming language intended for expression. Its use of multidimensional logical constructs to perform actions between nodes likens it to a Turing Machine. These nodes are powerful; rather than simply holding data and linking to other structures, they can trigger actions on the global environment and ultimately cause the execution of functions whose return values may ripple back to the original node. Inspirations for the project include JavaScript, Python, Go, and Haskell. Many of the constructs in Nebula's standard library as well as its primitive structures and types are derived from these languages. Though it borrows some ideas from some of these well-known programming languages, Nebula also offers a new programming paradigm, "spatial programming", an intuitive and fresh way to work with scoping.
 
+See the Nebula Lang Website: https://nebulalang.github.io/
+
 # Features
 - _Dynamic_: Dynamically typed by default, but optional static typing can be enforced
 - _Asynchronous_: Designed for asynchronous programming; can wait for events while retaining state
