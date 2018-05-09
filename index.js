@@ -1,4 +1,6 @@
 const parse = require('./syntax/parser');
+const modules = require('./backend/default-modules');
+const ast = require('./ast');
 
 const parseProgram = text => parse(text);
 
@@ -13,4 +15,10 @@ const compileProgram = (text, params) => {
   return program.gen().runProgram(params);
 };
 
-module.exports = { parseProgram, analyzeProgram, compileProgram };
+module.exports = {
+  parseProgram,
+  analyzeProgram,
+  compileProgram,
+  modules,
+  ast,
+};
