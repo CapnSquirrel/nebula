@@ -2,7 +2,7 @@
   "name": "nebula",
   "version": "1.0.0",
   "description": "The Nebula programming language",
-  "main": "nebula.js",
+  "main": "index.js",
   "scripts": {
     "test": "jest tests/*.test.js"
   },
