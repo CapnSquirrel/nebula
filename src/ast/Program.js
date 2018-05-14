@@ -1,5 +1,6 @@
 import Context from '../semantics/context';
 import Origin from './Origin';
+import processTokens from '../backend/generator';
 
 export default class Program {
   constructor(body) {
@@ -19,5 +20,9 @@ export default class Program {
     context.mapCoordsToTokens();
 
     this.tokens = context.tokens;
+  }
+
+  gen() {
+    return processTokens(this.tokens);
   }
 }

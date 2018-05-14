@@ -1,7 +1,6 @@
 import modules from './default-modules';
-import Program from '../ast/Program';
 
-const processTokens = (tokens) => {
+export default (tokens) => {
   const idMap = {};
 
   const jsName = (() => {
@@ -89,9 +88,3 @@ const processTokens = (tokens) => {
     },
   };
 };
-
-Object.assign(Program.prototype, {
-  gen() {
-    return processTokens(this.tokens);
-  },
-});

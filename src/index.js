@@ -10,8 +10,9 @@ export const analyzeProgram = (text) => {
   return program;
 };
 
-export const compileProgram = (text, params) => {
+export const compileProgram = (text, params = {}) => {
   const program = parse(text);
+  program.analyze();
   return program.gen().runProgram(params);
 };
 
