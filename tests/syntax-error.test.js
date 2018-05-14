@@ -1,5 +1,5 @@
 const fs = require('fs');
-const parse = require('../syntax/parser');
+const { parseProgram } = require('..');
 const chai = require('chai');
 
 const TEST_DIR = 'tests/data/syntax-errors';
@@ -9,7 +9,9 @@ describe('The parser detects a syntax error for', () => {
   fs.readdirSync(TEST_DIR).forEach((name) => {
     const check = name.replace(/-/g, ' ').replace(/\.star$/, '');
     test(check, (done) => {
-      chai.assert.throws(() => { parse(fs.readFileSync(`${TEST_DIR}/${name}`, 'utf-8')); });
+      chai.assert.throws(() => {
+        parseProgram(fs.readFileSync(`${TEST_DIR}/${name}`, 'utf-8'));
+      });
       done();
     });
   });
