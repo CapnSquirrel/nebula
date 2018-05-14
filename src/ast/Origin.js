@@ -8,6 +8,10 @@ export default class Origin {
     });
   }
 
+  getClassName() {
+    return 'Origin';
+  }
+
   analyze(context) {
     if (this.isDefault) context.markDefaultExists();
     this.location.analyze(context);

@@ -4,6 +4,10 @@ export default class Return {
     if (control) Object.assign(this, { control });
   }
 
+  getClassName() {
+    return 'Result';
+  }
+
   analyze(context) {
     this.location.analyze(context);
     this.type = context.functionObject.returns;

@@ -3,6 +3,10 @@ export default class Argument {
     Object.assign(this, { type, id, location });
   }
 
+  getClassName() {
+    return 'Argument';
+  }
+
   analyze(context) {
     this.location.analyze(context);
     context.addArgument(this);

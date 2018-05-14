@@ -7,6 +7,10 @@ export default class Initialize {
     Object.assign(this, { type, value });
   }
 
+  getClassName() {
+    return 'Initialize';
+  }
+
   analyze(context) {
     if (context.parentConstruct instanceof Accessor) {
       context.addID(this.type, context.parentConstruct.id.value);

@@ -3,6 +3,10 @@ export default class Link {
     Object.assign(this, { from, to });
   }
 
+  getClassName() {
+    return 'Link';
+  }
+
   analyze(context) {
     this.from.analyze(context);
     this.to.analyze(context);

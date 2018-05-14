@@ -7,6 +7,10 @@ export default class Program {
     Object.assign(this, { body });
   }
 
+  getClassName() {
+    return 'Program';
+  }
+
   analyze() {
     const declarations = Object.assign({}, Context.INITIAL.declarations);
     const context = new Context({ declarations });

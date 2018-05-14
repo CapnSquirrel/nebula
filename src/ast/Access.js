@@ -7,6 +7,10 @@ export default class Access {
     Object.assign(this, { type, id });
   }
 
+  getClassName() {
+    return 'Access';
+  }
+
   analyze(context) {
     let idType = context.accessID(this.id.value, this.type);
     if (idType.expectedType) idType = idType.expectedType;

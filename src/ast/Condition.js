@@ -3,6 +3,10 @@ export default class Condition {
     Object.assign(this, { location, body });
   }
 
+  getClassName() {
+    return 'Condition';
+  }
+
   analyze(context) {
     this.location.analyze(context);
     if (this.body.length > 0) {

@@ -3,6 +3,10 @@ export default class Location {
     Object.assign(this, { isAbsolute, coordinate });
   }
 
+  getClassName() {
+    return 'Location';
+  }
+
   analyze(context) {
     if (!this.isAbsolute) {
       this.coordinate.analyze(context);

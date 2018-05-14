@@ -3,6 +3,10 @@ export default class Parameter {
     Object.assign(this, { id, location, body });
   }
 
+  getClassName() {
+    return 'Parameter';
+  }
+
   analyze(context) {
     this.location.analyze(context);
     this.type = context.functionObject.args[this.id.value];

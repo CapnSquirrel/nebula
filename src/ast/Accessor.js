@@ -3,6 +3,10 @@ export default class Accessor {
     Object.assign(this, { id, location, body });
   }
 
+  getClassName() {
+    return 'Accessor';
+  }
+
   analyze(context) {
     this.location.analyze(context);
     this.body.forEach(b => b.analyze(context.createChildContextForConstruct(this)));

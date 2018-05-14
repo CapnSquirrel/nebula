@@ -3,6 +3,10 @@ export default class Function {
     Object.assign(this, { id, location, body });
   }
 
+  getClassName() {
+    return 'Function';
+  }
+
   analyze(context) {
     this.location.analyze(context);
     this.functionObject = context.accessID(this.id.value);

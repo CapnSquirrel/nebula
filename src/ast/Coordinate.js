@@ -16,6 +16,10 @@ export default class Coordinate {
     });
   }
 
+  getClassName() {
+    return 'Coordinate';
+  }
+
   // Only analyzes if the location holding the coordinate isn't absolute.
   // Adds the coordinate's relative values to the context's coordinates.
   analyze(context) {
