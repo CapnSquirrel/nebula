@@ -37,14 +37,14 @@ const { argv } = require('yargs')
 
 const fs = require('fs');
 const util = require('util');
-const parse = require('./syntax/parser');
+const { parseProgram } = require('.');
 
 fs.readFile(argv._[0], 'utf-8', (err, text) => {
   if (err) {
     console.error(err);
     return;
   }
-  const program = parse(text);
+  const program = parseProgram(text);
   if (argv.a) {
     console.log(util.inspect(program, { depth: null }));
     return;

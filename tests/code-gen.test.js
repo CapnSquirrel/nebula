@@ -1,7 +1,6 @@
 const fs = require('fs');
-const parse = require('../syntax/parser');
+const { compileProgram } = require('..');
 const chai = require('chai');
-require('../backend/generator.js');
 
 const TEST_DIR = 'tests/data/code-gen-tests';
 
@@ -19,9 +18,7 @@ describe('The program', () => {
     if (name.endsWith('.star')) {
       it(`produces the correct output for ${name}`, (done) => {
         fs.readFile(`${TEST_DIR}/${name}`, 'utf-8', (err, text) => {
-          const program = parse(text);
-          program.analyze();
-          const actual = `${eval(program.gen().runProgram({ n: 5, p: 2, b: 6 }))}`;
+          const actual = `${eval(compileProgram(text, { n: 5, p: 2, b: 6 }))}`;
           fs.readFile(`${TEST_DIR}/${name}.out`, 'utf-8', (_err, expected) => {
             chai.assert.equal(actual, expected.trim());
             done();
