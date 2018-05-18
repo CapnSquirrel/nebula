@@ -5,7 +5,7 @@ export default class Return {
   }
 
   getClassName() {
-    return 'Result';
+    return 'Return';
   }
 
   analyze(context) {
