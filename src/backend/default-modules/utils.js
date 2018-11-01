@@ -64,4 +64,14 @@ export default {
     returns: 'none',
     eval: '#{p1}++',
   },
+  getVal: {
+    args: { obj: 'object', key: 'string' },
+    returns: 'any',
+    eval: '{obj}[{key}]'
+  },
+  writeVal: {
+    args: { obj: 'object', key: 'string', val: 'any' },
+    returns: 'object',
+    eval: '{obj}[{key}] = val'
+  },
 };

@@ -26,6 +26,7 @@ const {
   NumericLiteral,
   StringLiteral,
   BooleanLiteral,
+  ObjectLiteral,
 } = require('../ast');
 
 // const grammar = ohm.grammar(fs.readFileSync('./syntax/nebula.ohm'));
@@ -75,6 +76,9 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   },
   boollit(_1) {
     return new BooleanLiteral(!!this.sourceString);
+  },
+  objlit(_1, chars, _3) {
+    return new ObjectLiteral(chars.sourceString);
   },
   _terminal() {
     return this.sourceString;
