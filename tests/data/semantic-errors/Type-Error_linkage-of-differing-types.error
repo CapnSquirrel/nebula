@@ -1,12 +1,14 @@
+# Recursive program for Pow
+
 Origin default "_pow" (0,0,0)
   Argument number "b" <0,0,1>
-  Argument number "p" <0,0,2>
+  Argument boolean "p" <0,0,2>
   Result number <0,0,3>
 
 Function "ternary" (1,0,0)
   Parameter "condition" <0,0,1>
   Parameter "true" <0,0,2>
-    initialize boolean true
+    initialize number 1
   Parameter "false" <0,0,3>
   Return <0,0,4>
 
