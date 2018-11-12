@@ -12,7 +12,7 @@ Nebula {
     Parameter       =  "Parameter" strlit Location newline (indent (Access | Initialize) dedent)?
     Return          =  "Return" Location newline (indent Control dedent)?
 
-    Initialize      =  "initialize" ( "object" objlit | "string" strlit | "boolean" boollit | "number" numlit ) newline
+    Initialize      =  "initialize" ("string" strlit | "boolean" boollit | "number" numlit | "object" objlit) newline
     Access          =  "access" type strlit newline
     Evaluate        =  "evaluate" strlit newline
 
@@ -34,9 +34,9 @@ Nebula {
 
     type            =  "number" | "string" | "boolean" | "object" | "void"
     numlit          =  "-"? digit+ ("." digit+)?
+    objlit          =  "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
     strlit          =  "\"" (~"\\" ~"\"" ~"\n" any | escape)* "\""
     boollit         =  "true" | "false"
-    objlit          =  "\"" (~"\\" ~"\\\"" ~"\"" ~"\n" any | escape)* "\""
     escape          =  "\\" ( "\'" | "\"" | "r" | "n" | "\\" | "u")      -- simple
                     |  "\\u" hexDigit hexDigit hexDigit hexDigit         -- codepoint
     indent          =  "⇨"

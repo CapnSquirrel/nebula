@@ -68,6 +68,9 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   type(_1) {
     return new StringLiteral(this.sourceString);
   },
+  objlit(_1, chars, _3) {
+    return new StringLiteral(chars.sourceString);
+  },
   strlit(_1, chars, _3) {
     return new StringLiteral(chars.sourceString);
   },
@@ -76,9 +79,6 @@ const astGenerator = grammar.createSemantics().addOperation('ast', {
   },
   boollit(_1) {
     return new BooleanLiteral(!!this.sourceString);
-  },
-  objlit(_1, chars, _3) {
-    return new ObjectLiteral(chars.sourceString);
   },
   _terminal() {
     return this.sourceString;

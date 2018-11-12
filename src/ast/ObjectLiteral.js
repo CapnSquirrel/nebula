@@ -6,11 +6,8 @@ export default class ObjectLiteral {
   getClassName() {
     return 'ObjectLiteral';
   }
-
-  /*
-  analyze(){
+  analyze() {
     this.raw.JSON.parse();
     this.val = this.raw.JSON.parse();
   }
-  */
 }
