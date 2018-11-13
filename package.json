@@ -4,7 +4,8 @@
   "description": "The Nebula programming language",
   "main": "index.js",
   "scripts": {
-    "test": "jest tests/*.test.js"
+    "test": "jest tests/*.test.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
