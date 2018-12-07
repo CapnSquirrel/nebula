@@ -1,3 +1,4 @@
+# This is pow, runs without errors
 Origin default "_pow" (0,0,0)
   Argument number "b" <0,0,1>
   Argument number "p" <0,0,2>
@@ -6,15 +7,9 @@ Origin default "_pow" (0,0,0)
 Function "ternary" (1,0,0)
   Parameter "condition" <0,0,1>
   Parameter "true" <0,0,2>
-    initialize number 1
+    initialize boolean true
   Parameter "false" <0,0,3>
   Return <0,0,4>
-
-Accessor "huh" (9001,0,0,0)
-  initialize string "IT\'S OVER 9000!!!"
-
-Accessor "huh" (9000,0,0,0)
-  initialize boolean false
 
 Function "equals" (1,1,0)
   Parameter "p1" <0,0,1>

@@ -64,4 +64,14 @@ export default {
     returns: 'none',
     eval: '#{p1}++',
   },
+  getVal: {
+    args: { obj: 'object', key: 'string' },
+    returns: 'any',
+    eval: 'JSON.parse(#{obj})[#{key}]'
+  },
+  writeVal: {
+    args: { obj: 'object', key: 'string', val: 'any' },
+    returns: 'object',
+    eval: 'JSON.stringify(Object.assign(JSON.parse(#{obj}), {#{key}:#{val}}))'
+  },
 };

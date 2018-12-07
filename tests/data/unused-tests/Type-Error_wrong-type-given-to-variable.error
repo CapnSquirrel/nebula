@@ -1,10 +1,11 @@
-# Recursive program for Pow
+# The problem here is the variables are causing
+# issues, which leads to everything else falling
+# apart
 
 Origin default "_pow" (0,0,0)
   Argument number "b" <0,0,1>
   Argument number "p" <0,0,2>
   Result number <0,0,3>
-    initialize string "HA GOTTEM"
 
 Function "ternary" (1,0,0)
   Parameter "condition" <0,0,1>
@@ -12,6 +13,12 @@ Function "ternary" (1,0,0)
     initialize number 1
   Parameter "false" <0,0,3>
   Return <0,0,4>
+
+Accessor "huh" (9001,0,0,0)
+  initialize string "IT\'S OVER 9000!!!"
+
+Accessor "huh" (9000,0,0,0)
+  initialize boolean false
 
 Function "equals" (1,1,0)
   Parameter "p1" <0,0,1>

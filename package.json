@@ -4,7 +4,8 @@
   "description": "The Nebula programming language",
   "main": "index.js",
   "scripts": {
-    "test": "jest tests/*.test.js"
+    "test": "jest tests/*.test.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -17,11 +18,11 @@
   },
   "homepage": "https://github.com/CapnSquirrel/nebula#readme",
   "devDependencies": {
-    "chai": "^4.1.2",
+    "chai": "^4.2.0",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.11.0",
-    "jest": "^22.4.3",
+    "eslint-plugin-import": "^2.14.0",
+    "jest": "^22.4.4",
     "raw-loader": "^0.5.1",
     "webpack-cli": "^2.1.3"
   },
@@ -30,7 +31,7 @@
     "@babel/preset-env": "^7.0.0-beta.47",
     "babel-loader": "^8.0.0-beta",
     "fs": "^0.0.1-security",
-    "npm": "^5.8.0",
+    "npm": "^5.10.0",
     "ohm-js": "^0.14.0",
     "webpack": "^4.8.3",
     "yargs": "^11.1.0"
